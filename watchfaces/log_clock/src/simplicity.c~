@@ -1,5 +1,16 @@
 #include "pebble.h"
-#include <math.h>
+
+double log(double x) {
+        double mul;
+        double acc;
+        acc = x = (mul = (x-1)/(x+1));
+        x *= x;
+        for(int32_t i = 3;i < 256;i+=2) {
+            acc += mul/i;
+            mul *= x;
+        }
+        return 2*acc;//an accurate log
+}
 
 static Window *s_main_window;
 static TextLayer *s_date_layer, *s_time_layer;
@@ -14,15 +25,20 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
   // Need to be static because they're used by the system later.
   static char s_time_text[] = "00:00";
   static char s_date_text[] = "Xxxxxxxxx 00";
-  static char log_text[] = "xxxxxxxxxx";//10
+  static char log_text[] = "xxxxxxxxxxxxxxxx";//16
 
-  float s = (float)tick_time->tm_sec;//get seconds
-  s = log(s)/log(60.0);
+  double s = (double)(tick_time->tm_sec);//get seconds
+  if(s == 0) s = 60.0;//prevent errors by wrap
+  s = log(s);
+  int i = (int)s;
+  int v = (int)(s*10000)%10000;//converted
 
-  strftime(s_date_text, sizeof(s_date_text), "     %S", tick_time);
+  snprintf(log_text, sizeof(log_text), "%d.%05d", i, v);
+
+  strftime(s_date_text, sizeof(s_date_text), "%S LN ", tick_time);
 
   //insert log
-  memmove(s_date_text, &log_text[2], 4);//4 digit after dp
+  memmove(&s_date_text[7], log_text, 6);//4 digit after dp
 
   text_layer_set_text(s_date_layer, s_date_text);
 
