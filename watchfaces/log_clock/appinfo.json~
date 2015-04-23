@@ -1,10 +1,10 @@
 {
-  "uuid": "030ee5fc-518b-49e5-b9b2-0700ee92af89",
-  "shortName": "Simplicity",
-  "longName": "Simplicity",
-  "companyName": "Pebble Technology",
-  "versionCode": 3,
-  "versionLabel": "3.0",
+  "uuid": "8f170f84-4e3a-408e-bcef-dbcb20f9854e",
+  "shortName": "Log Clock",
+  "longName": "Log Clock",
+  "companyName": "K Ring Technologies",
+  "versionCode": 1,
+  "versionLabel": "1.0",
   "watchapp": {
     "watchface": true
   },
