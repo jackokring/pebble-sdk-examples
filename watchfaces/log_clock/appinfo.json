@@ -1,0 +1,27 @@
+{
+  "uuid": "8f170f84-4e3a-408e-bcef-dbcb20f9854e",
+  "shortName": "Log Clock",
+  "longName": "Log Clock",
+  "companyName": "K Ring Technologies",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {},
+  "resources": {
+    "media": [
+      {
+        "menuIcon": true,
+        "type": "png",
+        "name": "IMAGE_MENU_ICON",
+        "file": "images/menu_icon_simplicity.png"
+      }
+    ]
+  },
+  "targetPlatforms": [
+    "aplite",
+    "basalt"
+  ],
+  "sdkVersion": "3"
+}

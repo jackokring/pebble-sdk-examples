@@ -1,0 +1,90 @@
+package uk.co.peopleandroid.jarvar.functions;
+
+import uk.co.peopleandroid.jarvar.platform.Storage;
+
+public class Mith {
+
+    public static double powi(double x, int y) {
+        int p = y;//should be in range
+        double mul = x;
+        double acc = 1;
+        for(int j=0;j<32;j++) {
+            if((p&1)==1) acc *= mul;
+            p >>= 1;
+            mul *= mul;
+        }
+        return acc;
+    }
+
+    public static double log(double x) {
+        int flip = 1;
+        if(x>1) { x = 1/x; flip = -1;}
+        int sc = 2;
+        double mul;
+        //smaller range for quadratic gain, without too
+        //much  loss of precission
+        while(x<0.875) {
+            x = Storage.sqrt(x);
+            sc <<= 1;
+        }
+        double acc;
+        acc = x = (mul = (x-1)/(x+1));
+        x *= x;
+        for(int i = 3;i < 16;i+=2) {
+            acc += mul/i;
+            mul *= x;
+        }
+        return sc*flip*acc;//an accurate log
+    }
+
+    public static double atan(double x) {
+        boolean flip = false;
+        if(x>1||x<-1) { flip = true; x = 1/x; }//cos/sin??+angle??
+        int sc = 1;
+        while(x<-0.125||x>0.125) {
+            x = x/(1+Storage.sqrt(1+x*x));
+            sc <<= 1;
+        }
+        double mul = x;
+        double acc = x;
+        x *= -x;
+        for(int i = 3;i < 16;i+=2) {
+            acc += mul/i;
+            mul *= x;
+        }
+        acc *= sc;
+        //+/-45deg
+        if(flip) {
+            acc = ((acc>0) ? Storage.PI/2-acc : -Storage.PI/2+acc);
+        }
+        return acc;
+    }
+
+    final static double ln2 = log(2);
+
+    public static double exp(double x) {
+        boolean flip = false;
+        if(x<0) { flip = true; x = -x;}//all positive
+        int digits = (int)(log(x)*ln2);
+        double po = powi(2,digits);
+        x = x/po;//residual
+        int raz = 1;
+        //focus series for gain
+        while(x>0.125) {
+            raz <<= 1;
+            x /= 2;
+        }
+        //the exp
+        double acc = 1;//first term
+        double fac = 1;
+        double mul = 1;
+        for(int i = 1;i < 8;i++) {
+            fac *= i;
+            mul *= x;
+            acc += mul/fac;
+        }
+        x = powi(acc, (int)(po*raz));
+        if(flip) x = 1/x;
+        return x;//the actual exp
+    }
+}
