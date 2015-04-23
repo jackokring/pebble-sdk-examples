@@ -1,5 +1,5 @@
 #include "pebble.h"
-#include "mith.c"
+#include <math.h>
 
 static Window *s_main_window;
 static TextLayer *s_date_layer, *s_time_layer;
