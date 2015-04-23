@@ -43,16 +43,18 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   // Need to be static because they're used by the system later.
   if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
-  static char s_log_text[] = "1234567890123";
-  static char log_text[] = "12345";//5
+  static char s_log_text[] = "1234567890123";//13 per line
+  static char log_text[] = "123456";//6
     double s = (double)(tick_time->tm_sec);//get seconds
+    double j = ((double)(tick_time->tm_min&3)) / 4.0;//4 min cycle
+    s += j;//0.25 increments
     if(s == 0) s = 60.0;//prevent errors by wrap
     s = log(s)/log(60);//scale to base 60
     int i = (int)s;
     s -= i;
     int v = (int)(s*10000)%10000;//converted
     snprintf(log_text, sizeof(log_text), "%04d", v);
-    strftime(s_log_text, sizeof(s_log_text), "%S LOG60 ", tick_time);
+    strftime(s_log_text, sizeof(s_log_text), "%S   LOG ", tick_time);
     //insert log
     memmove(s_log_text + 9, log_text, 4);//4 digit after dp
     text_layer_set_text(s_log_layer, s_log_text);
