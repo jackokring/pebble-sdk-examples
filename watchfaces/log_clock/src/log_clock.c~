@@ -16,7 +16,7 @@ static double log(double x) {
 }
 
 static Window *s_main_window;
-static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_1_layer, *s_2_layer, *s_3_layer;
+static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_1_layer, *s_2_layer, *s_eight_layer;
 static Layer *s_line_layer;
 
 static void line_layer_update_callback(Layer *layer, GContext* ctx) {
@@ -40,30 +40,41 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
     text_layer_set_text(s_time_layer, s_time_text);
 }
 
+static int round(double s) {
+  int i = (int)s;
+  s -= i;
+  int v = (int)(s*10000)%10000;//converted
+  return v;
+}
+
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
-  // Need to be static because they're used by the system later.
-  if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
-  static char s_log_text[] = "1234567890123";//13 per line
-  static char log_text[] = "123456";//6
+    // Need to be static because they're used by the system later.
+    if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
+    static char s_log_text[] = "1234567890123";//13 per line
+    static char s_eight_text[] = "1234567890123";//13 per line
     double s = (double)(tick_time->tm_sec);//get seconds
     double j = ((double)(tick_time->tm_min&3)) / 4.0;//4 min cycle
-    s += j;//0.25 increments
-    if(s == 0) s = 60.0;//prevent errors by wrap
-    s = log(s)/log(60);//scale to base 60
-    int i = (int)s;
-    s -= i;
-    int v = (int)(s*10000)%10000;//converted
-    snprintf(log_text, sizeof(log_text), "%04d", v);
-    strftime(s_log_text, sizeof(s_log_text), "%S   LOG ", tick_time);
+    double p = s + j;//0.25 increments
+    if(p == 0) p = 60.0;//prevent errors by wrap
+    double log60 = 1/log(60);
+    s = log(p) * log60;//scale to base 60
+    double plus = (p == 60.0) ? log(0.125) * log60 : log(p + 0.125) * log60;
+    double minus = log(p - 0.125) * log60
+    int v = round(s);
+    int w = round(p * 100);
+    snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d",w , v);
     //insert log
-    memmove(s_log_text + 9, log_text, 4);//4 digit after dp
-    text_layer_set_text(s_log_layer, s_log_text);
+    v = round(plus);
+    w = round(minus);
+    snprintf(s_eight_text, sizeof(s_eight_text), "%04d-1/8+%04d",w , v);
+
+    text_layer_set_text(s_log_layer, s_log_text);//log
 
     //extra layers of 13 chars
-    text_layer_set_text(s_0_layer, s_log_text);
+    text_layer_set_text(s_0_layer, s_log_text);//gps co-ordinates?
     text_layer_set_text(s_1_layer, s_log_text);
     text_layer_set_text(s_2_layer, s_log_text);
-    text_layer_set_text(s_3_layer, s_log_text);
+    text_layer_set_text(s_eight_layer, s_eight_text);// 1/8th offset giving log
 }
 
 static Layer *window_layer;
@@ -82,7 +93,7 @@ static void main_window_load(Window *window) {
   layer(&s_0_layer, 0);
   layer(&s_1_layer, 1);
   layer(&s_2_layer, 2);
-  layer(&s_3_layer, 3);
+  layer(&s_eight_layer, 3);
 
   layer(&s_log_layer, 4);
 
