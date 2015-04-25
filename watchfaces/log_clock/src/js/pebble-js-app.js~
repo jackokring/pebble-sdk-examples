@@ -1,17 +1,18 @@
-
-function iconFromWeatherId(weatherId) {
-  if (weatherId < 600) {
-    return 2;
-  } else if (weatherId < 700) {
-    return 3;
-  } else if (weatherId > 800) {
-    return 1;
-  } else {
-    return 0;
-  }
+function sexyguessimal(coord, letterP, letterM) {
+	var letter = (coord < 0)?letterM:letterP;
+	coord = Math.abs(coord);
+	var degree = Math.trunc(coord);
+	var minute = Math.trunc((coord - degree)*60);
+	var second = Math.trunc((coord - degree - 60*minute)*60);
+	return letter+" "+degree.toString()+"°"+minute.toString()+"'"+second.toString()+"\"";
 }
 
-function fetchWeather(latitude, longitude) {
+function work(latitude, longitude) {
+	var long = sexyguessimal(longitude, "E", "W");
+	var long = sexyguessimal(latitude, "N", "S");
+
+
+
   var req = new XMLHttpRequest();
   req.open('GET', "http://api.openweathermap.org/data/2.5/weather?" +
     "lat=" + latitude + "&lon=" + longitude + "&cnt=1", true);
@@ -43,14 +44,14 @@ function fetchWeather(latitude, longitude) {
 
 function locationSuccess(pos) {
   var coordinates = pos.coords;
-  fetchWeather(coordinates.latitude, coordinates.longitude);
+  work(coordinates.latitude, coordinates.longitude);
 }
 
 function locationError(err) {
   console.warn('location error (' + err.code + '): ' + err.message);
   Pebble.sendAppMessage({
-    "WEATHER_CITY_KEY":"Loc Unavailable",
-    "WEATHER_TEMPERATURE_KEY":"N/A"
+    "LONG":" Loc Unavail ",
+    "LAT":" Loc Unavail "
   });
 }
 

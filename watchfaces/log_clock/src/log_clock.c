@@ -40,7 +40,7 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
     text_layer_set_text(s_time_layer, s_time_text);
 }
 
-static int round(double s) {
+static int round_it(double s) {
   int i = (int)s;
   s -= i;
   int v = (int)(s*10000)%10000;//converted
@@ -59,13 +59,13 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     double log60 = 1/log(60);
     s = log(p) * log60;//scale to base 60
     double plus = (p == 60.0) ? log(0.125) * log60 : log(p + 0.125) * log60;
-    double minus = log(p - 0.125) * log60
-    int v = round(s);
-    int w = round(p * 100);
+    double minus = log(p - 0.125) * log60;
+    int v = round_it(s);
+    int w = round_it(p * 100);
     snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d",w , v);
     //insert log
-    v = round(plus);
-    w = round(minus);
+    v = round_it(plus);
+    w = round_it(minus);
     snprintf(s_eight_text, sizeof(s_eight_text), "%04d-1/8+%04d",w , v);
 
     text_layer_set_text(s_log_layer, s_log_text);//log
@@ -75,6 +75,30 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     text_layer_set_text(s_1_layer, s_log_text);
     text_layer_set_text(s_2_layer, s_log_text);
     text_layer_set_text(s_eight_layer, s_eight_text);// 1/8th offset giving log
+}
+
+#define LAT 1
+#define LONG 0
+
+static void received_callback(DictionaryIterator *iterator, void *context) {
+  // Get the first pair
+  Tuple *t = dict_read_first(iterator);
+
+  // Process all pairs present
+  while(t != NULL) {
+    // Process this pair's key
+    switch (t->key) {
+      case LAT:
+        APP_LOG(APP_LOG_LEVEL_INFO, "KEY_DATA received with value %d", (char *)t->value->cstring);
+        break;
+      case LONG:
+        APP_LOG(APP_LOG_LEVEL_INFO, "KEY_DATA received with value %d", (char *)t->value->cstring);
+        break;
+    }
+
+    // Get next pair, if any
+    t = dict_read_next(iterator);
+  }
 }
 
 static Layer *window_layer;
@@ -127,6 +151,8 @@ static void init() {
 
   tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
   //tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);//NO!!
+
+  app_message_register_inbox_received(AppMessageInboxReceived received_callback);
   
   // Prevent starting blank
   time_t now = time(NULL);
@@ -139,6 +165,7 @@ static void deinit() {
   window_destroy(s_main_window);
 
   tick_timer_service_unsubscribe();
+  app_message_deregister_callbacks();
 }
 
 int main() {

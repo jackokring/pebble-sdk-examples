@@ -9,9 +9,8 @@
     "watchface": true
   },
   "appKeys": {
-    "WEATHER_CITY_KEY": 2,
-    "WEATHER_TEMPERATURE_KEY": 1,
-    "WEATHER_ICON_KEY": 0
+    "LAT": 1,
+    "LONG": 0
   },
   "resources": {
     "media": [
