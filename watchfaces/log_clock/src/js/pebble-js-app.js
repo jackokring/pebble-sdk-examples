@@ -61,10 +61,14 @@ Pebble.addEventListener("appmessage", function(e) {
     console.log('Received message: ' + JSON.stringify(e.payload));
 });
 
-Pebble.addEventListener("webviewclosed", function(e) {
-  console.log("webview closed");
-  console.log(e.type);
-  console.log(e.response);
+Pebble.addEventListener('webviewclosed',
+  function(e) {
+    var configuration = JSON.parse(decodeURIComponent(e.response));
+    console.log('Configuration window returned: ', JSON.stringify(configuration));
+  }
+);
+
+Pebble.addEventListener('showConfiguration', function(e) {
+  // Show config page
+  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');
 });
-
-
