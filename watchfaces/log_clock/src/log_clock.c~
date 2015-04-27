@@ -47,6 +47,9 @@ static int round_it(double s) {
   return v;
 }
 
+static char s_long_text[] = " GPS CONNECT ";//13 per line
+static char s_lat_text[] = " GPS CONNECT ";//13 per line
+
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
@@ -61,17 +64,17 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     double plus = (p == 60.0) ? log(0.125) * log60 : log(p + 0.125) * log60;
     double minus = log(p - 0.125) * log60;
     int v = round_it(s);
-    int w = round_it(p * 100);
+    int w = round_it(p / 100.0);
     snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d",w , v);
     //insert log
     v = round_it(plus);
     w = round_it(minus);
-    snprintf(s_eight_text, sizeof(s_eight_text), "%04d-1/8+%04d",w , v);
+    snprintf(s_eight_text, sizeof(s_eight_text), "%04d -/+ %04d",w , v);
 
     text_layer_set_text(s_log_layer, s_log_text);//log
-
+    char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
     //extra layers of 13 chars
-    text_layer_set_text(s_0_layer, s_log_text);//gps co-ordinates? alternating N/W
+    text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/W
     text_layer_set_text(s_1_layer, s_log_text);
     text_layer_set_text(s_2_layer, s_log_text);
     text_layer_set_text(s_eight_layer, s_eight_text);// 1/8th offset giving log
@@ -79,6 +82,18 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
 
 #define LAT 1
 #define LONG 0
+
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
+}
+
+static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
+}
+
+static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
+}
 
 static void received_callback(DictionaryIterator *iterator, void *context) {
   // Get the first pair
@@ -89,10 +104,11 @@ static void received_callback(DictionaryIterator *iterator, void *context) {
     // Process this pair's key
     switch (t->key) {
       case LAT:
-        APP_LOG(APP_LOG_LEVEL_INFO, "KEY_DATA received with value %d", (int)t->value->int32);
+	memcpy(s_lat_text, (char *)t->value->cstring, sizeof(s_lat_text));
+	APP_LOG(APP_LOG_LEVEL_INFO, s_lat_text, 0);
         break;
       case LONG:
-        APP_LOG(APP_LOG_LEVEL_INFO, "KEY_DATA received with value %d", (int)t->value->int32);
+        memcpy(s_long_text, (char *)t->value->cstring, sizeof(s_long_text));
         break;
     }
 
@@ -152,7 +168,12 @@ static void init() {
   tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
   //tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);//NO!!
 
-  app_message_register_inbox_received(AppMessageInboxReceived received_callback);
+  app_message_register_inbox_received(received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+
+  app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
   
   // Prevent starting blank
   time_t now = time(NULL);
@@ -165,7 +186,6 @@ static void deinit() {
   window_destroy(s_main_window);
 
   tick_timer_service_unsubscribe();
-  app_message_deregister_callbacks();
 }
 
 int main() {
