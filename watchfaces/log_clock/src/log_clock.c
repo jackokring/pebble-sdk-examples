@@ -58,10 +58,11 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     double s = (double)(tick_time->tm_sec);//get seconds
     double j = ((double)(tick_time->tm_min&3)) / 4.0;//4 min cycle
     double p = s + j;//0.25 increments
-    if(p == 0) p = 60.0;//prevent errors by wrap
+    if(p < 1) p += 60.0;//prevent errors by wrap
     double log60 = 1/log(60);
     s = log(p) * log60;//scale to base 60
     double plus = log(p + 0.125) * log60;
+    if(p - 0.125 < 1) p += 60;
     double minus = log(p - 0.125) * log60;
     int v = round_it(s);
     int w = round_it(p / 100.0);

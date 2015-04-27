@@ -61,7 +61,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     if(p == 0) p = 60.0;//prevent errors by wrap
     double log60 = 1/log(60);
     s = log(p) * log60;//scale to base 60
-    double plus = (p == 60.0) ? log(0.125) * log60 : log(p + 0.125) * log60;
+    double plus = log(p + 0.125) * log60;
     double minus = log(p - 0.125) * log60;
     int v = round_it(s);
     int w = round_it(p / 100.0);
