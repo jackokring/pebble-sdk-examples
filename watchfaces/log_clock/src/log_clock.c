@@ -47,38 +47,52 @@ static int round_it(double s) {
   return v;
 }
 
-static char s_long_text[] = " GPS CONNECT ";//13 per line
-static char s_lat_text[] = " GPS CONNECT ";//13 per line
+static char s_long_text[] = " GPS Connect ";//13 per line
+static char s_lat_text[] = " GPS Connect ";//13 per line
+static int difficults[] = { 3, 7, 11, 13, 17, 19, 23 };
+static int mod = 0;
+static char vals[][2] = {"+", "-"};
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
+    mod += 1;//not a 60 modulus (7)?
+    mod %= 7;
     static char s_log_text[] = "1234567890123";//13 per line
     static char s_eight_text[] = "1234567890123";//13 per line
+    static char s_1_text[] = "1234567890123";//13 per line
+    static char s_2_text[] = "1234567890123";//13 per line
     double s = (double)(tick_time->tm_sec);//get seconds
-    double j = ((double)(tick_time->tm_min&3)) / 4.0;//4 min cycle
-    double p = s + j;//0.25 increments
-    if(p < 1) p += 60.0;//prevent errors by wrap
-    double log60 = 1/log(60);
-    s = log(p) * log60;//scale to base 60
-    double plus = log(p + 0.125) * log60;
-    if(p - 0.125 < 1) p += 60;
-    double minus = log(p - 0.125) * log60;
+    if(s == 0) s = 60.0;//prevent errors by wrap
+    double p = s * 100 / 60;//make base 100
+    double log100 = 1/log(100);
+    s = log(p) * log100;//scale to base 100
     int v = round_it(s);
-    int w = round_it(p / 100.0);
-    snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d",w , v);
+    int w = round_it(p / 100.0);//makes a base 100 scale?
+    snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d", w, v);
     //insert log
-    v = round_it(plus);
-    w = round_it(minus);
-    snprintf(s_eight_text, sizeof(s_eight_text), "%04d -/+ %04d",w , v);
-
+    s = log((double)difficults[mod]) * log100;
+    v = round_it(s);
+    int bat = 0;
+    w = battery_state_service_peek().charge_percent;
+    if(w == 100) w = 99;//2 digit
+    if (!battery_state_service_peek().is_charging) {
+        bat = 1;
+    } 
+    snprintf(s_eight_text, sizeof(s_eight_text), "%s%02d%% /%02d %04d", vals[bat], w, difficults[mod], v);
+    text_layer_set_text(s_eight_layer, s_eight_text);// BAT% 1/Nth log
     text_layer_set_text(s_log_layer, s_log_text);//log
     char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
     //extra layers of 13 chars
+    if (!bluetooth_connection_service_peek()) {
+  	snprintf(s_long_text, sizeof(s_long_text), "%s", " GPS Connect ");
+        snprintf(s_lat_text, sizeof(s_lat_text), "%s", " GPS Connect ");
+    }
+    snprintf(s_1_text, sizeof(s_1_text), "             ");
+    snprintf(s_2_text, sizeof(s_2_text), "             ");
     text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/E
-    text_layer_set_text(s_1_layer, s_log_text);
-    text_layer_set_text(s_2_layer, s_log_text);
-    text_layer_set_text(s_eight_layer, s_eight_text);// 1/8th offset giving log
+    text_layer_set_text(s_1_layer, s_1_text);
+    text_layer_set_text(s_2_layer, s_2_text);
 }
 
 #define LAT 1
