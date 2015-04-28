@@ -49,6 +49,8 @@ static int round_it(double s) {
 
 static char s_long_text[] = " GPS Connect ";//13 per line
 static char s_lat_text[] = " GPS Connect ";//13 per line
+static char s_long_text2[] = " GPS Connect ";//13 per line
+static char s_lat_text2[] = " GPS Connect ";//13 per line
 static int difficults[] = { 3, 7, 11, 13, 17, 19, 23 };
 static int mod = 0;
 static char vals[][2] = {"+", "-"};
@@ -83,10 +85,15 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     text_layer_set_text(s_eight_layer, s_eight_text);// BAT% 1/Nth log
     text_layer_set_text(s_log_layer, s_log_text);//log
     char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
+    if((tick_time->tm_sec & 8)==0) {
+    	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
+    }
     //extra layers of 13 chars
     if (!bluetooth_connection_service_peek()) {
   	snprintf(s_long_text, sizeof(s_long_text), "%s", " GPS Connect ");
         snprintf(s_lat_text, sizeof(s_lat_text), "%s", " GPS Connect ");
+	snprintf(s_long_text2, sizeof(s_long_text2), "%s", " GPS Connect ");
+        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", " GPS Connect ");
     }
     snprintf(s_1_text, sizeof(s_1_text), "             ");
     snprintf(s_2_text, sizeof(s_2_text), "             ");
@@ -95,6 +102,8 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     text_layer_set_text(s_2_layer, s_2_text);
 }
 
+#define DLAT 3
+#define DLONG 2
 #define LAT 1
 #define LONG 0
 
@@ -120,10 +129,15 @@ static void received_callback(DictionaryIterator *iterator, void *context) {
     switch (t->key) {
       case LAT:
 	memcpy(s_lat_text, (char *)t->value->cstring, sizeof(s_lat_text));
-	APP_LOG(APP_LOG_LEVEL_INFO, s_lat_text, 0);
         break;
       case LONG:
         memcpy(s_long_text, (char *)t->value->cstring, sizeof(s_long_text));
+        break;
+      case DLAT:
+	memcpy(s_lat_text2, (char *)t->value->cstring, sizeof(s_lat_text2));
+        break;
+      case DLONG:
+        memcpy(s_long_text2, (char *)t->value->cstring, sizeof(s_long_text2));
         break;
     }
 

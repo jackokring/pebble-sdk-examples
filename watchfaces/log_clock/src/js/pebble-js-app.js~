@@ -7,13 +7,24 @@ function sexyguessimal(coord, letterP, letterM) {
 	return letter+" "+degree.toString()+"°"+minute.toString()+"'"+second.toString()+"\"";
 }
 
+function decimal(coord, letterP, LetterM) {
+	var letter = (coord < 0)?letterM:letterP;
+	coord = Math.abs(coord);
+	var degree = Math.floor(coord);
+	var minute = Math.floor((coord - degree)*10000);
+	return letter+" "+degree.toString()+"."+minute.toString();
+}
+
 function work(latitude, longitude) {
 	var long = sexyguessimal(longitude, "E", "W");
 	var lat = sexyguessimal(latitude, "N", "S");
 	console.log("       "+long+"    "+lat);
         Pebble.sendAppMessage({
+          "DLONG": decimal(longitude, "E", "W"),
+          "DLAT": decimal(latitude, "N", "S"),
           "LONG": long,
-          "LAT": lat},
+          "LAT": lat
+        },
         function(e) {
     	  console.log('Successfully delivered message with transactionId='
      	   + e.data.transactionId);
@@ -34,6 +45,8 @@ function locationSuccess(pos) {
 function locationError(err) {
   console.warn('location error (' + err.code + '): ' + err.message);
   Pebble.sendAppMessage({
+    "DLONG":" Loc Unavail ",
+    "DLAT":" Loc Unavail ",
     "LONG":" Loc Unavail ",
     "LAT":" Loc Unavail "
   },
@@ -70,5 +83,5 @@ Pebble.addEventListener('webviewclosed',
 
 Pebble.addEventListener('showConfiguration', function(e) {
   // Show config page
-  Pebble.openURL('https://my-website.com/config-page.html');
+  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');
 });

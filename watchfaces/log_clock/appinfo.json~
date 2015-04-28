@@ -9,6 +9,8 @@
     "watchface": true
   },
   "appKeys": {
+    "DLAT": 3,
+    "DLONG": 2,
     "LAT": 1,
     "LONG": 0
   },
@@ -27,5 +29,5 @@
     "basalt"
   ],
   "sdkVersion": "3",
-  "capabilities": [ "configurable" ]
+  "capabilities": [ "configurable", "location" ]
 }
