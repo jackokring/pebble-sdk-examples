@@ -1,5 +1,14 @@
 #include "pebble.h"
 
+//TODO: BT disconnect vibrate, with message, and vibrate back off for FM capture effect
+//Uses for line 1
+//check edge cases
+//Text flash on BT disconnect
+//Mux date with clock (on minute?)
+//jump step on restart? (via worker low flash overheads)
+//keygen
+//?
+
 static double logA(double x, bool atan) {
         double mul;
         double acc;
@@ -81,7 +90,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
     text_layer_set_text(s_log_layer, s_log_text);//log
     
-    p = s * PI / 2;//45 degrees full
+    p = s * PI / 4;//45 degrees full
     q = 1/(p * p + 1);//gradient
     p = logA(p, true);//atan
     v = round_it(p);
@@ -89,7 +98,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_atan_text, sizeof(s_atan_text), "%04d A G %04d", v, w);
     text_layer_set_text(s_atan_layer, s_atan_text);//atan
 
-    int8_t bat = 0;
+    int bat = 0;
     v = round_it(s);
     w = battery_state_service_peek().charge_percent;
     if(w == 100) w = 99;//2 digit
