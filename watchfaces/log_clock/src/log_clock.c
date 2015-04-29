@@ -1,22 +1,23 @@
 #include "pebble.h"
 
-static double log(double x) {
+static double logA(double x, bool atan) {
         double mul;
         double acc;
         double tmp;
-        acc = x = (mul = (x-1)/(x+1));
-        x *= x;
+        acc = x = atan?x:(x-1)/(x+1);
+        x *= atan?(-x):x;
+        mul = x * acc;//is cubed
         for(int32_t i = 3;i < 256;i+=2) {
 	    tmp = mul/i;
 	    if(tmp < 0.000001) break;
             acc += tmp;
             mul *= x;
         }
-        return 2*acc;//an accurate log
+        return atan?acc:2*acc;//an accurate log
 }
 
 static Window *s_main_window;
-static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_1_layer, *s_2_layer, *s_eight_layer;
+static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_1_layer, *s_2_layer, *s_atan_layer;
 static Layer *s_line_layer;
 
 static void line_layer_update_callback(Layer *layer, GContext* ctx) {
@@ -51,55 +52,68 @@ static char s_long_text[] = " GPS Connect ";//13 per line
 static char s_lat_text[] = " GPS Connect ";//13 per line
 static char s_long_text2[] = " GPS Connect ";//13 per line
 static char s_lat_text2[] = " GPS Connect ";//13 per line
-static int difficults[] = { 3, 7, 11, 13, 17, 19, 23 };
 static int mod = 0;
 static char vals[][2] = {"+", "-"};
+
+#define PI 3.141592658
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
-    mod += 1;//not a 60 modulus (7)?
-    mod %= 7;
+    mod += 1;
+    mod %= 99;
     static char s_log_text[] = "1234567890123";//13 per line
-    static char s_eight_text[] = "1234567890123";//13 per line
+    static char s_atan_text[] = "1234567890123";//13 per line
     static char s_1_text[] = "1234567890123";//13 per line
     static char s_2_text[] = "1234567890123";//13 per line
-    double s = (double)(tick_time->tm_sec);//get seconds
-    if(s == 0) s = 60.0;//prevent errors by wrap
-    double p = s * 100 / 60;//make base 100
-    double log100 = 1/log(100);
-    s = log(p) * log100;//scale to base 100
-    int v = round_it(s);
-    int w = round_it(p / 100.0);//makes a base 100 scale?
-    snprintf(s_log_text, sizeof(s_log_text), "%04d LOG %04d", w, v);
-    //insert log
-    s = log((double)difficults[mod]) * log100;
+    double s = ((double)mod + (double)(tick_time->tm_sec / 10) / 6);//get input
+    s += (double)(tick_time->tm_min) / 360;
+    s += (double)(tick_time->tm_hour) / 864;
+    s /= 100;// 0 to <1 === MAIN INPUT ===
+
+    double log10 = 1/logA(10, false);
+    double p = s * 10;//base 10
+    if(p < 1) p += 10;//prevent errors by wrap
+    p = logA(p, false) * log10;//scale to base 10
+    double q = 1/(s * 100) * log10;//gradient / 100
+    int v = round_it(p);
+    int w = round_it(q);
+    snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
+    text_layer_set_text(s_log_layer, s_log_text);//log
+    
+    p = s * PI / 2;//45 degrees full
+    q = 1/(p * p + 1);//gradient
+    p = logA(p, true);//atan
+    v = round_it(p);
+    w = round_it(q);
+    snprintf(s_atan_text, sizeof(s_atan_text), "%04d A G %04d", v, w);
+    text_layer_set_text(s_atan_layer, s_atan_text);//atan
+
+    int8_t bat = 0;
     v = round_it(s);
-    int bat = 0;
     w = battery_state_service_peek().charge_percent;
     if(w == 100) w = 99;//2 digit
     if (!battery_state_service_peek().is_charging) {
         bat = 1;
     } 
-    snprintf(s_eight_text, sizeof(s_eight_text), "%s%02d%% /%02d %04d", vals[bat], w, difficults[mod], v);
-    text_layer_set_text(s_eight_layer, s_eight_text);// BAT% 1/Nth log
-    text_layer_set_text(s_log_layer, s_log_text);//log
+    snprintf(s_2_text, sizeof(s_2_text), "%04d X B %s%02d%%", v, vals[bat], w);
+    text_layer_set_text(s_2_layer, s_2_text);// BAT%
+
     char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
     if((tick_time->tm_sec & 8)==0) {
     	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
     }
-    //extra layers of 13 chars
     if (!bluetooth_connection_service_peek()) {
   	snprintf(s_long_text, sizeof(s_long_text), "%s", " GPS Connect ");
         snprintf(s_lat_text, sizeof(s_lat_text), "%s", " GPS Connect ");
 	snprintf(s_long_text2, sizeof(s_long_text2), "%s", " GPS Connect ");
         snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", " GPS Connect ");
     }
+
     snprintf(s_1_text, sizeof(s_1_text), "             ");
-    snprintf(s_2_text, sizeof(s_2_text), "             ");
     text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/E
     text_layer_set_text(s_1_layer, s_1_text);
-    text_layer_set_text(s_2_layer, s_2_text);
+    text_layer_set_text(s_2_layer, s_2_text);//in and bat
 }
 
 #define DLAT 3
@@ -163,7 +177,7 @@ static void main_window_load(Window *window) {
   layer(&s_0_layer, 0);
   layer(&s_1_layer, 1);
   layer(&s_2_layer, 2);
-  layer(&s_eight_layer, 3);
+  layer(&s_atan_layer, 3);
 
   layer(&s_log_layer, 4);
 
