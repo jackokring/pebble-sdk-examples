@@ -83,5 +83,5 @@ Pebble.addEventListener('webviewclosed',
 
 Pebble.addEventListener('showConfiguration', function(e) {
   // Show config page
-  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');
+  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');//you MUST provide a (different) www server
 });

@@ -1,6 +1,13 @@
 #include "pebble.h"
 
 //TODO: BT disconnect vibrate, with message, and vibrate back off for FM capture effect
+//Uses for line 1
+//check edge cases
+//Text flash on BT disconnect
+//Mux date with clock (on minute?)
+//jump step on restart? (via worker low flash overheads)
+//keygen
+//?
 
 static double logA(double x, bool atan) {
         double mul;
@@ -105,11 +112,12 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     if((tick_time->tm_sec & 8)==0) {
     	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
     }
+    char def_text[] = " GPS Connect ";//constant elimination
     if (!bluetooth_connection_service_peek()) {
-  	snprintf(s_long_text, sizeof(s_long_text), "%s", " GPS Connect ");
-        snprintf(s_lat_text, sizeof(s_lat_text), "%s", " GPS Connect ");
-	snprintf(s_long_text2, sizeof(s_long_text2), "%s", " GPS Connect ");
-        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", " GPS Connect ");
+  	snprintf(s_long_text, sizeof(s_long_text), "%s", def_text);
+        snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
+	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
+        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", def_text);
     }
 
     snprintf(s_1_text, sizeof(s_1_text), "             ");

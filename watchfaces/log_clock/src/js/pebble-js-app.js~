@@ -7,7 +7,7 @@ function sexyguessimal(coord, letterP, letterM) {
 	return letter+" "+degree.toString()+"°"+minute.toString()+"'"+second.toString()+"\"";
 }
 
-function decimal(coord, letterP, LetterM) {
+function decimal(coord, letterP, letterM) {
 	var letter = (coord < 0)?letterM:letterP;
 	coord = Math.abs(coord);
 	var degree = Math.floor(coord);
@@ -83,5 +83,5 @@ Pebble.addEventListener('webviewclosed',
 
 Pebble.addEventListener('showConfiguration', function(e) {
   // Show config page
-  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');
+  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/log_clock.html');//you MUST provide a www server
 });

@@ -70,7 +70,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
     mod += 1;
-    mod %= 99;
+    mod %= 100;
     static char s_log_text[] = "1234567890123";//13 per line
     static char s_atan_text[] = "1234567890123";//13 per line
     static char s_1_text[] = "1234567890123";//13 per line
@@ -112,11 +112,12 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     if((tick_time->tm_sec & 8)==0) {
     	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
     }
+    char def_text[] = " GPS Connect ";//constant elimination
     if (!bluetooth_connection_service_peek()) {
-  	snprintf(s_long_text, sizeof(s_long_text), "%s", " GPS Connect ");
-        snprintf(s_lat_text, sizeof(s_lat_text), "%s", " GPS Connect ");
-	snprintf(s_long_text2, sizeof(s_long_text2), "%s", " GPS Connect ");
-        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", " GPS Connect ");
+  	snprintf(s_long_text, sizeof(s_long_text), "%s", def_text);
+        snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
+	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
+        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", def_text);
     }
 
     snprintf(s_1_text, sizeof(s_1_text), "             ");
