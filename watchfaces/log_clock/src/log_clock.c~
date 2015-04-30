@@ -9,20 +9,24 @@
 //keygen
 //?
 
-static double logA(double x, bool atan) {
-        double mul;
-        double acc;
-        double tmp;
-        acc = x = atan?x:(x-1)/(x+1);
-        x *= atan?(-x):x;
-        mul = x * acc;//is cubed
-        for(int32_t i = 3;i < 256;i+=2) {
-	    tmp = mul/i;
-	    if(tmp < 0.000001) break;
-            acc += tmp;
-            mul *= x;
-        }
-        return atan?acc:2*acc;//an accurate log
+static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
+	double acc = 0;
+	double mul = x;
+	double harm = 1;
+	int start = 1;
+	if(sq) x = x * x;
+	x = (alt? -x : x);
+	do {
+		acc += mul * (!over? 1.0F : harm);
+		start += sq + 1;
+		harm = 1/(double)start;
+		mul *= x * (!fact? 1.0F : harm * (!sq? 1.0F : 1/(start - 1.0)));
+        } while(start < 200);//term limit
+	return acc;
+}
+
+float logA(float x, bool atan) { //base e
+	return atan?eq(x, true, true, true, false):eq((x-1.0) * inv(x+1.0), true, true, false, false) * 2.0;
 }
 
 static Window *s_main_window;
@@ -70,7 +74,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
     mod += 1;
-    mod %= 99;
+    mod %= 100;
     static char s_log_text[] = "1234567890123";//13 per line
     static char s_atan_text[] = "1234567890123";//13 per line
     static char s_1_text[] = "1234567890123";//13 per line
@@ -90,9 +94,9 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
     text_layer_set_text(s_log_layer, s_log_text);//log
     
-    p = s * PI / 4;//45 degrees full
-    q = 1/(p * p + 1);//gradient
-    p = logA(p, true);//atan
+    log10 = 1/logA(1, true);//reuse 45 degree is 1
+    q = 1/(s * s + 1) * log10;//gradient
+    p = logA(s, true) * log10;//atan
     v = round_it(p);
     w = round_it(q);
     snprintf(s_atan_text, sizeof(s_atan_text), "%04d A G %04d", v, w);
@@ -132,7 +136,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
 #define LONG 0
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {
-  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
+  //not necessary, assume disconnect
 }
 
 static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
