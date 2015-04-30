@@ -1,6 +1,6 @@
 #include "pebble.h"
 
-//TODO: BT disconnect vibrate, with message, and vibrate back off for FM capture effect
+//TODO:
 //Uses for line 1
 //check edge cases
 //Text flash on BT disconnect
@@ -25,8 +25,26 @@ static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e e
 	return acc;
 }
 
+//OSAF FN (flags and function produced)
+//0000
+//0001 expm1
+//0010
+//0011 expm1(ix)
+//0100
+//0101 sinh
+//0110
+//0111 sin
+//1000
+//1001 qfn
+//1010
+//1011 
+//1100 log with right input transform (is atanh)
+//1101
+//1110 atan
+//1111
+
 float logA(float x, bool atan) { //base e
-	return atan?eq(x, true, true, true, false):eq((x-1.0) * inv(x+1.0), true, true, false, false) * 2.0;
+	return atan?eq(x, true, true, true, false):eq((x-1.0)/(x+1.0), true, true, false, false) * 2.0;
 }
 
 static Window *s_main_window;
@@ -70,6 +88,13 @@ static char vals[][2] = {"+", "-"};
 
 #define PI 3.141592658
 
+static bool vibrated = false;
+static int connected = 10;//assume 10 second lax time
+
+static void vibrate() {
+    vibes_double_pulse();
+}
+
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
@@ -94,8 +119,8 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
     text_layer_set_text(s_log_layer, s_log_text);//log
     
-    log10 = 1/logA(1, true);//reuse 45 degree is 1
-    q = 1/(s * s + 1) * log10;//gradient
+    log10 = 1/logA(1.0, true);//reuse 45 degree is 1
+    q = 1/((s * s + 1) * 10.0) * log10;//gradient / 10
     p = logA(s, true) * log10;//atan
     v = round_it(p);
     w = round_it(q);
@@ -112,16 +137,28 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_2_text, sizeof(s_2_text), "%04d X B %s%02d%%", v, vals[bat], w);
     text_layer_set_text(s_2_layer, s_2_text);// BAT%
 
-    char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
-    if((tick_time->tm_sec & 8)==0) {
-    	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
-    }
     char def_text[] = " GPS Connect ";//constant elimination
     if (!bluetooth_connection_service_peek()) {
+	if(--connected <= 0) {
+		connected = 1;
+		if(!vibrated) vibrate();//notify user once
+		vibrated = true;
+	}
+	if(vibrated) snprintf(def_text, sizeof(def_text), "%s", " Phone Lost! ";
   	snprintf(s_long_text, sizeof(s_long_text), "%s", def_text);
         snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
 	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
         snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", def_text);
+    } else {
+	if(++connected > 360) {
+		connected = 360;
+		vibrated = false;//6 min up, assume stable again
+	}
+    }
+
+    char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
+    if((tick_time->tm_sec & 8)==0) {
+    	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
     }
 
     snprintf(s_1_text, sizeof(s_1_text), "             ");
