@@ -3,8 +3,8 @@
   "shortName": "Log Clock",
   "longName": "Log Clock",
   "companyName": "K Ring Technologies",
-  "versionCode": 7,
-  "versionLabel": "1.6",
+  "versionCode": 8,
+  "versionLabel": "1.7",
   "watchapp": {
     "watchface": true
   },

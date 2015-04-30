@@ -1,7 +1,6 @@
 #include "pebble.h"
 
 //TODO:
-//Uses for line 1
 //check edge cases
 //Text flash on BT disconnect
 //Mux date with clock (on minute?)
@@ -48,7 +47,7 @@ float logA(float x, bool atan) { //base e
 }
 
 static Window *s_main_window;
-static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_1_layer, *s_2_layer, *s_atan_layer;
+static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_rg_layer, *s_2_layer, *s_atan_layer;
 static Layer *s_line_layer;
 
 static void line_layer_update_callback(Layer *layer, GContext* ctx) {
@@ -83,7 +82,6 @@ static char s_long_text[] = " GPS Connect ";//13 per line
 static char s_lat_text[] = " GPS Connect ";//13 per line
 static char s_long_text2[] = " GPS Connect ";//13 per line
 static char s_lat_text2[] = " GPS Connect ";//13 per line
-static int mod = 0;
 static char vals[][2] = {"+", "-"};
 
 #define PI 3.141592658
@@ -98,16 +96,14 @@ static void vibrate() {
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     // Need to be static because they're used by the system later.
     if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
-    mod += 1;
-    mod %= 100;
     static char s_log_text[] = "1234567890123";//13 per line
     static char s_atan_text[] = "1234567890123";//13 per line
-    static char s_1_text[] = "1234567890123";//13 per line
+    static char s_rg_text[] = "1234567890123";//13 per line
     static char s_2_text[] = "1234567890123";//13 per line
-    double s = ((double)mod + (double)(tick_time->tm_sec / 10) / 6);//get input
-    s += (double)(tick_time->tm_min) / 360;
-    s += (double)(tick_time->tm_hour) / 864;
-    s /= 100;// 0 to <1 === MAIN INPUT ===
+    double s = ((double)tick_time->tm_sec);//get input
+    s += (double)(tick_time->tm_min) * 60;
+    s %= 360.0;//6 mins
+    s /= 360.0;// 0 to <1 === MAIN INPUT ===
 
     double log10 = 1/logA(10, false);
     double p = s * 10;//base 10
@@ -119,13 +115,20 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
     text_layer_set_text(s_log_layer, s_log_text);//log
     
-    log10 = 1/logA(1.0, true);//reuse 45 degree is 1
-    q = 1/((s * s + 1) * 10.0) * log10;//gradient / 10
-    p = logA(s, true) * log10;//atan
+    double a = 1/logA(1.0, true);//reuse 45 degree is 1
+    q = 1/((s * s + 1) * 10.0) * a;//gradient / 10
+    p = logA(s, true) * a;//atan
     v = round_it(p);
     w = round_it(q);
     snprintf(s_atan_text, sizeof(s_atan_text), "%04d A G %04d", v, w);
     text_layer_set_text(s_atan_layer, s_atan_text);//atan
+
+    q = s / (10.0 * log10);//gradient / 10 exp grad
+    p = (1 + s * s) / (10.0 * a);//tan grad
+    v = round_it(p);
+    w = round_it(q);
+    snprintf(s_rg_text, sizeof(s_rg_text), "%04d TRE %04d", v, w);
+    text_layer_set_text(s_rg_layer, s_rg_text);//reverse gradient
 
     int bat = 0;
     v = round_it(s);
@@ -144,7 +147,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
 		if(!vibrated) vibrate();//notify user once
 		vibrated = true;
 	}
-	if(vibrated) snprintf(def_text, sizeof(def_text), "%s", " Phone Lost! ";
+	if(vibrated) snprintf(def_text, sizeof(def_text), "%s", " Phone Lost! ");
   	snprintf(s_long_text, sizeof(s_long_text), "%s", def_text);
         snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
 	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
@@ -161,9 +164,7 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
     	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
     }
 
-    snprintf(s_1_text, sizeof(s_1_text), "             ");
     text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/E
-    text_layer_set_text(s_1_layer, s_1_text);
     text_layer_set_text(s_2_layer, s_2_text);//in and bat
 }
 
@@ -226,7 +227,7 @@ static void main_window_load(Window *window) {
   window_layer = window_get_root_layer(window);
 
   layer(&s_0_layer, 0);
-  layer(&s_1_layer, 1);
+  layer(&s_rg_layer, 1);
   layer(&s_2_layer, 2);
   layer(&s_atan_layer, 3);
 
