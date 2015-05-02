@@ -1,0 +1,32 @@
+# project  configured on Sat May  2 12:25:12 2015 by
+# waf 1.7.11 (abi 98, python 20703f0 on linux2)
+# using /home/jacko/pebble-dev/PebbleSDK/Pebble/waf configure build
+#
+----------------------------------------
+Setting top to
+/home/jacko/pebble-dev/examples/watchapps/RoboMaze
+----------------------------------------
+Setting out to
+/home/jacko/pebble-dev/examples/watchapps/RoboMaze/build
+----------------------------------------
+Found Pebble SDK for basalt in:
+/home/jacko/pebble-dev/PebbleSDK/Pebble/basalt
+----------------------------------------
+Checking for program gcc,cc
+arm-none-eabi-gcc
+find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
+----------------------------------------
+Checking for program ar
+arm-none-eabi-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
+----------------------------------------
+Found Pebble SDK for aplite in:
+/home/jacko/pebble-dev/PebbleSDK/Pebble/aplite
+----------------------------------------
+Checking for program gcc,cc
+arm-none-eabi-gcc
+find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
+----------------------------------------
+Checking for program ar
+arm-none-eabi-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
