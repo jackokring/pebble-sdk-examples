@@ -14,7 +14,7 @@ CFLAGS = ['-std=c99', '-mcpu=cortex-m3', '-mthumb', '-ffunction-sections', '-fda
 CFLAGS_MACBUNDLE = ['-fPIC']
 CFLAGS_cshlib = ['-fPIC']
 CPPPATH_ST = '-I%s'
-DEFINES = ['RELEASE', 'PBL_PLATFORM_BASALT', 'PBL_COLOR']
+DEFINES = ['RELEASE', 'PBL_PLATFORM_BASALT', 'PBL_COLOR', 'PBL_SDK_3']
 DEFINES_ST = '-D%s'
 DEST_BINFMT = 'elf'
 DEST_CPU = 'arm'
@@ -37,7 +37,7 @@ PLATFORM_NAME = 'basalt'
 PREFIX = '/usr/local'
 RPATH_ST = '-Wl,-rpath,%s'
 SDK_VERSION_MAJOR = 5
-SDK_VERSION_MINOR = 44
+SDK_VERSION_MINOR = 53
 SHLIB_MARKER = None
 SIZE = 'arm-none-eabi-size'
 SONAME_ST = '-Wl,-h,%s'

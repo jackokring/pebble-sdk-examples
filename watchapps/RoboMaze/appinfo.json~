@@ -1,20 +1,25 @@
 {
-  "uuid": "69a53987-379e-4ae7-a3c2-d08e5ffe8511",
-  "shortName": "Simple Menu",
-  "longName": "Simple Menu",
+  "uuid": "25923451-dacd-43a0-a104-9c2e6ebcd836",
+  "shortName": "RoboMaze",
+  "longName": "RoboMaze",
   "companyName": "Pebble Technology",
-  "versionCode": 2,
-  "versionLabel": "2.0",
+  "versionCode": 1,
+  "versionLabel": "1.0",
   "watchapp": {
-    "watchface": true
+    "watchface": false
   },
   "appKeys": {},
   "resources": {
     "media": [
       {
         "type": "png",
-        "name": "IMAGE_MENU_ICON_1",
-        "file": "images/menu_icon_simplicity.png"
+        "name": "ICON48",
+        "file": "images/menu_icon.png"
+      },
+      {
+        "type": "png",
+        "name": "MAP",
+        "file": "images/robomaze.png"
       }
     ]
   },
