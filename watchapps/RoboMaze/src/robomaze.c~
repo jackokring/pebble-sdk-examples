@@ -14,6 +14,23 @@ static GBitmap *s_menu_icon_image;
 static bool s_special_flag = false;
 static int s_hit_count = 0;
 
+static void layer_draw(Layer *layer, GContext *ctx) {
+  GRect bounds = layer_get_bounds(layer);
+
+  // Draw a black filled rectangle with sharp corners
+  graphics_context_set_fill_color(ctx, GColorBlack);
+  graphics_fill_rect(ctx, bounds, 0, GCornerNone);
+
+  // Draw a white filled circle a radius of half the layer height
+  graphics_context_set_fill_color(ctx, GColorWhite);
+  const int16_t half_h = bounds.size.h / 2;
+  graphics_fill_circle(ctx, GPoint(half_h, half_h), half_h);
+}
+
+static void show_menu() {
+  window_stack_push(s_menu_window, true);
+}
+
 static void menu_select_callback(int index, void *ctx) {
   s_first_menu_items[index].subtitle = "You've hit select here!";
   layer_mark_dirty(simple_menu_layer_get_layer(s_simple_menu_layer));
@@ -40,7 +57,7 @@ static void special_select_callback(int index, void *ctx) {
 }
 
 static void menu_window_load(Window *window) {
-  s_menu_icon_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_MENU_ICON_1);
+  s_menu_icon_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_MENU_ICON);
 
   // Although we already defined NUM_FIRST_MENU_ITEMS, you can define
   // an int as such to easily change the order of menu items later
@@ -85,19 +102,27 @@ static void menu_window_load(Window *window) {
   layer_add_child(window_layer, simple_menu_layer_get_layer(s_simple_menu_layer));
 }
 
-void menu_window_unload(Window *window) {
+static void menu_window_unload(Window *window) {
   simple_menu_layer_destroy(s_simple_menu_layer);
   gbitmap_destroy(s_menu_icon_image);
 }
+
+static Layer *layer;
 
 static void main_window_load(Window *window) {
 #ifdef PBL_SDK_2
   window_set_fullscreen(window, true);
 #endif
+  Layer * lay = window_get_root_layer(window);
+  layer_set_bounds(lay, GRect(0, 0, 144, 168));
+  layer = layer_create(GRect(2, 2, 140, 164));
+  layer_set_bounds(layer, GRect(0, 0, 140, 164));
+  layer_set_update_proc(layer, layer_draw);
+  layer_add_child(lay, layer);
 }
 
-void main_window_unload(Window *window) {
-  
+static void main_window_unload(Window *window) {
+  layer_destroy(layer); 
 }
 
 static void init() {
@@ -112,7 +137,6 @@ static void init() {
     .unload = menu_window_unload,
   });
   window_stack_push(s_main_window, true);
-  window_stack_push(s_menu_window, true);
 }
 
 static void deinit() {

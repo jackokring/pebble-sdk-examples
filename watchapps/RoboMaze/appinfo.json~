@@ -2,7 +2,7 @@
   "uuid": "25923451-dacd-43a0-a104-9c2e6ebcd836",
   "shortName": "RoboMaze",
   "longName": "RoboMaze",
-  "companyName": "Pebble Technology",
+  "companyName": "K Ring Technologies",
   "versionCode": 1,
   "versionLabel": "1.0",
   "watchapp": {
@@ -13,7 +13,7 @@
     "media": [
       {
         "type": "png",
-        "name": "ICON48",
+        "name": "IMAGE_MENU_ICON",
         "file": "images/menu_icon.png"
       },
       {
