@@ -46,12 +46,32 @@ static void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
   ptr[idx + 1] = (unsigned char)(tmp >> 8);
 }
 
+static int reduce_map(int x, int y) {
+  int tmp = 0;
+  if(x-1 >= 0 && get_map(maze, x-1, y, 35) < 16) tmp += 1;//left
+  if(x+1 <= 35-1 && get_map(maze, x+1, y, 35) < 16) tmp += 2;//right
+  if(y-1 >= 0 && get_map(maze, x, y-1, 35) < 16) tmp += 4;//up
+  if(y+1 <= 41-1 && get_map(maze, x, y+1, 35) < 16) tmp += 8;//down
+  return tmp;
+}
+
 static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update routine
   GRect bounds = layer_get_bounds(layer);
 
   // Draw a black filled rectangle with sharp corners
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_fill_rect(ctx, bounds, 0, GCornerNone);
+
+  // Draw map
+  for(int i = 0; i < 35; i++)
+    for(int j = 0; j < 41; j++) {
+      int x;
+      if(get_map(maze, i, j, 35) < 16) {
+        x = reduce_map(i, j);
+        put_map(maze, i, j, 35, x);//write back
+        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
+      }
+  }
 }
 
 static void show_menu() {
@@ -145,19 +165,20 @@ static void main_window_load(Window *window) {
     maze_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%4)*4, (i/4)*4, 4, 4 ));//fill maze_gfx
   }
   uint16_t compact[33];
-  if(persist_exists(MAP_STORE)) {
-    persist_read_data(MAP_STORE, compact, sizeof(compact));
-  } else for(int i = 0; i < 33; i++) compact[i] = ~0;//fill with walls
+  //if(persist_exists(MAP_STORE)) {
+    //persist_read_data(MAP_STORE, compact, sizeof(compact));
+  //} else
+    for(int i = 0; i < 33; i++) compact[i] = ~0;//fill with walls
   //draw maze
-  for(int i = 0; i <= 35; i++)
-    for(int j = 0; j <= 41; j++) {
+  for(int i = 0; i < 35; i++)
+    for(int j = 0; j < 41; j++) {
       unsigned char x;//null by default
       if(j < 8) x = 31;//blank
-      else if(j == 8 || j == 41) x = 0;//top or bottom row
+      else if(j == 8 || j == 41-1) x = 0;//top or bottom row
       else if(i%2 == 0 && j%2 == 0) x = 0;//main stay
-      else if(i == 0 || i == 35) x = 0;//left or right col
+      else if(i == 0 || i == 35-1) x = 0;//left or right col
       else if(i%2 == 1 && j%2 == 1) x = 31;//blank!!
-      else {//onlt walls left
+      else {//only walls left
         int col = compact[i-1];//get active col
         int y = (j - 9 - i%2) >> 1;  
         if( ((col >> y) & 1) == 1) x = 0; else x = 31;
@@ -178,8 +199,8 @@ static void main_window_unload(Window *window) {
   gbitmap_destroy(map);
   uint16_t compact[33];
   int col;
-  for(int i = 9; i < 35; i++)
-    for(int j = 1; j < 41; j++) {
+  for(int i = 9; i < 35-1; i++)
+    for(int j = 1; j < 41-1; j++) {
       if(i%2 == 0 && j%2 == 0) continue;//main stay
       else if(i%2 == 1 && j%2 == 1) continue;//blank!!
       else {//onlt walls left
