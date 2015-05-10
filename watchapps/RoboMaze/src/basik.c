@@ -18,6 +18,6 @@ void tick_basik() {
 
 }
 
-void click_basik() {
+void click_basik(ButtonId b, bool single) {
 
 }

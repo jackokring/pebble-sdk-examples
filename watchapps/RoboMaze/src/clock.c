@@ -18,6 +18,6 @@ void tick_clock() {
 
 }
 
-void click_clock() {
+void click_clock(ButtonId b, bool single) {
 
 }

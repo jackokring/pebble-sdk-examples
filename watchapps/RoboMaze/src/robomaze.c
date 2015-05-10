@@ -23,17 +23,17 @@ static GBitmap *(char_gfx[48]);
 extern void load();
 extern void save();
 extern void tick();
-extern void click();
+extern void click(ButtonId b, bool single);
 
 extern void load_basik();
 extern void save_basik();
 extern void tick_basik();
-extern void click_basik();
+extern void click_basik(ButtonId b, bool single);
 
 extern void load_clock();
 extern void save_clock();
 extern void tick_clock();
-extern void click_clock();
+extern void click_clock(ButtonId b, bool single);
 
 bool pause = false;
 
@@ -118,14 +118,14 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
   }
 }
 
-static void show_menu() {
+void show_menu() {
   window_stack_push(s_menu_window, true);
 }
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   seconds = tick_time->tm_sec;
   tick_clock();
-  tick();
+  if(!pause) tick();
   layer_mark_dirty(layer);
   tick_basik();
 }
@@ -206,16 +206,28 @@ static void menu_window_unload(Window *window) {
   gbitmap_destroy(s_menu_icon_image);
 }
 
+static void clicks(ClickRecognizerRef recognizer, bool single) {
+  ButtonId b = click_recognizer_get_button_id(recognizer);
+  if(b == BUTTON_ID_BACK && pause) {
+    pause = false;
+    return;
+  }
+  if(b == BUTTON_ID_SELECT && !pause) {
+    pause = true;
+    return;
+  }
+  click_clock(b, single);
+  if(pause) click_basik(b, single);
+  else click(b, single);
+  layer_mark_dirty(layer);
+}
+
 static void single_click_handler(ClickRecognizerRef recognizer, void *context) {
-  Window *window = (Window *)context;
+  clicks(recognizer, true);
 }
 
 static void long_click_handler(ClickRecognizerRef recognizer, void *context) {
-  Window *window = (Window *)context;
-}
-
-static void long_click_release_handler(ClickRecognizerRef recognizer, void *context) {
-  Window *window = (Window *)context;
+  clicks(recognizer, false);
 }
 
 static void config_provider(Window *window) {
@@ -226,9 +238,9 @@ static void config_provider(Window *window) {
   window_single_click_subscribe(BUTTON_ID_BACK, single_click_handler);
 
   // long click config:
-  window_long_click_subscribe(BUTTON_ID_UP, 0, long_click_handler, long_click_release_handler);
-  window_long_click_subscribe(BUTTON_ID_DOWN, 0, long_click_handler, long_click_release_handler);
-  window_long_click_subscribe(BUTTON_ID_SELECT, 0, long_click_handler, long_click_release_handler);
+  window_long_click_subscribe(BUTTON_ID_UP, 0, long_click_handler, NULL);
+  window_long_click_subscribe(BUTTON_ID_DOWN, 0, long_click_handler, NULL);
+  window_long_click_subscribe(BUTTON_ID_SELECT, 0, long_click_handler, NULL);
 }
 
 static void main_window_load(Window *window) {

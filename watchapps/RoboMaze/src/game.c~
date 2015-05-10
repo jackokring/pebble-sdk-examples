@@ -1,5 +1,7 @@
 #include "pebble.h"
 
+#define MAP_STORE 0
+
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
 extern int seconds;
