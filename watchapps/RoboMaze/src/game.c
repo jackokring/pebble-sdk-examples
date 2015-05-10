@@ -8,6 +8,7 @@ extern int seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern bool pause;
+int32_t score = 0;
 
 void load() {
   uint16_t compact[33];

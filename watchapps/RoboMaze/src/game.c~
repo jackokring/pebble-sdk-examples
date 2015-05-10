@@ -55,6 +55,6 @@ void tick() {
 
 }
 
-void click() {
+void click(ButtonId b, bool single) {
 
 }
