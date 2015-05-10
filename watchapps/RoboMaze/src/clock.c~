@@ -4,18 +4,18 @@ extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
 extern int seconds;
 
-void load_basik() {
+void load_clock() {
 
 }
 
-void save_basik() {
+void save_clock() {
 
 }
 
-void tick_basik() {
+void tick_clock() {
 
 }
 
-void click_basik() {
+void click_clock() {
 
 }

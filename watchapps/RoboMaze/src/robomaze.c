@@ -4,8 +4,6 @@
 #define NUM_FIRST_MENU_ITEMS 3
 #define NUM_SECOND_MENU_ITEMS 1
 
-#define MAP_STORE 0
-
 static Window *s_menu_window, *s_main_window;
 static SimpleMenuLayer *s_simple_menu_layer;
 static SimpleMenuSection s_menu_sections[NUM_MENU_SECTIONS];
@@ -20,7 +18,7 @@ static int s_hit_count = 0;
 unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
 unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size -- EXTERN!!
 static GBitmap *(maze_gfx[31]);//blank = 31
-static GBitmap *(char_gfx[36]);
+static GBitmap *(char_gfx[48]);
 
 extern void load();
 extern void save();
@@ -31,6 +29,17 @@ extern void load_basik();
 extern void save_basik();
 extern void tick_basik();
 extern void click_basik();
+
+extern void load_clock();
+extern void save_clock();
+extern void tick_clock();
+extern void click_clock();
+
+bool pause = false;
+
+int seconds = 0;//EXTERN!!
+
+static Layer *layer;
 
 static unsigned int get_64(unsigned char * ptr, int x, int y, int mod) {//get 6 bit field
   int idx = ((x + y * mod) * 3) >> 2;
@@ -43,11 +52,11 @@ static int get_shift(int x, int y, int mod) {
   return shift;
 }
 
-static unsigned char get_map(unsigned char * ptr, int x, int y, int mod) {
+unsigned char get_map(unsigned char * ptr, int x, int y, int mod) {
   return (get_64(ptr, x, y, mod) >> get_shift(x, y, mod)) & 63;//mask 64
 }
 
-static void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
+void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
   int shift = get_shift(x, y, mod);
   int tmp = get_64(ptr, x, y, mod);
   int andmsk = 63 << shift;
@@ -74,15 +83,38 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_fill_rect(ctx, bounds, 0, GCornerNone);
 
+  // Draw Console
+  if(pause)
+    for(int i = 0; i < 32; i++)
+      for(int j = 0; j < 24; j++) {
+        int x = get_map(con, i, j, 32);
+        if(x > 47) continue;//don't draw
+        graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 8, j * 6 + 12, 3, 5));//draw map
+  } else
+
   // Draw map
   for(int i = 0; i < 35; i++)
     for(int j = 0; j < 41; j++) {
-      int x;
-      if(get_map(maze, i, j, 35) < 16) {
-        x = reduce_map(i, j);
-        put_map(maze, i, j, 35, x);//write back
-        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
+      int x = get_map(maze, i, j, 35);
+      bool flash = false;
+      if(x >= 32) {
+	//flashing
+        flash = true;
+        x -= 32;
+        if((seconds & 1) == 0) x = 31;//show as blank
       }
+      if(x == 31) continue;//don't draw
+      if(x < 16) {
+        x = reduce_map(i, j);
+        put_map(maze, i, j, 35, x + flash?32:0);//write back
+        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
+        continue;
+      }
+      if(x >= 16 && x <= 20) {
+        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4 - 1, j * 4 - 1, 6, 6));//draw map
+        continue;
+      }
+      graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
   }
 }
 
@@ -91,7 +123,11 @@ static void show_menu() {
 }
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
-
+  seconds = tick_time->tm_sec;
+  tick_clock();
+  tick();
+  layer_mark_dirty(layer);
+  tick_basik();
 }
 
 static void menu_select_callback(int index, void *ctx) {
@@ -170,8 +206,6 @@ static void menu_window_unload(Window *window) {
   gbitmap_destroy(s_menu_icon_image);
 }
 
-static Layer *layer;
-
 static void main_window_load(Window *window) {
 #ifdef PBL_SDK_2
   window_set_fullscreen(window, true);
@@ -189,30 +223,13 @@ static void main_window_load(Window *window) {
     maze_gfx[i+28] = gbitmap_create_as_sub_bitmap(map, GRect( 16 + 12, i*4, 4, 4 ));//aux fill, square, dot
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
-  for(int i = 0; i < 36; i++) {
+  for(int i = 0; i < 48; i++) {
     char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));//aux fill, square, dot
   }
-  uint16_t compact[33];
-  //if(persist_exists(MAP_STORE)) {
-    //persist_read_data(MAP_STORE, compact, sizeof(compact));
-  //} else
-    for(int i = 0; i < 33; i++) compact[i] = ~0;//fill with walls
-  //draw maze
-  for(int i = 0; i < 35; i++)
-    for(int j = 0; j < 41; j++) {
-      unsigned char x;//null by default
-      if(j < 8) x = 31;//blank
-      else if(j == 8 || j == 41-1) x = 0;//top or bottom row
-      else if(i%2 == 0 && j%2 == 0) x = 0;//main stay
-      else if(i == 0 || i == 35-1) x = 0;//left or right col
-      else if(i%2 == 1 && j%2 == 1) x = 31;//blank!!
-      else {//only walls left
-        int col = compact[i-1];//get active col
-        int y = (j - 9 - i%2) >> 1;  
-        if( ((col >> y) & 1) == 1) x = 0; else x = 31;
-      }
-      put_map(maze, i, j, 35, x);//display wall
-  }
+
+  load();
+  load_clock();
+  load_basik();
 
   Layer * lay = window_get_root_layer(window);
   layer_set_bounds(lay, GRect(0, 0, 144, 168));
@@ -227,25 +244,13 @@ static void main_window_unload(Window *window) {
   for(int i = 0; i < 16 + 15; i++) {
     gbitmap_destroy(maze_gfx[i]);//maze_gfx
   }
-  for(int i = 0; i < 36; i++) {
+  for(int i = 0; i < 48; i++) {
     gbitmap_destroy(char_gfx[i]);//char_gfx
   }
   gbitmap_destroy(map);
-  uint16_t compact[33];
-  int col;
-  for(int i = 9; i < 35-1; i++)
-    for(int j = 1; j < 41-1; j++) {
-      if(i%2 == 0 && j%2 == 0) continue;//main stay
-      else if(i%2 == 1 && j%2 == 1) continue;//blank!!
-      else {//onlt walls left
-        col = compact[i-1];//get active col
-        int y = (j - 9 - i%2) >> 1;  
-        if(get_map(maze, i, j, 35))
-          col |= (1 << y) ; else col &= ~(1 << y);
-      }
-      compact[i-1] = col;//write description
-  }
-  persist_write_data(MAP_STORE, compact, sizeof(compact)); 
+  save();
+  save_clock();
+  save_basik();
 }
 
 static void init() {

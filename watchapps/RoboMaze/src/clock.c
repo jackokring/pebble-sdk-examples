@@ -6,18 +6,18 @@ extern int seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 
-void load_basik() {
+void load_clock() {
 
 }
 
-void save_basik() {
+void save_clock() {
 
 }
 
-void tick_basik() {
+void tick_clock() {
 
 }
 
-void click_basik() {
+void click_clock() {
 
 }
