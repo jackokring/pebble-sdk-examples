@@ -206,6 +206,31 @@ static void menu_window_unload(Window *window) {
   gbitmap_destroy(s_menu_icon_image);
 }
 
+static void single_click_handler(ClickRecognizerRef recognizer, void *context) {
+  Window *window = (Window *)context;
+}
+
+static void long_click_handler(ClickRecognizerRef recognizer, void *context) {
+  Window *window = (Window *)context;
+}
+
+static void long_click_release_handler(ClickRecognizerRef recognizer, void *context) {
+  Window *window = (Window *)context;
+}
+
+static void config_provider(Window *window) {
+  // single click / repeat-on-hold config:
+  window_single_click_subscribe(BUTTON_ID_UP, single_click_handler);
+  window_single_click_subscribe(BUTTON_ID_DOWN, single_click_handler);
+  window_single_click_subscribe(BUTTON_ID_SELECT, single_click_handler);
+  window_single_click_subscribe(BUTTON_ID_BACK, single_click_handler);
+
+  // long click config:
+  window_long_click_subscribe(BUTTON_ID_UP, 0, long_click_handler, long_click_release_handler);
+  window_long_click_subscribe(BUTTON_ID_DOWN, 0, long_click_handler, long_click_release_handler);
+  window_long_click_subscribe(BUTTON_ID_SELECT, 0, long_click_handler, long_click_release_handler);
+}
+
 static void main_window_load(Window *window) {
 #ifdef PBL_SDK_2
   window_set_fullscreen(window, true);
@@ -237,6 +262,7 @@ static void main_window_load(Window *window) {
   layer_set_bounds(layer, GRect(0, 0, 140, 164));
   layer_set_update_proc(layer, layer_draw);
   layer_add_child(lay, layer);
+  window_set_click_config_provider(window, (ClickConfigProvider) config_provider);
 }
 
 static void main_window_unload(Window *window) {
