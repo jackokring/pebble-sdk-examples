@@ -1,0 +1,19 @@
+#include "pebble.h"
+
+extern unsigned char maze[];//maze size -- EXTERN!!
+
+void load() {
+
+}
+
+void save() {
+
+}
+
+void tick() {
+
+}
+
+void click() {
+
+}

@@ -17,9 +17,20 @@ static GBitmap *map;
 static bool s_special_flag = false;
 static int s_hit_count = 0;
 
-static unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size
+unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
+unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size -- EXTERN!!
 static GBitmap *(maze_gfx[31]);//blank = 31
 static GBitmap *(char_gfx[36]);
+
+extern void load();
+extern void save();
+extern void tick();
+extern void click();
+
+extern void load_basik();
+extern void save_basik();
+extern void tick_basik();
+extern void click_basik();
 
 static unsigned int get_64(unsigned char * ptr, int x, int y, int mod) {//get 6 bit field
   int idx = ((x + y * mod) * 3) >> 2;
@@ -77,6 +88,10 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
 
 static void show_menu() {
   window_stack_push(s_menu_window, true);
+}
+
+static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
+
 }
 
 static void menu_select_callback(int index, void *ctx) {
@@ -244,6 +259,8 @@ static void init() {
     .load = menu_window_load,
     .unload = menu_window_unload,
   });
+
+  tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
   window_stack_push(s_main_window, true);
 }
 
