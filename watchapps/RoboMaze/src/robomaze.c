@@ -32,7 +32,7 @@ extern void click_basik(ButtonId b, bool single);
 
 extern void load_clock();
 extern void save_clock();
-extern void tick_clock(struct tm *tick_time);
+extern void tick_clock(struct tm *tick_time, bool stop);
 extern bool click_clock(ButtonId b, bool single);
 
 bool pause = false;
@@ -126,7 +126,7 @@ void mark_dirty() {
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   seconds = tick_time->tm_sec;
-  tick_clock(tick_time);
+  tick_clock(tick_time, false);
   if(!pause) tick();
   tick_basik();
   mark_dirty();
