@@ -41,7 +41,7 @@ int seconds = 0;//EXTERN!!
 
 static Layer *layer;
 
-static unsigned int get_64(unsigned char * ptr, int x, int y, int mod) {//get 6 bit field
+static int get_64(unsigned char * ptr, int x, int y, int mod) {//get 6 bit field
   int idx = ((x + y * mod) * 3) >> 2;
   return ptr[idx] + (ptr[idx + 1] << 8);
 }
@@ -57,9 +57,9 @@ unsigned char get_map(unsigned char * ptr, int x, int y, int mod) {
 }
 
 void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
-  int shift = get_shift(x, y, mod);
-  int tmp = get_64(ptr, x, y, mod);
-  int andmsk = 63 << shift;
+  uint16_t shift = get_shift(x, y, mod);
+  uint16_t tmp = get_64(ptr, x, y, mod);
+  uint16_t andmsk = 63 << shift;
   val <<= shift;
   tmp = (tmp & ~andmsk) | (val & andmsk);
   int idx = ((x + y * mod) * 3) >> 2;

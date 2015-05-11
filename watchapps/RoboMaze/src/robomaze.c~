@@ -37,38 +37,38 @@ extern bool click_clock(ButtonId b, bool single);
 
 bool pause = false;
 
-int seconds = 0;//EXTERN!!
+int8_t seconds = 0;//EXTERN!!
 
 static Layer *layer;
 
-static unsigned int get_64(unsigned char * ptr, int x, int y, int mod) {//get 6 bit field
-  int idx = ((x + y * mod) * 3) >> 2;
+static uint16_t get_64(unsigned char * ptr, int8_t x, int8_t y, int8_t mod) {//get 6 bit field
+  int16_t idx = ((x + y * mod) * 3) >> 2;
   return ptr[idx] + (ptr[idx + 1] << 8);
 }
 
-static int get_shift(int x, int y, int mod) {
-  int shift = ((x + y * mod) << 1)%8;
+static uint8_t get_shift(int8_t x, int8_t y, int8_t mod) {
+  uint16_t shift = ((x + y * mod) << 1)%8;
   if((shift & 2) != 0) shift ^= 4;//0, 6, 4, 2 pattern
   return shift;
 }
 
-unsigned char get_map(unsigned char * ptr, int x, int y, int mod) {
+unsigned char get_map(unsigned char * ptr, int8_t x, int8_t y, int8_t mod) {
   return (get_64(ptr, x, y, mod) >> get_shift(x, y, mod)) & 63;//mask 64
 }
 
-void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
-  int shift = get_shift(x, y, mod);
-  int tmp = get_64(ptr, x, y, mod);
-  int andmsk = 63 << shift;
+void put_map(unsigned char * ptr, int8_t x, int8_t y, int8_t mod, int8_t val) {
+  uint16_t shift = get_shift(x, y, mod);
+  uint16_t tmp = get_64(ptr, x, y, mod);
+  uint16_t andmsk = 63 << shift;
   val <<= shift;
   tmp = (tmp & ~andmsk) | (val & andmsk);
-  int idx = ((x + y * mod) * 3) >> 2;
+  int16_t idx = ((x + y * mod) * 3) >> 2;
   ptr[idx] = (unsigned char)(tmp & 255);
   ptr[idx + 1] = (unsigned char)(tmp >> 8);
 }
 
-static int reduce_map(int x, int y) {
-  int tmp = get_map(maze, x, y, 35)&32;
+static int8_t reduce_map(int8_t x, int8_t y) {
+  int8_t tmp = get_map(maze, x, y, 35)&32;
   if(x-1 >= 0 && (get_map(maze, x-1, y, 35)&31) < 16) tmp += 1;//left
   if(x+1 <= 35-1 && (get_map(maze, x+1, y, 35)&31) < 16) tmp += 2;//right
   if(y-1 >= 0 && (get_map(maze, x, y-1, 35)&31) < 16) tmp += 4;//up
@@ -85,16 +85,16 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
 
   // Draw Console
   if(pause)
-    for(int i = 0; i < 32; i++)
-      for(int j = 0; j < 24; j++) {
+    for(int8_t i = 0; i < 32; i++)
+      for(int8_t j = 0; j < 24; j++) {
         int x = get_map(con, i, j, 32);
         if(x > 47) continue;//don't draw
         graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
   } else
 
   // Draw map
-  for(int i = 0; i < 35; i++)
-    for(int j = 0; j < 41; j++) {
+  for(int8_t i = 0; i < 35; i++)
+    for(int8_t j = 0; j < 41; j++) {
       int x = get_map(maze, i, j, 35);
       if(x >= 32) {
 	//flashing
@@ -219,7 +219,8 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
       pause = true;
       return;
     } else {
-
+      show_menu();
+      return;//hadle menu selections
     }
   }
   if(!click_clock(b, single)) {
@@ -255,19 +256,19 @@ static void main_window_load(Window *window) {
   window_set_fullscreen(window, true);
 #endif
   map = gbitmap_create_with_resource(RESOURCE_ID_MAP);
-  for(int i = 0; i < 16; i++) {
+  for(int8_t i = 0; i < 16; i++) {
     maze_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%4)*4, (i/4)*4, 4, 4 ));//fill maze_gfx
   }
-  for(int i = 0; i < 4; i++) {
+  for(int8_t i = 0; i < 4; i++) {
     maze_gfx[i+16] = gbitmap_create_as_sub_bitmap(map, GRect( (i%2)*6 + 16, (i/2)*6, 6, 6 ));//bot
     maze_gfx[i+20] = gbitmap_create_as_sub_bitmap(map, GRect( i*4 + 16, 12, 4, 4 ));//missile
     maze_gfx[i+24] = gbitmap_create_as_sub_bitmap(map, GRect( 32, i*4, 4, 4 ));//bomerang
   }
-  for(int i = 0; i < 3; i++) {
+  for(int8_t i = 0; i < 3; i++) {
     maze_gfx[i+28] = gbitmap_create_as_sub_bitmap(map, GRect( 16 + 12, i*4, 4, 4 ));//aux fill, square, dot
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
-  for(int i = 0; i < 48; i++) {
+  for(int8_t i = 0; i < 48; i++) {
     char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));//aux fill, square, dot
   }
 
@@ -286,10 +287,10 @@ static void main_window_load(Window *window) {
 
 static void main_window_unload(Window *window) {
   layer_destroy(layer);
-  for(int i = 0; i < 16 + 15; i++) {
+  for(int8_t i = 0; i < 16 + 15; i++) {
     gbitmap_destroy(maze_gfx[i]);//maze_gfx
   }
-  for(int i = 0; i < 48; i++) {
+  for(int8_t i = 0; i < 48; i++) {
     gbitmap_destroy(char_gfx[i]);//char_gfx
   }
   gbitmap_destroy(map);
