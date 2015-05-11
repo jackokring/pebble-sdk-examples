@@ -9,7 +9,7 @@ extern int32_t score;
 extern double value;
 
 static unsigned char dp = 0;//dp col
-static unsigned char mode = 0;//clock,date,value,score
+static unsigned char mode = 0;//clock,date,stopwatch,value,score
 
 static const int16_t pics[] = {
   0b111101101101111,//0
@@ -36,7 +36,7 @@ static void draw(int digit, int location) {
   int16_t pix = pics[digit%32];
   for(int j = 0; j < 5; j++)
     for(int i = 0; i < 3; i++) {
-      put_map(maze, i + 1 + location * 4 + (location >= dp)?2:0, j + 1, 35, (digit&32) + ((pix & 1)==0)?31:0);
+      put_map(maze, i + 1 + (location * 4) + ((location >= dp)?2:0), j + 1, 35, (digit&32) + ((pix & 1)==0)?31:0);
       pix >>= 1;
   }
 }
@@ -50,29 +50,57 @@ static void draw_dp(int bits, int location) {
   }
 }
 
+void save_clock() {
+  //null
+}
+
+static int8_t button_sec = 0;
+static int8_t delays[] = { 0, 0, 2, 3, 4 };//2nd has delay switch to first
+static bool keys[] = { false, false, true, true, false };
+
+void tick_clock(struct tm *tick_time) {
+  clear();
+  if(++button_sec == 3) mode = delays[mode];//change mode
+  switch(mode) {
+  case 0: draw_dp(0b1010, 2);
+    draw(tick_time->tm_hour/10, 0);
+    draw(tick_time->tm_hour%10, 1);
+    draw(tick_time->tm_min/10, 2);
+    draw(tick_time->tm_min%10, 3);
+    draw(tick_time->tm_sec/10, 6);
+    draw(tick_time->tm_sec%10, 7);
+    break;
+  default: break;
+  }
+}
+
 void load_clock() {
   time_t now = time(NULL);
   struct tm *t = localtime(&now);
   tick_clock(t);
 }
 
-void save_clock() {
-  //null
-}
+static bool clickback = false;
 
-void tick_clock(struct tm *tick_time) {
-  switch(mode) {
-  case 0:
-
-    break;
-  default: break;
-  }
-}
-
-void click_clock(ButtonId b, bool single) {
+bool click_clock(ButtonId b, bool single) {//never gets select button
+  button_sec = 0;//restore
+  bool tmp = keys[mode];
   if(b == BUTTON_ID_BACK) {
-    mode++;
-    mode %= 4;//four mode loop 
+    if(!clickback) {
+      mode++;
+      mode %= 4;//four mode loop 
+    } else {
+      mode = 0;//back to clock
+      clickback = false;
+    }
+  } else {
+    if(keys[mode]) {
+      //own custom actions
+    } else {
+      mode = 4;//show score
+      clickback = true;//botch
+    }
   }
-  else mode = 3;//show score
+  load_clock();//easy fast action
+  return tmp;//handled?
 }

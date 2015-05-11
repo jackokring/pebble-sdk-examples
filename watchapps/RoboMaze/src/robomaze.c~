@@ -33,7 +33,7 @@ extern void click_basik(ButtonId b, bool single);
 extern void load_clock();
 extern void save_clock();
 extern void tick_clock(struct tm *tick_time);
-extern void click_clock(ButtonId b, bool single);
+extern bool click_clock(ButtonId b, bool single);
 
 bool pause = false;
 
@@ -68,11 +68,11 @@ void put_map(unsigned char * ptr, int x, int y, int mod, int val) {
 }
 
 static int reduce_map(int x, int y) {
-  int tmp = 0;
-  if(x-1 >= 0 && get_map(maze, x-1, y, 35) < 16) tmp += 1;//left
-  if(x+1 <= 35-1 && get_map(maze, x+1, y, 35) < 16) tmp += 2;//right
-  if(y-1 >= 0 && get_map(maze, x, y-1, 35) < 16) tmp += 4;//up
-  if(y+1 <= 41-1 && get_map(maze, x, y+1, 35) < 16) tmp += 8;//down
+  int tmp = get_map(maze, x, y, 35)&32;
+  if(x-1 >= 0 && (get_map(maze, x-1, y, 35)&31) < 16) tmp += 1;//left
+  if(x+1 <= 35-1 && (get_map(maze, x+1, y, 35)&31) < 16) tmp += 2;//right
+  if(y-1 >= 0 && (get_map(maze, x, y-1, 35)&31) < 16) tmp += 4;//up
+  if(y+1 <= 41-1 && (get_map(maze, x, y+1, 35)&31) < 16) tmp += 8;//down
   return tmp;
 }
 
@@ -89,25 +89,23 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
       for(int j = 0; j < 24; j++) {
         int x = get_map(con, i, j, 32);
         if(x > 47) continue;//don't draw
-        graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 8, j * 6 + 12, 3, 5));//draw map
+        graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
   } else
 
   // Draw map
   for(int i = 0; i < 35; i++)
     for(int j = 0; j < 41; j++) {
       int x = get_map(maze, i, j, 35);
-      bool flash = false;
       if(x >= 32) {
 	//flashing
-        flash = true;
         x -= 32;
         if((seconds & 1) == 0) x = 31;//show as blank
       }
       if(x == 31) continue;//don't draw
       if(x < 16) {
         x = reduce_map(i, j);
-        put_map(maze, i, j, 35, x + flash?32:0);//write back
-        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
+        put_map(maze, i, j, 35, x);//write back
+        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x&31], GRect(i * 4, j * 4, 4, 4));//draw map
         continue;
       }
       if(x >= 16 && x <= 20) {
@@ -122,12 +120,16 @@ void show_menu() {
   window_stack_push(s_menu_window, true);
 }
 
+void mark_dirty() {
+  layer_mark_dirty(layer);
+}
+
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   seconds = tick_time->tm_sec;
   tick_clock(tick_time);
   if(!pause) tick();
-  layer_mark_dirty(layer);
   tick_basik();
+  mark_dirty();
 }
 
 static void menu_select_callback(int index, void *ctx) {
@@ -212,14 +214,19 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
     pause = false;
     return;
   }
-  if(b == BUTTON_ID_SELECT && !pause) {
-    pause = true;
-    return;
+  if(b == BUTTON_ID_SELECT) {
+    if(!pause) {
+      pause = true;
+      return;
+    } else {
+
+    }
   }
-  click_clock(b, single);
-  if(pause) click_basik(b, single);
-  else click(b, single);
-  layer_mark_dirty(layer);
+  if(!click_clock(b, single)) {
+    if(pause) click_basik(b, single);
+    else click(b, single);
+  }
+  mark_dirty();
 }
 
 static void single_click_handler(ClickRecognizerRef recognizer, void *context) {
