@@ -1,5 +1,8 @@
 #include "pebble.h"
 
+#define SW_STORE 1
+#define SW_BUTT 2
+
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
 extern int8_t seconds;
@@ -64,7 +67,7 @@ static void draw(int digit, int location) {
   int16_t pix = pics[digit%32];
   for(int8_t j = 0; j < 5; j++)
     for(int8_t i = 0; i < 3; i++) {
-      put_map(maze, i + 1 + (location * 4) + ((location >= dp)?2:0), j + 1, 35, (((pix & 1)==0)?31:digit&32));
+      put_map(maze, i + 1 + (location * 4) + ((location >= dp)?2:0), j + 1, 35, (((pix & 1)==0)?31:(digit&32)));
       pix >>= 1;
   }
 }
@@ -73,30 +76,51 @@ static void draw_dp(int bits, int location) {
   dp = location;//remember
   int8_t tmp = bits;
   for(int8_t j = 0; j < 5; j++) {
-    put_map(maze, 1 + location * 4, j + 1, 35, (((bits & 1)==0)?31:tmp&32));//top to bottom from lsb to msb
+    put_map(maze, 1 + location * 4, j + 1, 35, (((bits & 1)==0)?31:(tmp&32)));//top to bottom from lsb to msb
     bits >>= 1;
   }
 }
 
+static int16_t sw_butt = 0;
+static struct tm *sw;//stopwatch
+static struct tm lap;
+
 void save_clock() {
-  //null
+  persist_write_data(SW_STORE, &sw, sizeof(sw));
+  persist_write_int(SW_BUTT, sw_butt);
 }
 
 static int8_t button_sec = 0;
 static int8_t delays[] = { 0, 0, 2, 3, 4 };//2nd has delay switch to first
 static bool keys[] = { false, false, true, true, false };
 
-void tick_clock(struct tm *tick_time) {
-  clear();
-  if(++button_sec == 3) mode = delays[mode];//change mode
-  switch(mode) {
-  case 0: draw_dp(0b101010, 2);//time
+static void tock(struct tm *tick_time) {
     draw(tick_time->tm_hour/10, 0);
     draw(tick_time->tm_hour%10, 1);
     draw(tick_time->tm_min/10, 2);
     draw(tick_time->tm_min%10, 3);
     draw(tick_time->tm_sec/10, 6);
     draw(tick_time->tm_sec%10, 7);
+}
+
+static struct tm * sub_mod(struct tm *now, struct tm *then) {
+  static struct tm buf;
+  buf.tm_hour = (now->tm_hour - then->tm_hour)%24;
+  buf.tm_min = (now->tm_min - then->tm_min)%60;
+  buf.tm_sec = (now->tm_sec - then->tm_sec)%60;
+  return &buf;
+}
+
+void tick_clock(struct tm *tick_time) {
+  clear();
+  if((sw_butt&4)==1) { 
+    sw = tick_time;//stopwatch not running a delta
+    sw_butt ^= 4;//reset
+  }
+  if(++button_sec == 3) mode = delays[mode];//change mode
+  switch(mode) {
+  case 0: draw_dp(0b101010, 2);//time
+    tock(tick_time);
     break;
   case 1: draw_dp(0b100, 3);//date
     draw(days[tick_time->tm_mon * 3 + 21], 5);
@@ -108,6 +132,10 @@ void tick_clock(struct tm *tick_time) {
     draw(days[tick_time->tm_wday * 3 + 1], 1);
     draw(days[tick_time->tm_wday * 3 + 2], 2);
     break;
+  case 2: draw_dp(0b101110, 2);//stopwatch
+    struct tm * show = sub_mod(tick_time, ((sw_butt&2)==0)?sw:&lap);
+    tock(show);
+    break;
   default: break;
   }
 }
@@ -116,6 +144,10 @@ void load_clock() {
   time_t now = time(NULL);
   struct tm *t = localtime(&now);
   tick_clock(t);
+  if(persist_exists(SW_STORE)) {
+    persist_read_data(SW_STORE, t, sizeof(sw));
+    sw_butt = persist_read_int(SW_BUTT);
+  }
 }
 
 static bool clickback = false;
@@ -135,6 +167,28 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
     clickback = true;//botch
     if(keys[mode]) {
       //own custom actions
+      if(mode==2) {
+        switch(b) {
+        case BUTTON_ID_UP://lap/reset
+          if((sw_butt&1)==0) {//not running
+            if((sw_butt&2)==1) //showing lap
+              sw_butt ^= 2;
+            else //showing counter
+              sw_butt = 5;//reset
+          } else { //running
+            sw_butt ^= 2;
+            memcpy(&lap, sw, sizeof(lap));//get lap buffer
+          }
+          break;
+        case BUTTON_ID_DOWN://start/stop
+          ws_butt ^= 1;
+          break;
+        default: break;
+        }
+      }
+      if(mode==3) {
+        //later
+      }
     } else {
       mode = 4;//show score
     }
