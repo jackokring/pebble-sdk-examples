@@ -7,8 +7,10 @@ extern unsigned char con[];//console size -- EXTERN!!
 extern int seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
-extern bool pause;
+bool pause = false;
+bool gAB = false;
 int32_t score = 0;
+int8_t direction;
 
 static uint16_t compact[32];
 
@@ -19,7 +21,7 @@ static void blank() {
 static int loadwall(int x, int y) {
   if(!persist_exists(MAP_STORE)) blank();
   persist_read_data(MAP_STORE, compact, sizeof(compact));
-  return 0;
+  return (((compact[x]>>y)&1)==1)?0:31;
 }
 
 void load() {
@@ -43,8 +45,8 @@ static void savewall(int x, int y) {
 
 void save() {
   blank();
-  for(int i = 0; i < 34-1; i++)
-    for(int j = 8; j < 34+8-1; j++) {
+  for(int i = 3; i <= 35-3; i++)
+    for(int j = 8; j <= 32+8; j++) {
       if(i%2 == 1 && j%2 == 1) continue;//main stay
       else if(i%2 == 0 && j%2 == 0) continue;//blank!! An active square not wall
       else if((get_map(maze, i, j, 35)&31) < 16) savewall((i-2)/2, (j-8)/2);

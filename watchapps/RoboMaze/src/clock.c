@@ -10,8 +10,10 @@ extern int8_t seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern int32_t score;
+extern int8_t direction;
 extern double value;
 extern void click_basik(ButtonId b, bool single);
+extern bool gAB;
 
 static unsigned char dp = 0;//dp col
 static unsigned char mode = 0;//clock,date,stopwatch,value,score
@@ -49,7 +51,7 @@ static const int16_t pics[] = {
   0b110101101001110,//G 9
   0b110001001001110,//C 0
   0b010010101101101,//V 1
-  0//space
+  0b000000111000000//-
 };
 
 static int8_t days[] = { 22, 14, 12, 10, 11, 12, 13, 14, 15, 16, 15, 17, 13, 18, 14, 19, 20, 21, 22, 23, 13 /* };
@@ -125,6 +127,22 @@ static void sw_tick() {
   }
 }
 
+static void printint(int x, int pos) {
+  bool neg = false;
+  if(x < 0) {
+    x = -x;
+    neg = true;
+  }
+  for(int i = pos; i > 0; i--) {
+    draw(x%10, i);
+    x /= 10;
+    if(x == 0) {
+      if(i != 0 && neg) draw(32, --i);//negate
+      break;//blanks nulls
+    }
+  }
+}
+
 void tick_clock(struct tm *tick_time, bool stop) {
   clear();
   if((sw_butt&4)==4) { 
@@ -161,6 +179,11 @@ void tick_clock(struct tm *tick_time, bool stop) {
     } else {
       tock(&reg, true, true);
     }
+    break;
+  case 3:
+    break;
+  case 4: draw_dp(1<<(direction%5), 8);//score
+    printint(score, 7);
     break;
   default: break;
   }
@@ -225,6 +248,7 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
       }
     } else {
       mode = 4;//show score
+      if(b == BUTTON_ID_UP) gAB = false; else gAB = true;
       tmp = true;//handled
     }
   }
