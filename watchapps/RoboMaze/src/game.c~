@@ -10,6 +10,17 @@ extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern void show_lvl();
 
+static void reset();
+static void account();
+static void makemaze();
+static void makechar();
+static void ready();
+static void move();
+static void respond();
+static void evaluate();
+static void reset();
+static void delay();
+
 bool pause = false;
 bool gAB = false;
 int32_t score = 0;
@@ -17,7 +28,28 @@ int32_t hiscore = 0;
 int32_t level = 0;
 int8_t direction;
 
-static int8_t state = 0;
+static (*oldstate)() = reset;
+static int countdown;
+static (*state)() = reset;
+
+static void delay() {
+  if((--countdown)==0)
+    state = oldstate;
+}
+
+static void do_delay(int sec, void (*newstate)()) {
+  countdown = sec;
+  oldstate = newstate;
+  state = delay;
+}
+
+static void reset() {
+  score = 0;
+  direction = 3;
+  level = 0;
+  show_lvl(6);//hiscore
+  do_delay(6, account);
+} 
 
 static uint16_t compact[32];
 
@@ -36,6 +68,7 @@ static void makechar() {
 
 static void ready() {
   show_lvl(5);//show level
+  do_delay(6, move);
 }
 
 static void move() {
@@ -50,19 +83,10 @@ static void evaluate() {
 
 }
 
-static void reset() {
-  state = 0;
-  score = 0;
-  direction = 3;
-  level = 0;
-  state++;//goto account
-  show_lvl(6);//hiscore
-} 
-
-static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, reset };//end on initial state
+/* static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, reset, delay };//end on initial state */
 
 void tick() {
-  (fn[state])();
+  (*state)();
 }
 
 void click(ButtonId b, bool single) {
@@ -95,6 +119,7 @@ void load() {
       else x = loadwall((i-2)/2, (j-8)/2);
       put_map(maze, i, j, 35, x);//display wall
   }
+  pause = false;
 }
 
 static void savewall(int x, int y) {
