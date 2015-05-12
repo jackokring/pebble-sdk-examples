@@ -10,6 +10,7 @@ extern int8_t seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern int32_t score;
+extern int32_t level;
 extern int8_t direction;
 extern double value;
 extern void click_basik(ButtonId b, bool single);
@@ -95,8 +96,8 @@ void save_clock() {
 }
 
 static int8_t button_sec = 0;
-static int8_t delays[] = { 0, 0, 2, 3, 4 };//2nd has delay switch to first
-static bool keys[] = { false, false, true, true, false };
+static int8_t delays[] = { 0, 0, 2, 3, 4, 4, 4 };//2nd has delay switch to first
+static bool keys[] = { false, false, true, true, false, false, false };
 
 static void tock(struct tm *tick_time, bool max, bool t4hr) {
     if(max) draw(tick_time->tm_hour/100, 0);
@@ -143,6 +144,11 @@ static void printint(int x, int pos) {
   }
 }
 
+void show_lvl(int mode_to) {
+  button_sec = 0;//restore
+  mode = mode_to;
+}
+
 void tick_clock(struct tm *tick_time, bool stop) {
   clear();
   if((sw_butt&4)==4) { 
@@ -184,6 +190,14 @@ void tick_clock(struct tm *tick_time, bool stop) {
     break;
   case 4: draw_dp(1<<(direction%5), 8);//score
     printint(score, 7);
+    break;
+  case 5: draw_dp(1<<(direction%5), 8);//level
+    printint(level, 7);
+    draw(28, 0);//L
+    break;
+  case 6: draw_dp(1<<(direction%5), 8);//hiscore
+    printint(hiscore, 7);
+    draw(18, 0);//H
     break;
   default: break;
   }
@@ -248,6 +262,7 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
       }
     } else {
       mode = 4;//show score
+      if(b == BUTTON_ID_UP) gAB = false; else gAB = true;
       tmp = true;//handled
     }
   }
