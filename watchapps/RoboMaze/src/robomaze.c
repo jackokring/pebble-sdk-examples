@@ -217,6 +217,7 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
   if(b == BUTTON_ID_SELECT) {
     if(!pause) {
       pause = true;
+      if(!single) show_menu();
       return;
     } else {
       show_menu();
