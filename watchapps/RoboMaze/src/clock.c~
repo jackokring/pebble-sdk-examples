@@ -92,7 +92,7 @@ void save_clock() {
   struct tm *t = localtime(&now);
   persist_write_data(SW_STORE, &reg, sizeof(reg));
   persist_write_data(SW_LAP, &lap, sizeof(lap));
-  persist_write_data(SW_STOP, t, sizeof(*t));
+  persist_write_data(SW_STOP, t, sizeof(reg));
   persist_write_int(SW_BUTT, sw_butt);
 }
 
@@ -147,7 +147,7 @@ static void printint(int x, int pos) {
 
 void show_lvl(int mode_to) {
   button_sec = 0;//restore
-  mode = mode_to;
+  if(mode > 3) mode = mode_to;
 }
 
 void tick_clock(struct tm *tick_time, bool stop) {

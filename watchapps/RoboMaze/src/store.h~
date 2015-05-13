@@ -7,3 +7,4 @@
 #define SW_BUTT 2
 #define SW_LAP 3
 #define PROCESS 4
+#define SW_STOP 5

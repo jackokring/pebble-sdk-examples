@@ -19,16 +19,19 @@ static void evaluate();
 static void reset();
 static void delay();
 
+static void null() {};//NULL function
+
 bool pause = false;
-bool gAB = false;
-int32_t score = 0;
-int32_t hiscore = 0;
-int32_t level = 0;
+bool gAB;
+int32_t score;
+int32_t hiscore;
+int32_t level;
 int8_t direction;
 
 static void (*oldstate)() = reset;
 static int countdown;
 static void (*state)() = reset;
+static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay };//end on initial state
 
 static void delay() {
   if((--countdown)==0)
@@ -52,16 +55,20 @@ static void reset() {
 static uint16_t compact[32];
 
 static void account() {
+  //calculate bonus based on level, except when level 0
   
   level++;
+  state = makemaze;
 }
 
 static void makemaze() {
 
+  state = makechar;
 }
 
 static void makechar() {
 
+  state = ready;
 }
 
 static void ready() {
@@ -71,17 +78,20 @@ static void ready() {
 
 static void move() {
 
+  state = respond;
 }
 
 static void respond() {
 
+  state = evaluate;
 }
 
 static void evaluate() {
 
+  state = move;
 }
 
-/* static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, reset, delay };//end on initial state */
+/* MAIN FUNCTIONS - ABOVE IS STATES in fn */
 
 void tick() {
   (*state)();
@@ -103,8 +113,26 @@ void load() {
   pause = true;
   reset();
   blank(0);
-  if(persist_exists(MAP_STORE))
+  if(persist_exists(MAP_STORE)) {
     persist_read_data(MAP_STORE, compact, sizeof(compact));
+    score = persist_read_int(SCORE);
+    hiscore = persist_read_int(HISCORE);
+    level = persist_read_int(LEVEL);
+    direction = persist_read_int(DIRECTION);
+    gAB = persist_read_bool(GAME_AB);
+    if(persist_exists(PROCESS)) {
+      state = fn[persist_read_int(PROCESS)];
+    } else {
+      state = reset;//account for missing states
+    }
+  } else {
+    score = 0;
+    hiscore = 0;
+    level = 0;//incremented later
+    direction = 2;//auto
+    gAB = false;//A
+    state = reset;
+  }
   //draw maze
   for(int i = 0; i < 35; i++)
     for(int j = 0; j < 41; j++) {
@@ -127,11 +155,22 @@ static void savewall(int x, int y) {
 void save() {
   pause = true;//still
   blank(0);
-  for(int i = 3; i <= 35-3; i++)
+  int i;
+  for(i = 3; i <= 35-3; i++)
     for(int j = 8; j <= 32+8; j++) {
       if(i%2 == 1 && j%2 == 1) continue;//main stay
       else if(i%2 == 0 && j%2 == 0) continue;//blank!! An active square not wall
       else if((get_map(maze, i, j, 35)&31) < 16) savewall((i-2)/2, (j-8)/2);
   }
+  for(i = 0; ((unsigned int)i) < sizeof(fn)/sizeof(state); i++)
+    if(state == fn[i]) {
+      persist_write_int(PROCESS, i);
+      break;
+    }
   persist_write_data(MAP_STORE, compact, sizeof(compact));
+  persist_write_int(SCORE, score);
+  persist_write_int(HISCORE, hiscore);
+  persist_write_int(LEVEL, level);
+  persist_write_int(DIRECTION, direction);
+  persist_write_bool(GAME_AB, gAB);
 }

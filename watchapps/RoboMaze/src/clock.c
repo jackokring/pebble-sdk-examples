@@ -147,7 +147,7 @@ static void printint(int x, int pos) {
 
 void show_lvl(int mode_to) {
   button_sec = 0;//restore
-  mode = mode_to;
+  if(mode > 3) mode = mode_to;//show if not watch
 }
 
 void tick_clock(struct tm *tick_time, bool stop) {
