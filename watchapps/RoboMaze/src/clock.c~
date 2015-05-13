@@ -98,7 +98,7 @@ void save_clock() {
 
 static int8_t button_sec = 0;
 static int8_t delays[] = { 0, 0, 2, 3, 4, 4, 4 };//2nd has delay switch to first
-static bool keys[] = { false, false, true, true, false, false, false };
+static bool keys[] = { false, false, true, true, true, false, false };
 
 static void tock(struct tm *tick_time, bool max, bool t4hr) {
     if(max) draw(tick_time->tm_hour/100, 0);
@@ -147,7 +147,7 @@ static void printint(int x, int pos) {
 
 void show_lvl(int mode_to) {
   button_sec = 0;//restore
-  if(mode > 3) mode = mode_to;
+  if(mode > 3) mode = mode_to;//show if not watch
 }
 
 void tick_clock(struct tm *tick_time, bool stop) {
@@ -269,7 +269,9 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
       }
       if(mode==3) {
         click_basik(b, single);//send as per paused
-        tmp = true;//handled
+      }
+      if(mode==4) {
+        click(b, single);
       }
     } else {
       mode = 4;//show score

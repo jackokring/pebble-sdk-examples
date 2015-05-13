@@ -8,3 +8,9 @@
 #define SW_LAP 3
 #define PROCESS 4
 #define SW_STOP 5
+
+#define SCORE 6
+#define HISCORE 7
+#define LEVEL 8
+#define DIRECTION 9
+#define GAME_AB 10

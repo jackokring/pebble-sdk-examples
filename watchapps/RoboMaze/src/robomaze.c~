@@ -1,8 +1,5 @@
 #include "pebble.h"
-
-#define NUM_MENU_SECTIONS 2
-#define NUM_FIRST_MENU_ITEMS 3
-#define NUM_SECOND_MENU_ITEMS 1
+#include "store.h"
 
 static Window *s_menu_window, *s_main_window;
 static SimpleMenuLayer *s_simple_menu_layer;
@@ -270,7 +267,7 @@ static void main_window_load(Window *window) {
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
   for(int i = 0; i < 48; i++) {
-    char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));//aux fill, square, dot
+    char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));
   }
 
   load();

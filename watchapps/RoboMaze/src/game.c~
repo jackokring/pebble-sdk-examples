@@ -16,22 +16,52 @@ static void ready();
 static void move();
 static void respond();
 static void evaluate();
-static void reset();
 static void delay();
+static void xpand();
 
-static void null() {};//NULL function
+static uint16_t compact[32];
+static uint16_t chaf[16];
+
+static void blank(int with) {
+  for(int i = 0; i < 32; i++) compact[i] = with;//fill with nothing
+}
+
+static void blankc(int with) {
+  for(int i = 0; i < 16; i++) chaf[i] = with;//fill with nothing
+}
 
 bool pause = false;
 bool gAB;
 int32_t score;
 int32_t hiscore;
-int32_t level;
+uint32_t level;
 int8_t direction;
 
+static bool success;
 static void (*oldstate)() = reset;
 static int countdown;
 static void (*state)() = reset;
-static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay };//end on initial state
+static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay, xpand };//end on initial state
+
+static void loadchaf(int x, int y) {
+  put_map(maze, 2 * x + 2, 2 * y + 8, 35, (((chaf[x]>>y)&1)==1)?30:31);
+}
+
+static void null(int x, int y) {
+  return;
+}
+
+static void loadwall(int x, int y) {
+  put_map(maze, x + 2, 2 * y + 8 + (~x)%2, 35,(((compact[x]>>y)&1)==1)?0:31);
+}
+
+static void savewall(int x, int y) {
+  compact[x] |= 1<<y;
+}
+
+static void savechaf(int x, int y) {
+  chaf[x] |= 1<<y;
+}
 
 static void delay() {
   if((--countdown)==0)
@@ -52,18 +82,76 @@ static void reset() {
   do_delay(6, account);
 } 
 
-static uint16_t compact[32];
+static void destroywall(int x, int y) {
+  if(rand()%16 != 0) return;
+  compact[x] &= ~(1<<y);
+}
+
+static int8_t dxy[] = { -1, 1, -35, 35 };
+
+static int xygrid(int x, int y) {
+  return x * 2 + 3 + 35 * (y * 2 + 8);
+}
+
+static void activechaf(int x, int y) {//16*16
+  int q = xygrid(x, y);
+  int z = get_map(maze, q, 0, 0)&31;//get grid
+  if(z == 31) {// on blank
+    for(int j = 0; j < 4; j++) 
+      if((get_map(maze, q, dxy[j], 1)&31) >= 16) {
+        if((get_map(maze, q, 2 * dxy[j], 1)&31) == 30) {
+          success = false;
+          put_map(maze, q, 0, 0, 30);//blank spread
+        }
+    }
+  }
+}
+
+static void processmaze(void (*active)(int x, int y), void (*wall)(int x, int y), bool mains) {
+  for(int i = 2; i <= 35 - 2; i++)
+    for(int j = 2 + 6; j <= 35 - 2 + 6; j++) {
+      if(i%2 == 1 && j%2 == 1) {
+        if(mains) put_map(maze, i, j, 35, 0);//main stay
+      } else if(i%2 == 0 && j%2 == 0) active((i-2)/2, (j-8)/2);//blank!! An active square not wall
+      else wall((i-2), (j-8)/2);
+  }
+}
+
+static void drawmaze() {
+  //draw maze
+  for(int i = 1; i <= 1 + 32; i++) {
+    put_map(maze, i, 7, 35, 0);
+    put_map(maze, i, 7 + 32, 35, 0);
+  }
+  for(int i = 7; i <= 7 + 32; i++) {
+    put_map(maze, 1, i, 35, 0);
+    put_map(maze, 1 + 32, i, 35, 0);
+  }
+  processmaze(loadchaf, loadwall, true);
+}
 
 static void account() {
   //calculate bonus based on level, except when level 0
   
   level++;
+  srand(level);//seed level
   state = makemaze;
 }
 
-static void makemaze() {
-
+static void xpand() {
+  success = true;
+  //processmaze(activechaf, destroywall, false);
+  processmaze(null, destroywall, false);
+  if(!success) return;
   state = makechar;
+}
+
+static void makemaze() {
+  blank(-1);//fill maze
+  blankc(0);//no chaf
+  savechaf(0, 0);
+  drawmaze();//single percolation chaf
+  state = xpand;
 }
 
 static void makechar() {
@@ -78,14 +166,17 @@ static void ready() {
 
 static void move() {
 
+  state = respond;
 }
 
 static void respond() {
 
+  state = evaluate;
 }
 
 static void evaluate() {
 
+  state = /* move */ reset;//testing
 }
 
 /* MAIN FUNCTIONS - ABOVE IS STATES in fn */
@@ -95,22 +186,17 @@ void tick() {
 }
 
 void click(ButtonId b, bool single) {
-
-}
-
-static void blank(int with) {
-  for(int i = 0; i < 32; i++) compact[i] = with;//fill with nothing
-}
-
-static int loadwall(int x, int y) {
-  return (((compact[x]>>y)&1)==1)?0:31;
+  if(b == BUTTON_ID_UP) direction--;
+  if(b == BUTTON_ID_DOWN) direction++;
+  if(direction > 4) direction = 4;
+  if(direction < 0) direction = 0;
 }
 
 void load() {
   pause = true;
   reset();
   blank(0);
-  if(persist_exists(MAP_STORE)) {
+  if(persist_exists(CHAF)) {
     persist_read_data(MAP_STORE, compact, sizeof(compact));
     score = persist_read_int(SCORE);
     hiscore = persist_read_int(HISCORE);
@@ -122,6 +208,7 @@ void load() {
     } else {
       state = reset;//account for missing states
     }
+    persist_read_data(CHAF, chaf, sizeof(chaf));
   } else {
     score = 0;
     hiscore = 0;
@@ -130,34 +217,24 @@ void load() {
     gAB = false;//A
     state = reset;
   }
-  //draw maze
   for(int i = 0; i < 35; i++)
-    for(int j = 0; j < 41; j++) {
-      unsigned char x;//null by default
-      if(j < 7 || j == 41-1 || i == 0 || i == 35-1) x = 31;//blank
-      else if(j == 7 || j == 40-1) x = 0;//top or bottom row
-      else if(i%2 == 1 && j%2 == 1) x = 0;//main stay
-      else if(i == 1 || i == 34-1) x = 0;//left or right col
-      else if(i%2 == 0 && j%2 == 0) x = 31;//blank!!
-      else x = loadwall((i-2)/2, (j-8)/2);
-      put_map(maze, i, j, 35, x);//display wall
-  }
+    for(int j = 0; j < 41; j++)
+      put_map(maze, i, j, 35, 31);//clear screen
+  drawmaze();
   pause = false;
-}
-
-static void savewall(int x, int y) {
-  compact[x] |= 1<<y;
 }
 
 void save() {
   pause = true;//still
   blank(0);
   int i;
-  for(i = 3; i <= 35-3; i++)
-    for(int j = 8; j <= 32+8; j++) {
+  for(i = 2; i <= 2 + 32 - 1; i++)
+    for(int j = 8; j <= 8 + 32 - 1; j++) {
       if(i%2 == 1 && j%2 == 1) continue;//main stay
-      else if(i%2 == 0 && j%2 == 0) continue;//blank!! An active square not wall
-      else if((get_map(maze, i, j, 35)&31) < 16) savewall((i-2)/2, (j-8)/2);
+      else if(i%2 == 0 && j%2 == 0) {
+        if((get_map(maze, i, j, 35)&31) == 30) savechaf((i-2)/2, (j-8)/2);
+      }//blank!! An active square not wall
+      else if((get_map(maze, i, j, 35)&31) < 16) savewall((i-2), (j-8)/2);
   }
   for(i = 0; ((unsigned int)i) < sizeof(fn)/sizeof(state); i++)
     if(state == fn[i]) {
@@ -170,4 +247,5 @@ void save() {
   persist_write_int(LEVEL, level);
   persist_write_int(DIRECTION, direction);
   persist_write_bool(GAME_AB, gAB);
+  persist_write_data(CHAF, chaf, sizeof(chaf));
 }

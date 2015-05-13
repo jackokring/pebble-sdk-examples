@@ -267,7 +267,7 @@ static void main_window_load(Window *window) {
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
   for(int i = 0; i < 48; i++) {
-    char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));//aux fill, square, dot
+    char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));
   }
 
   load();

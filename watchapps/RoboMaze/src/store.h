@@ -14,3 +14,4 @@
 #define LEVEL 8
 #define DIRECTION 9
 #define GAME_AB 10
+#define CHAF 11
