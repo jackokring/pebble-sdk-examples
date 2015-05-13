@@ -19,11 +19,11 @@ static void evaluate();
 static void delay();
 static void xpand();
 
-static uint16_t compact[32];
+static uint16_t compact[31];
 static uint16_t chaf[16];
 
 static void blank(int with) {
-  for(int i = 0; i < 32; i++) compact[i] = with;//fill with nothing
+  for(int i = 0; i < 31; i++) compact[i] = with;//fill with nothing
 }
 
 static void blankc(int with) {
@@ -42,6 +42,7 @@ static void (*oldstate)() = reset;
 static int countdown;
 static void (*state)() = reset;
 static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay, xpand };//end on initial state
+static int8_t dxy[] = { -1, 1, -35, 35 };
 
 static void loadchaf(int x, int y) {
   put_map(maze, 2 * x + 2, 2 * y + 8, 35, (((chaf[x]>>y)&1)==1)?30:31);
@@ -52,7 +53,7 @@ static void null(int x, int y) {
 }
 
 static void loadwall(int x, int y) {
-  put_map(maze, x + 2, 2 * y + 8 + (~x)%2, 35,(((compact[x]>>y)&1)==1)?0:31);
+  put_map(maze, x + 2, 2 * y + 8 + (x + 1)%2, 35,(((compact[x]>>y)&1)==1)?0:31);
 }
 
 static void savewall(int x, int y) {
@@ -83,33 +84,38 @@ static void reset() {
 } 
 
 static void destroywall(int x, int y) {
-  if(rand()%16 != 0) return;
+  if(rand()%32 != 0) return;
+  int hv = ((x%2)==0)?0:2;
+  for(int i = hv; i < hv + 2; i++) {
+    int k = 0;
+    for(int j = 0; j < 4; j++) 
+      if((get_map(maze, x + 2 + dxy[i] + dxy[j], 2 * y + 8 + (x + 1)%2, 35)&31) < 16) k++;//wall
+    if(k <= 1) return;//single wall
+  }
   compact[x] &= ~(1<<y);
 }
 
-static int8_t dxy[] = { -1, 1, -35, 35 };
-
 static int xygrid(int x, int y) {
-  return x * 2 + 3 + 35 * (y * 2 + 8);
+  return x * 2 + 2 + 35 * (y * 2 + 8);
 }
 
 static void activechaf(int x, int y) {//16*16
   int q = xygrid(x, y);
   int z = get_map(maze, q, 0, 0)&31;//get grid
   if(z == 31) {// on blank
+    success = false;
     for(int j = 0; j < 4; j++) 
       if((get_map(maze, q, dxy[j], 1)&31) >= 16) {
         if((get_map(maze, q, 2 * dxy[j], 1)&31) == 30) {
-          success = false;
-          put_map(maze, q, 0, 0, 30);//blank spread
+          savechaf(x, y);
         }
     }
   }
 }
 
 static void processmaze(void (*active)(int x, int y), void (*wall)(int x, int y), bool mains) {
-  for(int i = 2; i <= 35 - 2; i++)
-    for(int j = 2 + 6; j <= 35 - 2 + 6; j++) {
+  for(int i = 2; i <= 2 + 30; i++)
+    for(int j = 8; j <= 8 + 30; j++) {
       if(i%2 == 1 && j%2 == 1) {
         if(mains) put_map(maze, i, j, 35, 0);//main stay
       } else if(i%2 == 0 && j%2 == 0) active((i-2)/2, (j-8)/2);//blank!! An active square not wall
@@ -141,7 +147,7 @@ static void account() {
 static void xpand() {
   success = true;
   //processmaze(activechaf, destroywall, false);
-  processmaze(null, destroywall, false);
+  processmaze(activechaf, destroywall, false);
   drawmaze();
   if(!success) return;
   state = makechar;
@@ -229,8 +235,8 @@ void save() {
   pause = true;//still
   blank(0);
   int i;
-  for(i = 2; i <= 2 + 32 - 1; i++)
-    for(int j = 8; j <= 8 + 32 - 1; j++) {
+  for(i = 2; i <= 2 + 30; i++)
+    for(int j = 8; j <= 8 + 30; j++) {
       if(i%2 == 1 && j%2 == 1) continue;//main stay
       else if(i%2 == 0 && j%2 == 0) {
         if((get_map(maze, i, j, 35)&31) == 30) savechaf((i-2)/2, (j-8)/2);
