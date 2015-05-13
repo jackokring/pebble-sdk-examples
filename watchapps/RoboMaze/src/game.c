@@ -1,7 +1,5 @@
 #include "pebble.h"
-
-#define MAP_STORE 0
-#define PROCESS 4
+#include "store.h"
 
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
@@ -93,8 +91,8 @@ void click(ButtonId b, bool single) {
 
 }
 
-static void blank() {
-  for(int i = 0; i < 32; i++) compact[i] = 0;//fill with nothing
+static void blank(int with) {
+  for(int i = 0; i < 32; i++) compact[i] = with;//fill with nothing
 }
 
 static int loadwall(int x, int y) {
@@ -104,7 +102,7 @@ static int loadwall(int x, int y) {
 void load() {
   pause = true;
   reset();
-  blank();
+  blank(0);
   if(persist_exists(MAP_STORE))
     persist_read_data(MAP_STORE, compact, sizeof(compact));
   //draw maze
@@ -128,7 +126,7 @@ static void savewall(int x, int y) {
 
 void save() {
   pause = true;//still
-  blank();
+  blank(0);
   for(int i = 3; i <= 35-3; i++)
     for(int j = 8; j <= 32+8; j++) {
       if(i%2 == 1 && j%2 == 1) continue;//main stay

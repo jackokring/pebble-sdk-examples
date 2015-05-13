@@ -35,7 +35,7 @@ extern void save_clock();
 extern void tick_clock(struct tm *tick_time, bool stop);
 extern bool click_clock(ButtonId b, bool single);
 
-bool pause = false;
+extern bool pause;
 
 int seconds = 0;//EXTERN!!
 

@@ -1,4 +1,5 @@
 #include "pebble.h"
+#include "store.h"
 
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!

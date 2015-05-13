@@ -1,8 +1,5 @@
 #include "pebble.h"
-
-#define NUM_MENU_SECTIONS 2
-#define NUM_FIRST_MENU_ITEMS 3
-#define NUM_SECOND_MENU_ITEMS 1
+#include "store.h"
 
 static Window *s_menu_window, *s_main_window;
 static SimpleMenuLayer *s_simple_menu_layer;

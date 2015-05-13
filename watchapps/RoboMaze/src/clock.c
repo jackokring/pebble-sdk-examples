@@ -1,8 +1,5 @@
 #include "pebble.h"
-
-#define SW_STORE 1
-#define SW_BUTT 2
-#define SW_LAP 3
+#include "store.h"
 
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
@@ -91,8 +88,11 @@ static int16_t sw_butt = 0;
 static struct tm lap, reg;
 
 void save_clock() {
+  time_t now = time(NULL);
+  struct tm *t = localtime(&now);
   persist_write_data(SW_STORE, &reg, sizeof(reg));
-  persist_write_data(SW_STORE, &lap, sizeof(lap));
+  persist_write_data(SW_LAP, &lap, sizeof(lap));
+  persist_write_data(SW_STOP, t, sizeof(reg));
   persist_write_int(SW_BUTT, sw_butt);
 }
 
@@ -208,14 +208,24 @@ void load_clock() {
   time_t now = time(NULL);
   struct tm *t = localtime(&now);
   tick_clock(t, true);
-  if(persist_exists(SW_STORE)) {
-    persist_read_data(SW_STORE, &reg, sizeof(reg));
-    persist_read_data(SW_LAP, &lap, sizeof(lap));
+  if(persist_exists(SW_BUTT)) {
     sw_butt = persist_read_int(SW_BUTT);
+    persist_read_data(SW_STOP, &reg, sizeof(lap));
+    lap.tm_hour = (t->tm_hour - reg.tm_hour) + (t->tm_yday - reg.tm_yday) * 24;//days
+    if(lap.tm_hour < 0) lap.tm_hour += 365 * 24;//happy new year (close enough)
+    lap.tm_min = t->tm_min - reg.tm_min;
+    lap.tm_sec = t->tm_sec - reg.tm_sec;
+    persist_read_data(SW_STORE, &reg, sizeof(reg));
+    if((sw_butt&1)==1) {//add extra running time
+      reg.tm_hour += lap.tm_hour;
+      reg.tm_min += lap.tm_min;
+      reg.tm_sec += lap.tm_sec;
+    }
+    persist_read_data(SW_LAP, &lap, sizeof(lap));
   } else {
     sw_butt = 0;
-    memcpy(&reg, t, sizeof(reg));
-    memcpy(&lap, t, sizeof(reg));
+    memset(&reg, 0, sizeof(reg));
+    memset(&lap, 0, sizeof(lap));
   }
 }
 
