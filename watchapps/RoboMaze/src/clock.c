@@ -124,7 +124,7 @@ static void sw_tick() {
     reg.tm_sec = 0;
     if(++reg.tm_min == 60) {
       reg.tm_min = 0;
-      if(++reg.tm_hour == 999)
+      if(++reg.tm_hour == 960)
         reg.tm_hour = 0;
     }
   }
@@ -211,9 +211,12 @@ void load_clock() {
   tick_clock(t, true);
   if(persist_exists(SW_BUTT)) {
     sw_butt = persist_read_int(SW_BUTT);
-    persist_read_data(SW_STOP, &reg, sizeof(lap));
+    persist_read_data(SW_STOP, &reg, sizeof(reg));
     lap.tm_hour = (t->tm_hour - reg.tm_hour) + (t->tm_yday - reg.tm_yday) * 24;//days
     if(lap.tm_hour < 0) lap.tm_hour += 365 * 24;//happy new year (close enough)
+    if((lap.tm_year%4 == 0) && ((lap.tm_year%100 != 0) || (lap.tm_year%400 == 0)))
+      lap.tm_hour += 24;//leap year day
+    lap.tm_hour %= 960;//40 day timer
     lap.tm_min = t->tm_min - reg.tm_min;
     lap.tm_sec = t->tm_sec - reg.tm_sec;
     persist_read_data(SW_STORE, &reg, sizeof(reg));
