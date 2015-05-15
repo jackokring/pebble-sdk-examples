@@ -77,7 +77,7 @@ static void do_delay(int sec, void (*newstate)()) {
 
 static void reset() {
   score = 0;
-  direction = 3;
+  direction = 2;
   level = 0;
   show_lvl(6);//hiscore
   do_delay(6, account);
