@@ -146,9 +146,10 @@ static void account() {
 
 static void xpand() {
   success = true;
-  for(int i = 0; i < 10; i++) //quick draw
+  for(int i = 0; i < 10; i++) {//quick draw
     processmaze(activechaf, destroywall, false);
-  drawmaze();
+    drawmaze();
+  }
   if(!success) return;
   state = makechar;
 }
