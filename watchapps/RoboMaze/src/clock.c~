@@ -136,7 +136,7 @@ static void printint(int x, int pos) {
     x = -x;
     neg = true;
   }
-  for(int i = pos; i > 0; i--) {
+  for(int i = pos; i >= 0; i--) {
     draw(x%10, i);
     x /= 10;
     if(x == 0) {
@@ -144,6 +144,80 @@ static void printint(int x, int pos) {
       break;//blanks nulls
     }
   }
+}
+
+static void sci(bool neg);
+
+static void printreal(double x, bool ex, int off) {
+  bool neg = false;
+  if(x < 0) {
+    x = -x;
+    neg = true;
+  }
+  if(value == 0.0 || (!neg && x < 0.0001e-99) || (neg && x > -0.001e-99)) {
+    draw_dp(0b10000, 8);
+    draw(0, 7);
+    return;
+  }
+  if(value > 9.9999e+99 || value < -9.999e+99 || value != value) {//NaN test too 
+    draw(15, 7);
+    return;
+  }
+  int mask = ((ex)?100000:100000000);
+  int dp;
+  int z;
+  mask = ((!neg)?mask:(mask/10));
+  if(x >= mask) {//sci
+    sci(neg);
+    return;
+  }
+  int y = (int32_t)x;
+  for(dp = ((ex)?5:8); dp >= 0; dp--) {
+    z = y % ((!neg)?mask:(mask/10));
+    mask /= 10;
+    if(y == z) {//integer range
+      continue;//find dp
+    } else break;
+  }
+  printint(neg?-y:y, (dp) + off);//integer part drawn
+  draw_dp(0b10000, (dp++) + off);
+  //obtain fractional part
+  x -= y;//ok
+  z = 0;//back count
+  int w = 0;//zero count
+  if(y == 0) w++;
+  for(mask = dp + off; mask <= ((ex)?4:7); mask++) {
+    if(x == 0.0) z++;
+    x *= 10;
+    y = (int32_t)x;
+    if(y == 0) w++;
+    draw(y, mask);
+    x -= (double)y;
+  }
+  if(z > 0) {
+    clear();
+    if(w > ((ex)?4:7)) {//sci
+      sci(neg);
+    } else {
+      printreal(value, ex, z);
+    }
+  }
+}
+
+static void sci(bool neg) {
+  double x = value;
+  int ex = 0;
+  while(x > 10) {
+    x /= 10;
+    ex++;
+  }
+  while(x < 1) {
+    x *= 10;
+    ex--;
+  }
+  if(neg) x = -x;
+  printreal(x, true, 0);
+  printint(ex, 7);
 }
 
 void show_lvl(int mode_to) {
@@ -188,7 +262,7 @@ void tick_clock(struct tm *tick_time, bool stop) {
       tock(&reg, true, true);
     }
     break;
-  case 3:
+  case 3: printreal(value, false, 0);
     break;
   case 4: draw_dp(1<<(direction%5), 8);//score
     printint(score, 7);
@@ -215,6 +289,8 @@ void load_clock() {
     lap.tm_hour = (t->tm_hour - reg.tm_hour) + (t->tm_yday - reg.tm_yday) * 24;//days
     if(lap.tm_hour < 0) lap.tm_hour += 365 * 24;//happy new year (close enough)
     if((lap.tm_year%4 == 0) && ((lap.tm_year%100 != 0) || (lap.tm_year%400 == 0)))
+      lap.tm_hour += 24;//leap year day
+    lap.tm_hour %= 960;//40 day timer
     lap.tm_min = t->tm_min - reg.tm_min;
     lap.tm_sec = t->tm_sec - reg.tm_sec;
     persist_read_data(SW_STORE, &reg, sizeof(reg));
