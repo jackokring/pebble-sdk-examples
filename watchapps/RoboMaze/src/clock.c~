@@ -179,8 +179,8 @@ static void printreal(double x, bool ex, int off) {
       continue;//find dp
     } else break;
   }
-  printint(neg?-y:y, (dp) + off);//integer part drawn
-  draw_dp(0b10000, (dp++) + off);
+  printint(neg?-y:y, (++dp) + off);//integer part drawn
+  draw_dp(0b10000, dp + off);
   //obtain fractional part
   x -= y;//ok
   z = 0;//back count

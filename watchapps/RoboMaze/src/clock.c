@@ -290,14 +290,16 @@ void load_clock() {
     if(lap.tm_hour < 0) lap.tm_hour += 365 * 24;//happy new year (close enough)
     if((lap.tm_year%4 == 0) && ((lap.tm_year%100 != 0) || (lap.tm_year%400 == 0)))
       lap.tm_hour += 24;//leap year day
-    lap.tm_hour %= 960;//40 day timer
-    lap.tm_min = t->tm_min - reg.tm_min;
-    lap.tm_sec = t->tm_sec - reg.tm_sec;
+    lap.tm_min = t->tm_min - reg.tm_min + 60;
+    lap.tm_sec = t->tm_sec - reg.tm_sec + 60;
     persist_read_data(SW_STORE, &reg, sizeof(reg));
     if((sw_butt&1)==1) {//add extra running time
       reg.tm_hour += lap.tm_hour;
+      reg.tm_hour %= 960;//40 day timer
       reg.tm_min += lap.tm_min;
+      reg.tm_min %= 60;
       reg.tm_sec += lap.tm_sec;
+      reg.tm_sec %= 60;
     }
     persist_read_data(SW_LAP, &lap, sizeof(lap));
   } else {
