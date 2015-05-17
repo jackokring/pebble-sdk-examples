@@ -287,9 +287,11 @@ void load_clock() {
     sw_butt = persist_read_int(SW_BUTT);
     persist_read_data(SW_STOP, &reg, sizeof(reg));
     lap.tm_hour = (t->tm_hour - reg.tm_hour) + (t->tm_yday - reg.tm_yday) * 24;//days
-    if(lap.tm_hour < 0) lap.tm_hour += 365 * 24;//happy new year (close enough)
-    if((lap.tm_year%4 == 0) && ((lap.tm_year%100 != 0) || (lap.tm_year%400 == 0)))
-      lap.tm_hour += 24;//leap year day
+    if(lap.tm_hour < 0) {
+      lap.tm_hour += 365 * 24;//happy new year (close enough)
+      if((lap.tm_year%4 == 0) && ((lap.tm_year%100 != 0) || (lap.tm_year%400 == 0)))
+        lap.tm_hour += 24;//leap year day
+    }
     lap.tm_min = t->tm_min - reg.tm_min + 60;
     lap.tm_sec = t->tm_sec - reg.tm_sec + 60;
     persist_read_data(SW_STORE, &reg, sizeof(reg));

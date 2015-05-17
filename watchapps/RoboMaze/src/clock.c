@@ -110,7 +110,8 @@ static void tock(struct tm *tick_time, bool max, bool t4hr) {
     } else {
       tmp %= 12;//12 hr
       if(tmp == 0) tmp = 12;
-      draw(tmp/10, 1);
+      if(tmp/10 != 0)
+        draw(1, 1);
       draw(tmp%10, 2);
     }
     draw(tick_time->tm_min/10, 3);
