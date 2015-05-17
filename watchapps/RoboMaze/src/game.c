@@ -42,7 +42,7 @@ static void (*oldstate)() = reset;
 static int countdown;
 static void (*state)() = reset;
 static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay, xpand };//end on initial state
-static int8_t dxy[] = { -1, 1, -35, 35 };
+static int8_t dxy[] = { -35, 1, 35, -1 };//rotary
 
 static void loadchaf(int x, int y) {
   put_map(maze, 2 * x + 2, 2 * y + 8, 35, (((chaf[x]>>y)&1)==1)?30:31);
@@ -85,8 +85,8 @@ static void reset() {
 
 static void destroywall(int x, int y) {
   if(rand()%32 != 0) return;
-  int hv = ((x%2)==0)?0:2;
-  for(int i = hv; i < hv + 2; i++) {
+  int hv = ((x%2)==0)?1:0;
+  for(int i = hv; i <= hv + 2; i+=2) {
     int k = 0;
     for(int j = 0; j < 4; j++) 
       if((get_map(maze, x + 2 + dxy[i] + dxy[j], 2 * y + 8 + (x + 1)%2, 35)&31) < 16) k++;//wall
