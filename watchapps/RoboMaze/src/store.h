@@ -15,3 +15,11 @@
 #define DIRECTION 9
 #define GAME_AB 10
 #define CHAF 11
+
+typedef struct {
+  uint8_t pos;//xy position
+  uint8_t dir;//direction faced, or wanted to move
+  uint8_t dpos;//actual move direction
+  //note that dir is clockwise/anticlockwise, and dpos is xy relative
+  uint8_t is;//a flag to decide type
+} mover;
