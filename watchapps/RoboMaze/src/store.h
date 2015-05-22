@@ -22,4 +22,5 @@ typedef struct {
   uint8_t dpos;//actual move direction
   //note that dir is clockwise/anticlockwise, and dpos is xy relative
   uint8_t is;//a flag to decide type
+  uint8_t mode;//actual movement mode
 } mover;

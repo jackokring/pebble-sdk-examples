@@ -37,19 +37,18 @@ int32_t hiscore;
 uint32_t level;
 int8_t direction;
 
+static mover ting[8];
+
 static bool success;
 static void (*oldstate)() = reset;
 static int countdown;
 static void (*state)() = reset;
 static void (*(fn[]))() = { reset, account, makemaze, makechar, ready, move, respond, evaluate, delay, xpand };//end on initial state
-static int8_t dxy[] = { -1, 1, -35, 35 };
+static int8_t dxy[] = { -35, 1, 35, -1 };//rotary
+static int8_t offset[] = { -16, 1, 16, -1 };//for location update
 
 static void loadchaf(int x, int y) {
   put_map(maze, 2 * x + 2, 2 * y + 8, 35, (((chaf[x]>>y)&1)==1)?30:31);
-}
-
-static void null(int x, int y) {
-  return;
 }
 
 static void loadwall(int x, int y) {
@@ -65,6 +64,7 @@ static void savechaf(int x, int y) {
 }
 
 static void delay() {
+  score += level * 12 * countdown;
   if((--countdown)==0)
     state = oldstate;
 }
@@ -85,8 +85,8 @@ static void reset() {
 
 static void destroywall(int x, int y) {
   if(rand()%32 != 0) return;
-  int hv = ((x%2)==0)?0:2;
-  for(int i = hv; i < hv + 2; i++) {
+  int hv = ((x%2)==0)?1:0;
+  for(int i = hv; i <= hv + 2; i+=2) {
     int k = 0;
     for(int j = 0; j < 4; j++) 
       if((get_map(maze, x + 2 + dxy[i] + dxy[j], 2 * y + 8 + (x + 1)%2, 35)&31) < 16) k++;//wall
@@ -138,7 +138,6 @@ static void drawmaze() {
 
 static void account() {
   //calculate bonus based on level, except when level 0
-  
   level++;
   srand(level);//seed level
   state = makemaze;
@@ -162,29 +161,82 @@ static void makemaze() {
   state = xpand;
 }
 
-static void makechar() {
+static uint8_t orders[4][4] = { { 3, 0, 1, 2 },//0 LURD
+                                { 0, 3, 1, 2 },//1 ULRD
+                                { 0, 1, 3, 2 },//2 URLD
+                                { 1, 0, 3, 2 } };//3 RULD
 
+static uint8_t dir[] = { 0, 1, 1, 2, 3 };//element 2 is auto
+static uint8_t defis[] = { 0, 1, 1, 1, 2, 2, 3, 3 };
+static uint8_t defchar[4][5] = { { 18, 17, 19, 16, 0 },//0 player (directions and anim frames)
+                                { 22, 21, 23, 20, 0 },//1 missile
+                                { 28, 28, 28, 28, 3 },//2 fill dot
+                                { 24, 24, 24, 24, 4 } };//3 boomerang
+static void makechar() {
+  for(uint8_t i = 0; i < sizeof(ting)/sizeof(mover); i++) {
+    ting[i].pos = rand()%256;//on 16 by 16 grid
+    ting[i].dpos = 0;//filled in by motion
+    ting[i].dir = rand()%4;//index into dxy[]
+    ting[i].mode = rand()%4;//index into orders
+    ting[i].is = defis[i];
+  }
   state = ready;
+}
+
+static int xydxy(mover x) {
+  return xygrid(x.pos%16, x.pos/16) + x.dpos;
+}
+
+static void drawchars() {
+  drawmaze();//before chars overlay
+  for(uint8_t i = 0; i < sizeof(ting)/sizeof(mover); i++) {
+    int q = xydxy(ting[i]);
+    put_map(maze, q, 0, 0, defchar[ting[i].is][ting[i].dir] + seconds%defchar[ting[i].is][4]);//anim
+  }
 }
 
 static void ready() {
   show_lvl(5);//show level
+  drawchars();
   do_delay(6, move);
 }
 
 static void move() {
-
   state = respond;
+  for(uint8_t i = 0; i < sizeof(ting)/sizeof(mover); i++) {
+    if(ting[i].is == 0) ting[i].mode = dir[direction];
+    for(uint8_t j = 0; j < 4; j++) {
+      ting[i].dpos = dxy[(ting[i].dir + orders[ting[i].mode][j])%4];
+      int q = get_map(maze, xydxy(ting[i]), 0, 0);//what is at the intended location?
+      if((q & 31) < 16) continue;//wall so no go
+      ting[i].dir = (ting[i].dir + orders[ting[i].mode][j])%4;
+      break;//good direction
+    }
+  }
+  drawchars();
 }
 
-static void respond() {
+void save();
 
-  state = evaluate;
+static void respond() {
+  state = move;
+  for(uint8_t i = 0; i < sizeof(ting)/sizeof(mover); i++) {
+    ting[i].dpos *= 2;
+    int q = get_map(maze, xydxy(ting[i]), 0, 0);//what is at the intended location?
+    if((q & 31) == 30 && ting[i].is == 0) {
+      put_map(maze, xydxy(ting[i]), 0, 0, 31);
+      score++;
+      save();
+      int x = 0;
+      for(uint8_t k = 0; k < 16; k++) x += chaf[k];
+      if(x != 0) state = evaluate;
+    }
+    ting[i].pos += offset[ting[i].dir];
+  }
 }
 
 static void evaluate() {
-
-  state = /* move */ reset;//testing
+  do_delay(level / 4 + 1, account);
 }
 
 /* MAIN FUNCTIONS - ABOVE IS STATES in fn */
