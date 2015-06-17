@@ -2,6 +2,77 @@
 
 #define WORKER_TICKS 0
 
+//test functions
+
+static bool Rev0StrictShort() {
+  return false;
+}
+
+static bool For1StrictLong() {
+  return false;
+}
+
+static bool Rev1StrictLong() {
+  return false;
+}
+
+static bool For0StrictShort() {
+  return false;
+}
+
+//code functions
+
+static void RevTravel0() {
+
+}
+
+static void ForTravel0() {
+
+}
+
+static void RevTravel1() {
+
+}
+
+static void ForTravel1() {
+
+}
+
+//data functions
+
+static bool absorb() {
+  return false;
+}
+
+static void emit(bool val) {
+
+}
+
+static void decompress() {
+    if(Rev0StrictShort()) { 
+        RevTravel0();
+        if(For1StrictLong()) { emit(false); ForTravel0(); return; }
+        ForTravel0();
+        if(Rev1StrictLong()) { 
+            RevTravel1();
+            if(!For0StrictShort()) { emit(true); return; }
+            else { ForTravel1(); RevTravel0(); return; }
+        }
+    } else { RevTravel0(); return; }
+}
+
+static void compress() {
+    if(For1StrictLong()) { 
+        if(For0StrictShort()) {
+            if(absorb()) { ForTravel1(); return;}
+            else { ForTravel0(); return; }
+        } else {
+            ForTravel1(); return;
+        }
+    } else { ForTravel0(); return; }
+}   
+
+
 static uint16_t s_ticks = 0;
 
 static void tick_handler(struct tm *tick_timer, TimeUnits units_changed) {
