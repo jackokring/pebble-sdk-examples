@@ -2,40 +2,62 @@
 
 #define WORKER_TICKS 0
 
-//test functions
+//travel functions
 
-static bool Rev0StrictShort() {
-  return false;
+static void RevTravel(bool val) {
+
 }
 
-static bool For1StrictLong() {
-  return false;
-}
+static void ForTravel(bool val) {
 
-static bool Rev1StrictLong() {
-  return false;
-}
-
-static bool For0StrictShort() {
-  return false;
 }
 
 //code functions
 
 static void RevTravel0() {
-
+  RevTravel(false);
 }
 
 static void ForTravel0() {
-
+  ForTravel(false);
 }
 
 static void RevTravel1() {
-
+  RevTravel(true);
 }
 
 static void ForTravel1() {
+  ForTravel(true);
+}
 
+//test functions
+
+static bool Rev0StrictShort() {
+  RevTravel0();
+  //test??
+  ForTravel0();
+  return false;
+}
+
+static bool For1StrictLong() {
+  ForTravel1();
+  //test??
+  RevTravel1();
+  return false;
+}
+
+static bool Rev1StrictLong() {
+  RevTravel1();
+  //test??
+  ForTravel1();
+  return false;
+}
+
+static bool For0StrictShort() {
+  ForTravel0();
+  //test??
+  RevTravel0();
+  return false;
 }
 
 //data functions
