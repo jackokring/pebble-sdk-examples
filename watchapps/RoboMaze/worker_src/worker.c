@@ -12,6 +12,10 @@ static void ForTravel(bool val) {
 
 }
 
+static bool stateLong() {
+  return false;
+}
+
 //code functions
 
 static void RevTravel0() {
@@ -40,8 +44,8 @@ static bool Rev0StrictShort() {
 }
 
 static bool For1StrictLong() {
-  ForTravel1();
   //test??
+  ForTravel1();
   RevTravel1();
   return false;
 }
@@ -54,8 +58,8 @@ static bool Rev1StrictLong() {
 }
 
 static bool For0StrictShort() {
-  ForTravel0();
   //test??
+  ForTravel0();
   RevTravel0();
   return false;
 }
