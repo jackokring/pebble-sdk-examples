@@ -790,26 +790,43 @@ Discarded input sections
                 0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
  .text.gbitmap_get_palette
                 0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_set_bounds
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_set_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_set_palette
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_create_with_resource
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_get_bitmap_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_get_current_frame_idx
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_get_total_num_frames
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_sequence_update_bitmap_next_frame
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
- .text.gbitmap_create_from_png_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
+ ..26.o
+ .comment       0x00000000       0x4f aplite/appinfo.auto.c.26.o
+ .comment       0x00000000       0x4f /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
+
+.debug_info     0x00000000      0x62f
+ .debug_info    0x00000000      0x31b worker_src/worker.c.26.o
+ .debug_info    0x0000031b      0x314 aplite/appinfo.auto.c.26.o
+
+.debug_abbrev   0x00000000      0x214
+ .debug_abbrev  0x00000000      0x176 worker_src/worker.c.26.o
+ .debug_abbrev  0x00000176       0x9e aplite/appinfo.auto.c.26.o
+
+.debug_loc      0x00000000       0x82
+ .debug_loc     0x00000000       0x82 worker_src/worker.c.26.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x28 worker_src/worker.c.26.o
+ .debug_aranges
+                0x00000028       0x18 aplite/appinfo.auto.c.26.o
+
+.debug_ranges   0x00000000       0x30
+ .debug_ranges  0x00000000       0x30 worker_src/worker.c.26.o
+
+.debug_line     0x00000000      0x26a
+ .debug_line    0x00000000      0x143 worker_src/worker.c.26.o
+ .debug_line    0x00000143      0x127 aplite/appinfo.auto.c.26.o
+
+.debug_str      0x00000000      0x432
+ .debug_str     0x00000000      0x25b worker_src/worker.c.26.o
+                                0x294 (size before relaxing)
+ .debug_str     0x0000025b      0x1d7 aplite/appinfo.auto.c.26.o
+                                0x2c5 (size before relaxing)
+
+.debug_frame    0x00000000       0x44
+ .debug_frame   0x00000000       0x44 worker_src/worker.c.26.o
+ble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
  .text.animation_clone
                 0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmpZh9nU7pebble.o)
  .text.animation_get_delay

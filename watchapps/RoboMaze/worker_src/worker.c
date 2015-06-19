@@ -2,6 +2,31 @@
 
 #define WORKER_TICKS 0
 
+//PRBS
+
+/* (a^b)%m */
+static int powmod(int a, int b, int m) {
+  int x = 1, y = a;
+  while(b > 0) {
+    if(b%2 == 1) {
+      x = (x*y);
+      if(x > m) x %= m;
+    }
+    y = (y*y);
+    if(y > m) y %= m;
+    b /= 2;
+  }
+  return x;
+}
+
+static int phi(int m) {
+  return m - 1;//prime
+}
+ 
+static int inverse(int a, int m) {
+  return powmod(a, phi(m) - 1, m);
+}
+
 //travel functions
 
 static void RevTravel(bool val) {
