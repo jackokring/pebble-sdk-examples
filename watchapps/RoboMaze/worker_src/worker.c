@@ -36,32 +36,42 @@ static void ForTravel1() {
 
 //test functions
 
+static bool For0StrictShort() {
+  //test??
+  bool x = !stateLong();
+  ForTravel0();
+  RevTravel1();
+  x &= stateLong();//strict short
+  ForTravel1();
+  RevTravel0();//back at start
+  return x;
+}
+
 static bool Rev0StrictShort() {
   RevTravel0();
   //test??
+  bool x = For0StrictShort();
   ForTravel0();
-  return false;
+  return x;
 }
 
 static bool For1StrictLong() {
   //test??
+  bool x = stateLong();
   ForTravel1();
-  RevTravel1();
-  return false;
+  RevTravel0();
+  x &= !stateLong();//strict long
+  ForTravel0();
+  RevTravel1();//back at start
+  return x;
 }
 
 static bool Rev1StrictLong() {
   RevTravel1();
   //test??
+  bool x = For1StrictLong();
   ForTravel1();
-  return false;
-}
-
-static bool For0StrictShort() {
-  //test??
-  ForTravel0();
-  RevTravel0();
-  return false;
+  return x;
 }
 
 //data functions
