@@ -4,6 +4,11 @@
 
 //PRBS
 
+//LCG conditions for maximal length
+//c and m are relatively prime,
+//a - 1 is divisible by all prime factors of m
+//a - 1 is a multiple of 4 if m is a multiple of 4.
+
 /* (a^b)%m */
 static int powmod(int a, int b, int m) {
   int x = 1, y = a;
@@ -20,7 +25,20 @@ static int powmod(int a, int b, int m) {
 }
 
 static int phi(int m) {
-  return m - 1;//prime
+  int p = 1;
+  int f = 2;
+  int lf = 1;//last factor
+  while(f < 65536) {
+    if(m%f == 0) {
+      m /= f;
+      if(lf == f) p *= f; else p *= (f-1);
+      lf = f;
+    } else {
+      f += 1;//slow, but correct
+    }
+    if(m == 1) break; 
+  }
+  return p;
 }
  
 static int inverse(int a, int m) {
@@ -29,16 +47,40 @@ static int inverse(int a, int m) {
 
 //travel functions
 
-static void RevTravel(bool val) {
+static int seed = 7;
+static int b[] = { 411, 713 };
+static int i[2];
+static int mod = 234567;
+static bool done = false;
 
+static void RevTravel(bool val) {
+  if(!done) {
+    i[0] = inverse(b[0], mod);
+    i[1] = inverse(b[1], mod);
+    done = true;//don't do more than once!
+  }
+  int a = i[0];
+  int c = b[1];
+  if(val) {
+    a = i[1];
+    c = b[0];
+  }
+  seed = powmod(a * (seed - c), 1, mod);
 }
 
 static void ForTravel(bool val) {
-
+  int a = b[0];
+  int c = b[1];
+  if(val) {
+    int t = a;
+    a = c;
+    c = t;
+  }
+  seed = powmod(a * seed + c, 1, mod);
 }
 
 static bool stateLong() {
-  return false;
+  return (seed & 4) == 0;//any bit except LSB?
 }
 
 //code functions
