@@ -2,12 +2,33 @@
 
 #define WORKER_TICKS 0
 
-//PRBS
+//==========================================================================
+//K CODEC PACKING ALGORITHM (C) K RING TECHNOLOGIES, SIMON P. JACKSON, BENG.
+//==========================================================================
 
-//LCG conditions for maximal length
-//c and m are relatively prime,
-//a - 1 is divisible by all prime factors of m
-//a - 1 is a multiple of 4 if m is a multiple of 4.
+//The K codec is an interesting algorithm for data compression. A reversable
+//LCG PRBS goes through a sequence, and has branch points in the sequence as
+//data is modulating the stream. The nature of any branch point, and unique
+//reverse detection, requires that a choice of which branch to follow is 
+//decided mostly without user data choice. Ocassionally, it however does
+//allow the opertunity for a bit decision to be placed (via what I term
+//modulation) in the stream of branches, at no storage cost.
+
+//Quite a lot of branches have to be sorted though to find what is refered
+//to as a "strictly long" branch (where the decode is certain). This branch
+//has the amazing property of unique decode, as the alternate paths of
+//modulation will NEVER be confused in decode.
+
+//"To make a rare event rarer still increases its self information. The rare
+//event being detectable with a know statistical probability, can store more
+//information by virtue of a deviation from this known probability. The
+//deviation can be measured and the non modulated statistic restored, for
+//further detection."
+
+//The code is not that efficient, and has a bias for backup, not restore speed.
+//=============================================================================
+
+//PRBS
 
 /* (a^b)%m */
 static int powmod(int a, int b, int m) {
@@ -38,6 +59,7 @@ static int phi(int m) {
     }
     if(m == 1) break; 
   }
+  if(m != 1) p *= (m - 1);//remaining prime
   return p;
 }
  
@@ -45,9 +67,12 @@ static int inverse(int a, int m) {
   return powmod(a, phi(m) - 1, m);
 }
 
-//travel functions
+//sequence travel functions
 
+//the SEED contains the compressed information statistic
 static int seed = 7;
+
+//these four are the sequencing control numbers, constants (sort of)
 static int b[] = { 411, 713 };
 static int i[2];
 static int mod = 234567;
@@ -83,7 +108,7 @@ static bool stateLong() {
   return (seed & 4) == 0;//any bit except LSB?
 }
 
-//code functions
+//branch coding functions
 
 static void RevTravel0() {
   RevTravel(false);
@@ -101,7 +126,7 @@ static void ForTravel1() {
   ForTravel(true);
 }
 
-//test functions
+//strictly long test functions
 
 static bool For0StrictShort() {
   //test??
@@ -141,17 +166,27 @@ static bool Rev1StrictLong() {
   return x;
 }
 
-//data functions
+//user data provider functions
+
+static int buffer;
+static int cnt;
 
 static bool absorb() {
-  return false;
+  cnt--;
+  bool t = (buffer & 1) == 1;
+  buffer >>= 1;
+  return t;
 }
 
 static void emit(bool val) {
-
+  cnt--;
+  buffer <<= 1;
+  buffer |= val?1:0;
 }
 
-static void decompress() {
+//state machine progression functions
+
+static void decompressOne() {
     if(Rev0StrictShort()) { 
         RevTravel0();
         if(For1StrictLong()) { emit(false); ForTravel0(); return; }
@@ -164,7 +199,7 @@ static void decompress() {
     } else { RevTravel0(); return; }
 }
 
-static void compress() {
+static void compressOne() {
     if(For1StrictLong()) { 
         if(For0StrictShort()) {
             if(absorb()) { ForTravel1(); return;}
@@ -175,6 +210,27 @@ static void compress() {
     } else { ForTravel0(); return; }
 }   
 
+//blat - do an int!
+
+static void compress(int x) {
+  buffer = x;
+  cnt = 32;
+  while(cnt > 0) {
+    compressOne();
+  }
+}
+
+static int decompress() {
+  cnt = 32;
+  while(cnt > 0) {
+    decompressOne();
+  }
+  return buffer;
+}
+
+//===================================================
+//END of packing algorithm (<700 bytes ARM in Pebble)
+//===================================================
 
 static uint16_t s_ticks = 0;
 
@@ -194,6 +250,9 @@ static void tick_handler(struct tm *tick_timer, TimeUnits units_changed) {
 static void worker_init() {
   // Use the TickTimer Service as a data source
   tick_timer_service_subscribe(SECOND_UNIT, tick_handler);
+  //burp -- link in (for code size test)
+  decompress();
+  compress(0);
 }
 
 static void worker_deinit() {
