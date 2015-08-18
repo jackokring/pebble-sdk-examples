@@ -12,14 +12,17 @@ function decimal(coord, letterP, letterM) {
 	coord = Math.abs(coord);
 	var degree = Math.floor(coord);
 	var minute = Math.floor((coord - degree)*10000);
-	return letter+" "+degree.toString()+"."+minute.toString();
+	var d = "0000" + minute.toString();
+	return letter+" "+degree.toString()+"."+d.substring(d.length - 4);//leading zero hack
 }
 
-function work(latitude, longitude) {
+function work(latitude, longitude, alt, vel) {
 	var long = sexyguessimal(longitude, "E", "W");
 	var lat = sexyguessimal(latitude, "N", "S");
 	console.log("       "+long+"    "+lat);
         Pebble.sendAppMessage({
+	  "NM":, Math.floor(vel).toString() + " m/s",
+	  "ALT": Math.floor(alt).toString() + " m",
           "DLONG": decimal(longitude, "E", "W"),
           "DLAT": decimal(latitude, "N", "S"),
           "LONG": long,
@@ -39,12 +42,14 @@ function work(latitude, longitude) {
 function locationSuccess(pos) {
   console.log('location ok');
   var coordinates = pos.coords;
-  work(coordinates.latitude, coordinates.longitude);
+  work(coordinates.latitude, coordinates.longitude, coordinates.altitude, coordinates.velocity);
 }
 
 function locationError(err) {
   console.warn('location error (' + err.code + '): ' + err.message);
   Pebble.sendAppMessage({
+    "NM":" Loc Unavail ",
+    "ALT":" Loc Unavail ",
     "DLONG":" Loc Unavail ",
     "DLAT":" Loc Unavail ",
     "LONG":" Loc Unavail ",

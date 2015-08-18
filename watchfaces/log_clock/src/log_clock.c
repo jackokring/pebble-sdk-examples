@@ -82,6 +82,11 @@ static char s_long_text[] = " GPS Connect ";//13 per line
 static char s_lat_text[] = " GPS Connect ";//13 per line
 static char s_long_text2[] = " GPS Connect ";//13 per line
 static char s_lat_text2[] = " GPS Connect ";//13 per line
+static char s_long_text3[] = " GPS Connect ";//13 per line
+static char s_lat_text3[] = " GPS Connect ";//13 per line
+static char * (longlat[6]) = {	s_long_text, s_lat_text,
+				s_long_text2, s_lat_text2,
+				s_long_text3, s_lat_text3};
 static char vals[][2] = {"+", "-"};
 
 #define PI 3.141592658
@@ -152,6 +157,8 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
         snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
 	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
         snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", def_text);
+	snprintf(s_long_text3, sizeof(s_long_text3), "%s", def_text);
+        snprintf(s_lat_text3, sizeof(s_lat_text3), "%s", def_text);
     } else {
 	if(++connected > 360) {
 		connected = 360;
@@ -159,15 +166,12 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
 	}
     }
 
-    char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
-    if((tick_time->tm_sec & 8)==0) {
-    	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
-    }
-
-    text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/E
+    text_layer_set_text(s_0_layer, longlat[tick_time->tm_sec % 6]);//gps co-ordinates? alternating N/E
     text_layer_set_text(s_2_layer, s_2_text);//in and bat
 }
 
+#define NM 5
+#define ALT 4
 #define DLAT 3
 #define DLONG 2
 #define LAT 1
@@ -204,6 +208,12 @@ static void received_callback(DictionaryIterator *iterator, void *context) {
         break;
       case DLONG:
         memcpy(s_long_text2, (char *)t->value->cstring, sizeof(s_long_text2));
+        break;
+      case NM:
+	memcpy(s_lat_text3, (char *)t->value->cstring, sizeof(s_lat_text3));
+        break;
+      case ALT:
+        memcpy(s_long_text3, (char *)t->value->cstring, sizeof(s_long_text3));
         break;
     }
 
