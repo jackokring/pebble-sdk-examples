@@ -21,7 +21,7 @@ function work(latitude, longitude, alt, vel) {
 	var lat = sexyguessimal(latitude, "N", "S");
 	console.log("       "+long+"    "+lat);
         Pebble.sendAppMessage({
-	  "NM":, Math.floor(vel).toString() + " m/s",
+	  "NM": Math.floor(vel).toString() + " m/s",
 	  "ALT": Math.floor(alt).toString() + " m",
           "DLONG": decimal(longitude, "E", "W"),
           "DLAT": decimal(latitude, "N", "S"),
@@ -42,7 +42,7 @@ function work(latitude, longitude, alt, vel) {
 function locationSuccess(pos) {
   console.log('location ok');
   var coordinates = pos.coords;
-  work(coordinates.latitude, coordinates.longitude, coordinates.altitude, coordinates.velocity);
+  work(coordinates.latitude, coordinates.longitude, coordinates.altitude, coordinates.speed);
 }
 
 function locationError(err) {
