@@ -1,0 +1,22 @@
+{
+  "uuid": "7120f8e0-eac1-4e41-a2f3-94f0e2c2c2a7",
+  "shortName": "Calculon",
+  "longName": "A Scientific Calculator",
+  "companyName": "K Ring Technologies",
+  "versionCode": 1,
+  "versionLabel": "0.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  },
+  "targetPlatforms": [
+    "aplite",
+    "basalt"
+  ],
+  "sdkVersion": "3"
+}
