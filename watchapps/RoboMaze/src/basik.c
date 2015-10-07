@@ -8,7 +8,7 @@ extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern bool pause;
 
-double value = 0;
+double value = 0;//output value
 
 void load_basik() {
 

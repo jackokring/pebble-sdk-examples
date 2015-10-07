@@ -1,16 +1,9 @@
 #include "pebble.h"
 #include "store.h"
 
-static Window *s_menu_window, *s_main_window;
-static SimpleMenuLayer *s_simple_menu_layer;
-static SimpleMenuSection s_menu_sections[NUM_MENU_SECTIONS];
-static SimpleMenuItem s_first_menu_items[NUM_FIRST_MENU_ITEMS];
-static SimpleMenuItem s_second_menu_items[NUM_SECOND_MENU_ITEMS];
+static Window *s_main_window;
 static GBitmap *s_menu_icon_image;
 static GBitmap *map;
-
-static bool s_special_flag = false;
-static int s_hit_count = 0;
 
 unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
 unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size -- EXTERN!!
@@ -113,10 +106,6 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
   }
 }
 
-void show_menu() {
-  window_stack_push(s_menu_window, true);
-}
-
 void mark_dirty() {
   layer_mark_dirty(layer);
 }
@@ -129,82 +118,6 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   mark_dirty();
 }
 
-static void menu_select_callback(int index, void *ctx) {
-  s_first_menu_items[index].subtitle = "You've hit select here!";
-  layer_mark_dirty(simple_menu_layer_get_layer(s_simple_menu_layer));
-}
-
-static void special_select_callback(int index, void *ctx) {
-  // Of course, you can do more complicated things in a menu item select callback
-  // Here, we have a simple toggle
-  s_special_flag = !s_special_flag;
-
-  SimpleMenuItem *menu_item = &s_second_menu_items[index];
-
-  if (s_special_flag) {
-    menu_item->subtitle = "Okay, it's not so special.";
-  } else {
-    menu_item->subtitle = "Well, maybe a little.";
-  }
-
-  if (++s_hit_count > 5) {
-    menu_item->title = "Very Special Item";
-  }
-
-  layer_mark_dirty(simple_menu_layer_get_layer(s_simple_menu_layer));
-}
-
-static void menu_window_load(Window *window) {
-  s_menu_icon_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_MENU_ICON);
-
-  // Although we already defined NUM_FIRST_MENU_ITEMS, you can define
-  // an int as such to easily change the order of menu items later
-  int num_a_items = 0;
-
-  s_first_menu_items[num_a_items++] = (SimpleMenuItem) {
-    .title = "First Item",
-    .callback = menu_select_callback,
-  };
-  s_first_menu_items[num_a_items++] = (SimpleMenuItem) {
-    .title = "Second Item",
-    .subtitle = "Here's a subtitle",
-    .callback = menu_select_callback,
-  };
-  s_first_menu_items[num_a_items++] = (SimpleMenuItem) {
-    .title = "Third Item",
-    .subtitle = "This has an icon",
-    .callback = menu_select_callback,
-    .icon = s_menu_icon_image,
-  };
-
-  s_second_menu_items[0] = (SimpleMenuItem) {
-    .title = "Special Item",
-    .callback = special_select_callback,
-  };
-
-  s_menu_sections[0] = (SimpleMenuSection) {
-    .num_items = NUM_FIRST_MENU_ITEMS,
-    .items = s_first_menu_items,
-  };
-  s_menu_sections[1] = (SimpleMenuSection) {
-    .title = "Yet Another Section",
-    .num_items = NUM_SECOND_MENU_ITEMS,
-    .items = s_second_menu_items,
-  };
-
-  Layer *window_layer = window_get_root_layer(window);
-  GRect bounds = layer_get_frame(window_layer);
-
-  s_simple_menu_layer = simple_menu_layer_create(bounds, window, s_menu_sections, NUM_MENU_SECTIONS, NULL);
-
-  layer_add_child(window_layer, simple_menu_layer_get_layer(s_simple_menu_layer));
-}
-
-static void menu_window_unload(Window *window) {
-  simple_menu_layer_destroy(s_simple_menu_layer);
-  gbitmap_destroy(s_menu_icon_image);
-}
-
 static void clicks(ClickRecognizerRef recognizer, bool single) {
   ButtonId b = click_recognizer_get_button_id(recognizer);
   if(b == BUTTON_ID_BACK && pause) {
@@ -214,12 +127,8 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
   if(b == BUTTON_ID_SELECT) {
     if(!pause) {
       pause = true;
-      if(!single) show_menu();
       return;
-    } else {
-      show_menu();
-      return;//hadle menu selections
-    }
+    } 
   }
   if(!click_clock(b, single)) {
     if(pause) click_basik(b, single);
@@ -303,18 +212,12 @@ static void init() {
     .load = main_window_load,
     .unload = main_window_unload,
   });
-  s_menu_window = window_create();
-  window_set_window_handlers(s_menu_window, (WindowHandlers) {
-    .load = menu_window_load,
-    .unload = menu_window_unload,
-  });
 
   tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
   window_stack_push(s_main_window, true);
 }
 
 static void deinit() {
-  window_destroy(s_menu_window);
   window_destroy(s_main_window);
 }
 
