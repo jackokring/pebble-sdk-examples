@@ -1,3 +1,10 @@
+//===============================================================================
+// THE GAME CODE
+//===============================================================================
+
+// Edit this to change the game. Remember a lot of the processing is abstracted
+// such as the score is auto displayed from the variable score, and such.
+
 #include "pebble.h"
 #include "store.h"
 

@@ -1,3 +1,9 @@
+//=================================================================================
+// MAIN DEFINES AND INCLUDES
+//=================================================================================
+
+// Put your common numbers here.
+
 #define NUM_MENU_SECTIONS 2
 #define NUM_FIRST_MENU_ITEMS 3
 #define NUM_SECOND_MENU_ITEMS 1
