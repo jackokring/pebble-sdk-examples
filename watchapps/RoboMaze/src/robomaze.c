@@ -127,11 +127,13 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
   ButtonId b = click_recognizer_get_button_id(recognizer);
   if(b == BUTTON_ID_BACK && pause) {
     pause = false;
+    mark_dirty();
     return;
   }
   if(b == BUTTON_ID_SELECT && single) {
     if(!pause) {
       pause = true;
+      mark_dirty();
       return;
     } 
   }

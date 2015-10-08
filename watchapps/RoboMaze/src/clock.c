@@ -335,8 +335,6 @@ static bool clickback = false;
 bool click_clock(ButtonId b, bool single) {//never gets select button
   button_sec = 0;//restore
   bool tmp = keys[mode];
-  time_t now = time(NULL);
-  struct tm *t = localtime(&now);
   if(b == BUTTON_ID_BACK) {
     if(!clickback) {
       mode++;
@@ -380,6 +378,5 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
       tmp = true;//handled
     }
   }
-  tick_clock(t, true);
   return tmp;//handled?
 }
