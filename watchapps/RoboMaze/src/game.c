@@ -157,7 +157,8 @@ static void xpand() {
     drawmaze();
   }
   if(!success) return;
-  state = makechar;
+  //state = makechar; ?????????  <--- no characters yet
+  state = account;
 }
 
 static void makemaze() {
@@ -179,6 +180,7 @@ static uint8_t defchar[4][5] = { { 18, 17, 19, 16, 0 },//0 player (directions an
                                 { 22, 21, 23, 20, 0 },//1 missile
                                 { 28, 28, 28, 28, 3 },//2 fill dot
                                 { 24, 24, 24, 24, 4 } };//3 boomerang
+
 static void makechar() {
   for(uint8_t i = 0; i < sizeof(ting)/sizeof(mover); i++) {
     ting[i].pos = rand()%256;//on 16 by 16 grid

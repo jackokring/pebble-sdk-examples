@@ -26,16 +26,24 @@ static double tenth = 0.1;
 static double tententh = 0.0000000001;
 static bool expo = false;
 
+typedef struct {
+  double x;
+} loader;
+
+static loader xx;
+
 void load_basik() {
   if(persist_exists(BAS_VAL)) {
-  	persist_read_data(BAS_VAL, &value, sizeof(double));
+  	persist_read_data(BAS_VAL, &xx, sizeof(xx));
+	value = xx.x;
 	expo = persist_read_bool(BAS_EXPO);
 	hold = persist_read_bool(BAS_HOLD);
   }
 }
 
 void save_basik() {
-  persist_write_data(BAS_VAL, &value, sizeof(double));
+  xx.x = value;
+  persist_write_data(BAS_VAL, &xx, sizeof(xx));
   persist_write_bool(BAS_EXPO, expo);
   persist_write_bool(BAS_HOLD, hold);
 }
