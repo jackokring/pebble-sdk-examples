@@ -8,7 +8,6 @@
 #include "store.h"
 
 static Window *s_main_window;
-static GBitmap *s_menu_icon_image;
 static GBitmap *map;
 
 unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
@@ -130,7 +129,7 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
     pause = false;
     return;
   }
-  if(b == BUTTON_ID_SELECT) {
+  if(b == BUTTON_ID_SELECT && single) {
     if(!pause) {
       pause = true;
       return;

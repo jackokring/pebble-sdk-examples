@@ -23,6 +23,7 @@
 #define CHAF 11
 
 #define BAS_VAL 16
+#define BAS_EXPO 17
 
 typedef struct {
   uint8_t pos;//xy position

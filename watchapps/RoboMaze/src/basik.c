@@ -16,15 +16,26 @@ extern bool pause;
 extern unsigned char mode;
 
 double value = 0;//output value
+bool error = false;
+static bool hold = false;
+
+static double one = 1.0;
+static double ten = 10.0;
+static double tenten = 10000000000.0;
+static double tenth = 0.1;
+static double tententh = 0.0000000001;
+static bool expo = false;
 
 void load_basik() {
   if(persist_exists(BAS_VAL)) {
   	persist_read_data(BAS_VAL, &value, sizeof(double));
+	expo = persist_read_bool(BAS_EXPO);
   }
 }
 
 void save_basik() {
   persist_write_data(BAS_VAL, &value, sizeof(double));
+  persist_write_bool(BAS_EXPO, expo);
 }
 
 void tick_basik() {
@@ -35,6 +46,44 @@ void click_basik(ButtonId b, bool single) {
 
 }
 
-void click_value(ButtonId b, bool single) {
+static void ac() {
+  hold = false;
+  value = 0.0;
+  expo = false;
+}
 
+void click_value(ButtonId b, bool single) {
+  if(hold && error && !single) {
+	ac();
+  }
+  if(error) {
+	hold = true;
+	return;
+  }
+  if(hold && !error) {
+	hold = false;
+	value = 0.0;
+	expo = false;
+  }
+  if(b == BUTTON_ID_SELECT) {
+	expo = !expo;
+	return;//exponent
+  }
+  if(expo) {
+	if(b == BUTTON_ID_UP) {
+		if(single) value = value * ten;
+		else value = value * tenten;// ^ 10
+	} else {
+		if(single) value = value * tenth;
+		else value = value * tententh;// rt(10)
+	}
+  } else {// edit the value on sreen
+	if(b == BUTTON_ID_UP) {
+		if(single) value = value * tenth;
+		else value = value * ten;
+	} else {
+		if(single) value = value - one;
+		else value = value * tenth;
+	}
+  }
 }

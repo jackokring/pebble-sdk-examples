@@ -21,6 +21,7 @@ extern void click_basik(ButtonId b, bool single);
 extern void click_value(ButtonId b, bool single);
 extern void click(ButtonId b, bool single);
 extern bool gAB;
+extern bool error;
 
 static unsigned char dp = 0;//dp col
 unsigned char mode = 0;//clock,date,stopwatch,value,score
@@ -168,6 +169,7 @@ static void printreal(double x, bool ex, int off) {
     return;
   }
   if(value > 9.9999e+99 || value < -9.999e+99 || value != value) {//NaN test too 
+    error = true;
     draw(15, 7);
     return;
   }
