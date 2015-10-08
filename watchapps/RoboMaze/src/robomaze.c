@@ -31,6 +31,7 @@ extern void tick_clock(struct tm *tick_time, bool stop);
 extern bool click_clock(ButtonId b, bool single);
 
 extern bool pause;
+extern unsigned char mode;
 
 int seconds = 0;//EXTERN!!
 
@@ -111,13 +112,19 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
   }
 }
 
+static struct tm *ticks;
+static unsigned char last;
+
 void mark_dirty() {
+  if(seconds != ticks->tm_sec || mode != last) 
+    tick_clock(ticks, true);
   layer_mark_dirty(layer);
 }
 
 static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
   seconds = tick_time->tm_sec;
-  tick_clock(tick_time, false);
+  last = mode;
+  tick_clock(ticks = tick_time, false);
   if(!pause) tick();
   tick_basik();
   mark_dirty();
