@@ -860,13 +860,13 @@ OUTPUT(/home/jacko/pebble-dev/examples/watchapps/RoboMaze/build/aplite/pebble-wo
  .comment       0x00000000       0x4f aplite/appinfo.auto.c.12.o
  .comment       0x00000000       0x4f /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
 
-.debug_info     0x00000000      0xca6
- .debug_info    0x00000000      0x999 worker_src/worker.c.12.o
- .debug_info    0x00000999      0x30d aplite/appinfo.auto.c.12.o
+.debug_info     0x00000000      0xcaa
+ .debug_info    0x00000000      0x99d worker_src/worker.c.12.o
+ .debug_info    0x0000099d      0x30d aplite/appinfo.auto.c.12.o
 
-.debug_abbrev   0x00000000      0x3d8
- .debug_abbrev  0x00000000      0x33a worker_src/worker.c.12.o
- .debug_abbrev  0x0000033a       0x9e aplite/appinfo.auto.c.12.o
+.debug_abbrev   0x00000000      0x3e7
+ .debug_abbrev  0x00000000      0x349 worker_src/worker.c.12.o
+ .debug_abbrev  0x00000349       0x9e aplite/appinfo.auto.c.12.o
 
 .debug_loc      0x00000000      0x425
  .debug_loc     0x00000000      0x425 worker_src/worker.c.12.o

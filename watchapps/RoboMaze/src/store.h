@@ -22,6 +22,8 @@
 #define GAME_AB 10
 #define CHAF 11
 
+#define BAS_VAL 16
+
 typedef struct {
   uint8_t pos;//xy position
   uint8_t dir;//direction faced, or wanted to move

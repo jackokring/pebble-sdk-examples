@@ -1,6 +1,20 @@
+//==========================================================================
+// THE WORKER THREAD A. K. A. THE VIRTUAL MACHINE
+//==========================================================================
+
+// This file contains all the functionality of processing.
+// An app message contains opcode(s), which could include
+// an instruction to read from the storage a program.
+
 #include <pebble_worker.h>
 
 #define WORKER_TICKS 0
+
+//==========================================================================
+// THE VM -- INSTRUCTION TABLE (64 INSTRUCTIONS) -- 6 BIT BUS SIZE 
+//==========================================================================
+
+
 
 //==========================================================================
 //K CODEC PACKING ALGORITHM (C) K RING TECHNOLOGIES, SIMON P. JACKSON, BENG.

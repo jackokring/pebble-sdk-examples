@@ -18,11 +18,12 @@ extern int32_t level;
 extern int8_t direction;
 extern double value;
 extern void click_basik(ButtonId b, bool single);
+extern void click_value(ButtonId b, bool single);
 extern void click(ButtonId b, bool single);
 extern bool gAB;
 
 static unsigned char dp = 0;//dp col
-static unsigned char mode = 0;//clock,date,stopwatch,value,score
+unsigned char mode = 0;//clock,date,stopwatch,value,score
 
 static const int16_t pics[] = {
   0b111101101101111,//0
@@ -366,7 +367,7 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
         }
       }
       if(mode==3) {
-        click_basik(b, single);//send as per paused
+        click_value(b, single);//send
       }
       if(mode==4) {
         click(b, single);
