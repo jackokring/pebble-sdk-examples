@@ -30,12 +30,14 @@ void load_basik() {
   if(persist_exists(BAS_VAL)) {
   	persist_read_data(BAS_VAL, &value, sizeof(double));
 	expo = persist_read_bool(BAS_EXPO);
+	hold = persist_read_bool(BAS_HOLD);
   }
 }
 
 void save_basik() {
   persist_write_data(BAS_VAL, &value, sizeof(double));
   persist_write_bool(BAS_EXPO, expo);
+  persist_write_bool(BAS_HOLD, hold);
 }
 
 void tick_basik() {

@@ -24,6 +24,7 @@
 
 #define BAS_VAL 16
 #define BAS_EXPO 17
+#define BAS_HOLD 18
 
 typedef struct {
   uint8_t pos;//xy position
