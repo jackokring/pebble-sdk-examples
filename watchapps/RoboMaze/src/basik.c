@@ -81,7 +81,7 @@ void click_value(ButtonId b, bool single) {
 	}
   } else {// edit the value on sreen
 	if(b == BUTTON_ID_UP) {
-		if(single) value = value - one;
+		if(single) value = value + one;
 		else value = value * ten;
 	} else {
 		if(single) value = value - one;
