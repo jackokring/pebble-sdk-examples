@@ -13,7 +13,7 @@ static GBitmap *map;
 unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
 unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size -- EXTERN!!
 static GBitmap *(maze_gfx[31]);//blank = 31
-static GBitmap *(char_gfx[48]);
+static GBitmap *(char_gfx[67]);
 
 extern void load();
 extern void save();
@@ -184,12 +184,14 @@ static void main_window_load(Window *window) {
     maze_gfx[i+16] = gbitmap_create_as_sub_bitmap(map, GRect( (i%2)*6 + 16, (i/2)*6, 6, 6 ));//bot
     maze_gfx[i+20] = gbitmap_create_as_sub_bitmap(map, GRect( i*4 + 16, 12, 4, 4 ));//missile
     maze_gfx[i+24] = gbitmap_create_as_sub_bitmap(map, GRect( 32, i*4, 4, 4 ));//bomerang
+    char_gfx[i+60] = gbitmap_create_as_sub_bitmap(map, GRect( (12 + i)*3, 16 + (59/12)*5, 3, 5 ));
   }
   for(int i = 0; i < 3; i++) {
     maze_gfx[i+28] = gbitmap_create_as_sub_bitmap(map, GRect( 16 + 12, i*4, 4, 4 ));//aux fill, square, dot
+    char_gfx[i+64] = gbitmap_create_as_sub_bitmap(map, GRect( 12*3 , i*12, 12, 12 ));//icons
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
-  for(int i = 0; i < 48; i++) {
+  for(int i = 0; i < 60; i++) {
     char_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%12)*3, 16 + (i/12)*5, 3, 5 ));
   }
 
