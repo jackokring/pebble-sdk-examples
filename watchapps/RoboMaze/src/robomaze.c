@@ -32,6 +32,8 @@ extern bool click_clock(ButtonId b, bool single);
 
 extern bool pause;
 extern unsigned char mode;
+extern unsigned char vidmode;
+extern int get_at(int x, int y);
 
 int seconds = 0;//EXTERN!!
 
@@ -83,9 +85,9 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
   if(pause)
     for(int i = 0; i < 32; i++)
       for(int j = 0; j < 24; j++) {
-        int x = get_map(con, i, j, 32);
-        if(x > 47) continue;//don't draw
-        graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
+        int x = (vidmode == 0)?get_map(con, i, j, 32):get_at(i, j);
+        if(x > 63) continue;//don't draw
+        else graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
   } else
 
   // Draw map
