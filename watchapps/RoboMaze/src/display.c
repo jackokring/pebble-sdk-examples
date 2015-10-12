@@ -66,7 +66,7 @@ int get_at(int x, int y) {
 		if(y > 19) off = 4;
 		return doubles[(y - off) * 2 + x%2];
 	} 
-	if(x > 27 && selector >= 6 && selector < 36) return changed(selector, y/4, x);
+	if(x > 27 && selector >= 6 && selector < 36 + 6) return changed(selector, y/4, x);
 	return 59;//blank space
   };
 }
