@@ -1,26 +1,26 @@
 Archive member included because of file (symbol)
 
-/home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                              src/robomaze.c.11.o (app_event_loop)
+/home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                              src/robomaze.c.9.o (app_event_loop)
 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
-                              src/basik.c.11.o (__aeabi_dsub)
+                              src/basik.c.9.o (__aeabi_dsub)
 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
-                              src/basik.c.11.o (__aeabi_dmul)
+                              src/basik.c.9.o (__aeabi_dmul)
 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
-                              src/clock.c.11.o (__aeabi_dcmpeq)
+                              src/clock.c.9.o (__aeabi_dcmpeq)
 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-                              src/clock.c.11.o (__aeabi_d2iz)
+                              src/clock.c.9.o (__aeabi_d2iz)
 
 Allocating common symbols
 Common symbol       size              file
 
-maze                0x435             src/robomaze.c.11.o
-direction           0x1               src/game.c.11.o
-score               0x4               src/game.c.11.o
-level               0x4               src/game.c.11.o
-hiscore             0x4               src/game.c.11.o
-gAB                 0x1               src/game.c.11.o
-con                 0x241             src/robomaze.c.11.o
+maze                0x435             src/robomaze.c.9.o
+direction           0x1               src/game.c.9.o
+score               0x4               src/game.c.9.o
+level               0x4               src/game.c.9.o
+hiscore             0x4               src/game.c.9.o
+gAB                 0x1               src/game.c.9.o
+con                 0x241             src/robomaze.c.9.o
 
 Discarded input sections
 
@@ -36,631 +36,1019 @@ Discarded input sections
  .jcr           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
  .tm_clone_table
                 0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
- .text          0x00000000        0x0 src/basik.c.11.o
- .bss           0x00000000        0x0 src/basik.c.11.o
- .text          0x00000000        0x0 src/clock.c.11.o
- .bss           0x00000000        0x0 src/clock.c.11.o
- .text          0x00000000        0x0 src/display.c.11.o
- .bss           0x00000000        0x0 src/display.c.11.o
- .text          0x00000000        0x0 src/game.c.11.o
- .bss           0x00000000        0x0 src/game.c.11.o
- .text          0x00000000        0x0 src/robomaze.c.11.o
- .bss           0x00000000        0x0 src/robomaze.c.11.o
- .text          0x00000000        0x0 aplite/appinfo.auto.c.11.o
- .bss           0x00000000        0x0 aplite/appinfo.auto.c.11.o
- .bss           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+ .text          0x00000000        0x0 src/basik.c.9.o
+ .bss           0x00000000        0x0 src/basik.c.9.o
+ .text          0x00000000        0x0 src/clock.c.9.o
+ .bss           0x00000000        0x0 src/clock.c.9.o
+ .text          0x00000000        0x0 src/display.c.9.o
+ .bss           0x00000000        0x0 src/display.c.9.o
+ .text          0x00000000        0x0 src/game.c.9.o
+ .bss           0x00000000        0x0 src/game.c.9.o
+ .text          0x00000000        0x0 src/robomaze.c.9.o
+ .bss           0x00000000        0x0 src/robomaze.c.9.o
+ .text          0x00000000        0x0 basalt/appinfo.auto.c.9.o
+ .bss           0x00000000        0x0 basalt/appinfo.auto.c.9.o
+ .bss           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_data_service_subscribe__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_data_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_service_peek
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_service_set_samples_per_update
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_service_set_sampling_rate
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_tap_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_tap_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_add_to_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_clear_icon
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_remove_from_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_set_background_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_set_click_config_provider
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_set_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.action_bar_layer_set_icon
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_get_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_is_scheduled
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_schedule
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_curve
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_delay
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_duration
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_handlers
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_implementation
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_unschedule
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_unschedule_all
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_add_to_window
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_clear_icon
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_get_layer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_remove_from_window
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_set_background_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_set_click_config_provider
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_set_context
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_legacy2_set_icon
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_get_context
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_is_scheduled
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_schedule
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_delay
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_handlers
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_implementation
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_unschedule
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_unschedule_all
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_comm_get_sniff_interval
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_comm_set_sniff_interval
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.app_log  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.app_log  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_deregister_callbacks
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_open
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_sync_deinit
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_sync_get
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_sync_init
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_sync_set
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_timer_cancel
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_timer_register
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_timer_reschedule
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.atan2_lookup
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.atoi     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.atol     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.atoi     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.atol     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.battery_state_service_peek
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.battery_state_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.battery_state_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_set_alignment
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.bitmap_layer_set_background_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.bitmap_layer_set_background_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_set_bitmap
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_set_compositing_mode
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bluetooth_connection_service_peek
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bluetooth_connection_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bluetooth_connection_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.click_number_of_clicks_counted
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.clock_copy_time_string
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.cos_lookup
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.data_logging_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.data_logging_finish
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.data_logging_log
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_calc_buffer_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_calc_buffer_size_from_tuplets
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_find
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_merge
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_read_begin_from_buffer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_read_first
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_read_next
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_serialize_tuplets
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_serialize_tuplets_to_buffer__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_serialize_tuplets_to_buffer_with_iter
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_begin
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_cstring
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_end
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_int
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_int16
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_int32
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_int8
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_tuplet
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_uint16
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_uint32
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_write_uint8
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.fonts_get_system_font
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.fonts_load_custom_font
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.fonts_unload_custom_font
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.free     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.free     0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gbitmap_create_with_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.gmtime   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gmtime   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_draw_filled_legacy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_draw_outline
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_move_to
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_rotate_to
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpoint_equal
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_context_set_compositing_mode
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.graphics_context_set_stroke_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.graphics_context_set_text_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_fill_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_stroke_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_text_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_circle
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_line
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_pixel
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_rect
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_round_rect
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_fill_circle
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_text_layout_get_max_used_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_align
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_center_point
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_clip
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_contains_point
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_crop
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_equal
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_is_empty
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.grect_standardize
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gsize_equal
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.inverter_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.inverter_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.inverter_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_create_with_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_get_clips
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_get_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_get_frame
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_get_hidden
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_get_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_insert_above_sibling
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_insert_below_sibling
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_remove_child_layers
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_remove_from_parent
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_set_clips
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_set_frame
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.layer_set_hidden
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.light_enable
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.light_enable_interaction
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.malloc   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.memcpy   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.memmove  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.localtime__deprecated
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.malloc   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.memcpy   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.memmove  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_cell_basic_draw
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_cell_basic_header_draw
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_cell_title_draw
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_index_compare
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.menu_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_legacy2_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_get_scroll_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_get_selected_index
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_reload_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.menu_layer_set_callbacks__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_legacy2_set_callbacks__deprecated
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_set_click_config_onto_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_set_selected_index
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.menu_layer_set_selected_next
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_get_value
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_set_label
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_set_max
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_set_min
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_set_step_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_set_value
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_delete
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_get_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_read_data__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_read_string__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_write_data__deprecated
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_write_string
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_create_layer_frame
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_update_gpoint
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_update_grect
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.property_animation_update_int16
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.psleep   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_create_layer_frame
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_update_gpoint
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_update_grect
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_legacy2_update_int16
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.psleep   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.resource_get_handle
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.resource_load
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.resource_load_byte_range
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.resource_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_layer_increment_angle
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_layer_set_angle
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.rot_bitmap_layer_set_corner_clip_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.rot_bitmap_layer_set_corner_clip_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_set_compositing_mode
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.rot_bitmap_set_src_ic
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_add_child
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_get_content_offset
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_get_content_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_get_shadow_hidden
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_scroll_down_click_handler
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_scroll_up_click_handler
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_callbacks
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_click_config_onto_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_content_offset
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_content_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_frame
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.scroll_layer_set_shadow_hidden
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_get_selected_index
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_set_selected_index
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.sin_lookup
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.snprintf
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strcat   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strcmp   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strcpy   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strcat   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strcmp   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strcpy   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.strftime
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strlen   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strncat  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strncmp  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.strncpy  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_create
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_destroy
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_get_content_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_get_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_get_text
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_background_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_font
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_overflow_mode
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_text
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_text_alignment
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.text_layer_set_text_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strlen   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strncat  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strncmp  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.strncpy  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_get_content_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_get_layer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_get_text
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_background_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_font
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_overflow_mode
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_text
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_text_alignment
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_legacy2_set_text_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.tick_timer_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.time_ms  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.time__deprecated
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.time_ms_deprecated
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.vibes_cancel
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.vibes_double_pulse
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.vibes_enqueue_custom_pattern
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.vibes_long_pulse
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.vibes_short_pulse
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_get_click_config_provider
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_get_fullscreen
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_is_loaded
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.window_set_background_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.window_set_background_color_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_set_click_config_provider_with_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.window_set_fullscreen
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_set_status_bar_icon
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_stack_contains_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_stack_get_top_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_stack_pop
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_stack_pop_all
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_stack_remove
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_focus_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_focus_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_get_user_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_set_user_data
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_get_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_inbox_size_maximum
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_outbox_begin
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_outbox_send
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_outbox_size_maximum
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_register_inbox_dropped
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_register_inbox_received
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_register_outbox_failed
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_register_outbox_sent
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_message_set_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_multi_click_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_raw_click_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_set_click_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_single_repeating_click_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_draw_text
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_serialize_tuplets_to_buffer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.persist_read_string
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.dict_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_text_layout_get_content_size
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.simple_menu_layer_get_menu_layer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_data_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.calloc   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.calloc   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.bitmap_layer_get_bitmap
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.menu_layer_set_callbacks
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_legacy2_set_callbacks
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.window_get_click_config_context
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.number_window_get_window
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.realloc  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.__gbitmap_create_blank
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.realloc  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_create_blank_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.click_recognizer_is_repeating
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.accel_raw_data_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_is_running
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_kill
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_launch
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_message_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_message_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.app_worker_send_message
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.worker_event_loop
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.worker_launch_app
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.heap_bytes_free
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.heap_bytes_used
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.compass_service_peek
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.compass_service_set_heading_filter
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.compass_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.compass_service_unsubscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.uuid_equal
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.uuid_to_string
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.gpath_draw_filled
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.animation_set_custom_curve
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_legacy2_set_custom_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.watch_info_get_color
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.watch_info_get_firmware_version
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.watch_info_get_model
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.graphics_capture_frame_buffer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_capture_frame_buffer_2bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_frame_buffer_is_captured
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.graphics_release_frame_buffer
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.clock_to_timestamp
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.launch_reason
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_cancel
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_cancel_all
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_get_launch_event
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_query
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_schedule
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.wakeup_service_subscribe
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.clock_is_timezone_set
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.i18n_get_system_locale
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text._localeconv_r
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text.setlocale
-                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .text.mktime   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.mktime   0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gcolor_equal
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.__profiler_init
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.__profiler_print_stats
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.__profiler_start
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.__profiler_stop
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.bitmap_layer_set_background_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_stroke_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_text_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.rot_bitmap_layer_set_corner_clip_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.window_set_background_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.clock_get_timezone
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_context
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_is_scheduled
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_schedule
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_custom_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_delay
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_handlers
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_implementation
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_unschedule
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_unschedule_all
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_create_blank
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_capture_frame_buffer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_capture_frame_buffer_format
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_create_layer_frame
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_from
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_get_animation
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_subject
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_to
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_update_gpoint
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_update_grect
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_update_int16
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_create_blank_with_palette
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_get_bounds
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_get_bytes_per_row
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_get_data
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_get_format
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_get_palette
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_set_bounds
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_set_data
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_set_palette
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_create_with_resource
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_get_bitmap_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_get_current_frame_idx
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_get_total_num_frames
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_update_bitmap_next_frame
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_create_from_png_data
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_clone
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_delay
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_elapsed
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_reverse
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_sequence_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_sequence_create_from_array
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_elapsed
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_set_reverse
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_spawn_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_spawn_create_from_array
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_custom_curve
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.animation_get_implementation
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.launch_get_args
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_get_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_restart
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_set_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_antialiased
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_context_set_stroke_width
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_add_to_window
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_clear_icon
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_get_layer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_remove_from_window
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_background_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_click_config_provider
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_context
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_icon
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_icon_animated
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_sequence_update_bitmap_by_elapsed
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gbitmap_create_palettized_from_1bit
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_cell_layer_is_highlighted
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.graphics_draw_rotated_bitmap
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_bar_layer_set_icon_press_animation
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_get_content_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_get_layer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_get_text
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_background_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_font
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_overflow_mode
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_text
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_text_alignment
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.text_layer_set_text_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_draw
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_frame_draw
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_frame_get_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_frame_set_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_fill_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_hidden
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_num_points
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_path_open
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_point
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_radius
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_stroke_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_stroke_width
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_get_type
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_clone
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_create_with_resource
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_draw
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_get_bounds_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_get_command_list
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_image_set_bounds_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_list_draw
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_list_get_command
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_list_get_num_commands
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_list_iterate
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_clone
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_create_with_resource
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_bounds_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_frame_by_elapsed
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_frame_by_index
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_num_frames
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_get_total_duration
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_set_bounds_size
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_sequence_set_play_count
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_fill_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_hidden
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_path_open
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_point
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_radius
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_stroke_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gdraw_command_set_stroke_width
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_create_bounds_origin
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_update_uint32
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gpath_draw_outline_open
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_set_highlight_colors
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_set_normal_colors
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_set_callbacks
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.menu_layer_pad_bottom_enable
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_get_background_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_get_foreground_color
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_get_layer
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_set_colors
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.status_bar_layer_set_separator_mode
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.difftime
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.time_ms  0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.gcolor_legible_over
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.property_animation_update_gcolor8
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.app_focus_service_subscribe_handlers
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_close
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_freeze
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_get_context
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_get_root_level
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_hierarchy_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_item_get_action_data
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_item_get_label
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_level_add_action
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_level_add_child
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_level_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_level_set_display_mode
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_open
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_set_result_window
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.action_menu_unfreeze
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_begin_write
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_create
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_destroy
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_end_write
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_get_attribute_id
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_get_service_id
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_attribute_read
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_service_is_available
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_set_timeout
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_subscribe
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .text.smartstrap_unsubscribe
+                0x00000000        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .bss           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
  .bss           0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
@@ -679,20 +1067,20 @@ Discarded input sections
 Memory Configuration
 
 Name             Origin             Length             Attributes
-APP              0x00000000         0x00006000         xrw
+APP              0x00000000         0x00010000         xrw
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crti.o
 LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-LOAD src/basik.c.11.o
-LOAD src/clock.c.11.o
-LOAD src/display.c.11.o
-LOAD src/game.c.11.o
-LOAD src/robomaze.c.11.o
-LOAD aplite/appinfo.auto.c.11.o
-LOAD /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a
+LOAD src/basik.c.9.o
+LOAD src/clock.c.9.o
+LOAD src/display.c.9.o
+LOAD src/game.c.9.o
+LOAD src/robomaze.c.9.o
+LOAD basalt/appinfo.auto.c.9.o
+LOAD /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a
 START GROUP
 LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a
 LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/thumb2/libc.a
@@ -702,7 +1090,7 @@ LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/
 
 .header         0x00000000       0x82
  *(.pbl_header)
- .pbl_header    0x00000000       0x82 aplite/appinfo.auto.c.11.o
+ .pbl_header    0x00000000       0x82 basalt/appinfo.auto.c.9.o
                 0x00000000                __pbl_app_info
 
 .note.gnu.build-id
@@ -713,549 +1101,13 @@ LOAD /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/
  .note.gnu.build-id
                 0x00000084       0x24 linker stubs
 
-.text           0x000000a8     0x2bae
+.text           0x000000a8     0x2c22
  *(.text)
- .text          0x000000a8       0x14 /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
+ .text          0x000000a8       0x14 /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
  .text          0x000000bc      0x370 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
                 0x000000bc                __aeabi_drsub
                 0x000000c4                __aeabi_dsub
                 0x000000c4                __subdf3
-                0x000000c8                __adddf3
-                0x000000c8                __aeabi_dadd
-                0x00000340                __aeabi_ui2d
-                0x00000340                __floatunsidf
-                0x00000360                __floatsidf
-                0x00000360                __aeabi_i2d
-                0x00000384                __extendsfdf2
-                0x00000384                __aeabi_f2d
-                0x000003c0                __aeabi_ul2d
-                0x000003c0                __floatundidf
-                0x000003d0                __floatdidf
-                0x000003d0                __aeabi_l2d
- .text          0x0000042c      0x424 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
-                0x0000042c                __aeabi_dmul
-                0x0000042c                __muldf3
-                0x00000680                __aeabi_ddiv
-                0x00000680                __divdf3
- .text          0x00000850      0x110 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
-                0x00000850                __gtdf2
-                0x00000850                __gedf2
-                0x00000858                __ltdf2
-                0x00000858                __ledf2
-                0x00000860                __cmpdf2
-                0x00000860                __eqdf2
-                0x00000860                __nedf2
-                0x000008dc                __aeabi_cdrcmple
-                0x000008ec                __aeabi_cdcmple
-                0x000008ec                __aeabi_cdcmpeq
-                0x000008fc                __aeabi_dcmpeq
-                0x00000910                __aeabi_dcmplt
-                0x00000924                __aeabi_dcmple
-                0x00000938                __aeabi_dcmpge
-                0x0000094c                __aeabi_dcmpgt
- .text          0x00000960       0x50 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-                0x00000960                __fixdfsi
-                0x00000960                __aeabi_d2iz
- *(.text.*)
- .text.load_basik
-                0x000009b0       0x50 src/basik.c.11.o
-                0x000009b0                load_basik
- .text.save_basik
-                0x00000a00       0x48 src/basik.c.11.o
-                0x00000a00                save_basik
- .text.tick_basik
-                0x00000a48        0x2 src/basik.c.11.o
-                0x00000a48                tick_basik
- .text.click_basik
-                0x00000a4a        0x2 src/basik.c.11.o
-                0x00000a4a                click_basik
- *fill*         0x00000a4c        0x4 
- .text.click_value
-                0x00000a50      0x168 src/basik.c.11.o
-                0x00000a50                click_value
- .text.reset_sw
-                0x00000bb8       0x34 src/clock.c.11.o
- .text.clear    0x00000bec       0x38 src/clock.c.11.o
- .text.draw_dp  0x00000c24       0x4c src/clock.c.11.o
- .text.draw     0x00000c70       0x98 src/clock.c.11.o
- .text.tock     0x00000d08       0xa6 src/clock.c.11.o
- .text.printint
-                0x00000dae       0x3e src/clock.c.11.o
- *fill*         0x00000dec        0x4 
- .text.printreal.constprop.0
-                0x00000df0      0x238 src/clock.c.11.o
- .text.sci      0x00001028       0x88 src/clock.c.11.o
- .text.save_clock
-                0x000010b0       0x54 src/clock.c.11.o
-                0x000010b0                save_clock
- .text.show_lvl
-                0x00001104       0x20 src/clock.c.11.o
-                0x00001104                show_lvl
- .text.tick_clock
-                0x00001124      0x28c src/clock.c.11.o
-                0x00001124                tick_clock
- .text.load_clock
-                0x000013b0      0x144 src/clock.c.11.o
-                0x000013b0                load_clock
- .text.click_clock
-                0x000014f4      0x108 src/clock.c.11.o
-                0x000014f4                click_clock
- .text.changed  0x000015fc       0x84 src/display.c.11.o
- .text.get_at   0x00001680       0x54 src/display.c.11.o
-                0x00001680                get_at
- .text.delay    0x000016d4       0x50 src/game.c.11.o
- .text.evaluate
-                0x00001724       0x48 src/game.c.11.o
- .text.activechaf
-                0x0000176c       0xa4 src/game.c.11.o
- .text.processmaze
-                0x00001810       0x7c src/game.c.11.o
- .text.drawmaze
-                0x0000188c       0x7c src/game.c.11.o
- .text.xpand    0x00001908       0x54 src/game.c.11.o
- .text.loadwall
-                0x0000195c       0x58 src/game.c.11.o
- .text.loadchaf
-                0x000019b4       0x40 src/game.c.11.o
- .text.makechar
-                0x000019f4       0x98 src/game.c.11.o
- .text.reset    0x00001a8c       0x64 src/game.c.11.o
- .text.account  0x00001af0       0x30 src/game.c.11.o
- .text.destroywall
-                0x00001b20       0xc4 src/game.c.11.o
- .text.makemaze
-                0x00001be4       0x4c src/game.c.11.o
- .text.xydxy.isra.0
-                0x00001c30       0x16 src/game.c.11.o
- *fill*         0x00001c46        0x2 
- .text.drawchars
-                0x00001c48       0x90 src/game.c.11.o
- .text.ready    0x00001cd8       0x40 src/game.c.11.o
- .text.move     0x00001d18       0xec src/game.c.11.o
- .text.tick     0x00001e04       0x10 src/game.c.11.o
-                0x00001e04                tick
- .text.click    0x00001e14       0x40 src/game.c.11.o
-                0x00001e14                click
- .text.load     0x00001e54      0x150 src/game.c.11.o
-                0x00001e54                load
- .text.save     0x00001fa4      0x16c src/game.c.11.o
-                0x00001fa4                save
- .text.respond  0x00002110      0x108 src/game.c.11.o
- .text.main_window_unload
-                0x00002218       0x5c src/robomaze.c.11.o
- .text.main_window_load
-                0x00002274      0x278 src/robomaze.c.11.o
- .text.config_provider
-                0x000024ec       0x5c src/robomaze.c.11.o
- .text.get_map  0x00002548       0x40 src/robomaze.c.11.o
-                0x00002548                get_map
- .text.put_map  0x00002588       0x58 src/robomaze.c.11.o
-                0x00002588                put_map
- .text.layer_draw
-                0x000025e0      0x244 src/robomaze.c.11.o
- .text.mark_dirty
-                0x00002824       0x54 src/robomaze.c.11.o
-                0x00002824                mark_dirty
- .text.handle_second_tick
-                0x00002878       0x58 src/robomaze.c.11.o
- .text.clicks   0x000028d0       0x60 src/robomaze.c.11.o
- .text.long_click_handler
-                0x00002930        0x6 src/robomaze.c.11.o
- .text.single_click_handler
-                0x00002936        0x6 src/robomaze.c.11.o
- .text.startup.main
-                0x0000293c       0x68 src/robomaze.c.11.o
-                0x0000293c                main
- .text.app_event_loop
-                0x000029a4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029a4                app_event_loop
- .text.click_recognizer_get_button_id
-                0x000029b0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029b0                click_recognizer_get_button_id
- .text.clock_is_24h_style
-                0x000029bc        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029bc                clock_is_24h_style
- .text.gbitmap_create_as_sub_bitmap
-                0x000029c8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029c8                gbitmap_create_as_sub_bitmap
- .text.gbitmap_create_with_resource
-                0x000029d4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029d4                gbitmap_create_with_resource
- .text.gbitmap_destroy
-                0x000029e0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029e0                gbitmap_destroy
- .text.graphics_context_set_fill_color
-                0x000029ec        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029ec                graphics_context_set_fill_color
- .text.graphics_draw_bitmap_in_rect
-                0x000029f8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x000029f8                graphics_draw_bitmap_in_rect
- .text.graphics_fill_rect
-                0x00002a04        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a04                graphics_fill_rect
- .text.layer_add_child
-                0x00002a10        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a10                layer_add_child
- .text.layer_create
-                0x00002a1c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a1c                layer_create
- .text.layer_destroy
-                0x00002a28        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a28                layer_destroy
- .text.layer_get_bounds
-                0x00002a34        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a34                layer_get_bounds
- .text.layer_mark_dirty
-                0x00002a40        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a40                layer_mark_dirty
- .text.layer_set_bounds
-                0x00002a4c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a4c                layer_set_bounds
- .text.layer_set_update_proc
-                0x00002a58        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a58                layer_set_update_proc
- .text.localtime
-                0x00002a64        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a64                localtime
- .text.memset   0x00002a70        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a70                memset
- .text.persist_exists
-                0x00002a7c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a7c                persist_exists
- .text.persist_read_bool
-                0x00002a88        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a88                persist_read_bool
- .text.persist_read_int
-                0x00002a94        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002a94                persist_read_int
- .text.persist_write_bool
-                0x00002aa0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002aa0                persist_write_bool
- .text.persist_write_int
-                0x00002aac        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002aac                persist_write_int
- .text.rand     0x00002ab8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002ab8                rand
- .text.srand    0x00002ac4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002ac4                srand
- .text.tick_timer_service_subscribe
-                0x00002ad0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002ad0                tick_timer_service_subscribe
- .text.time     0x00002adc        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002adc                time
- .text.window_create
-                0x00002ae8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002ae8                window_create
- .text.window_destroy
-                0x00002af4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002af4                window_destroy
- .text.window_get_root_layer
-                0x00002b00        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b00                window_get_root_layer
- .text.window_set_click_config_provider
-                0x00002b0c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b0c                window_set_click_config_provider
- .text.window_set_fullscreen
-                0x00002b18        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b18                window_set_fullscreen
- .text.window_set_window_handlers
-                0x00002b24        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b24                window_set_window_handlers
- .text.window_stack_push
-                0x00002b30        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b30                window_stack_push
- .text.window_long_click_subscribe
-                0x00002b3c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b3c                window_long_click_subscribe
- .text.window_single_click_subscribe
-                0x00002b48        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b48                window_single_click_subscribe
- .text.persist_read_data
-                0x00002b54        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b54                persist_read_data
- .text.persist_write_data
-                0x00002b60        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
-                0x00002b60                persist_write_data
- *(.rodata)
- .rodata        0x00002b6c       0x18 src/robomaze.c.11.o
- *(.rodata*)
- .rodata.delays
-                0x00002b84        0x7 src/clock.c.11.o
- .rodata.days   0x00002b8b       0x39 src/clock.c.11.o
- .rodata.pics   0x00002bc4       0x42 src/clock.c.11.o
- .rodata.keys   0x00002c06        0x7 src/clock.c.11.o
- .rodata.specials
-                0x00002c0d       0x10 src/display.c.11.o
- .rodata.defis  0x00002c1d        0x8 src/game.c.11.o
- .rodata.offset
-                0x00002c25        0x4 src/game.c.11.o
- .rodata.dir    0x00002c29        0x5 src/game.c.11.o
- .rodata.orders
-                0x00002c2e       0x10 src/game.c.11.o
- .rodata.dxy    0x00002c3e        0x4 src/game.c.11.o
- .rodata.defchar
-                0x00002c42       0x14 src/game.c.11.o
-
-.glue_7         0x00002c58        0x0
- .glue_7        0x00000000        0x0 linker stubs
-
-.glue_7t        0x00002c58        0x0
- .glue_7t       0x00000000        0x0 linker stubs
-
-.vfp11_veneer   0x00002c58        0x0
- .vfp11_veneer  0x00000000        0x0 linker stubs
-
-.v4_bx          0x00002c58        0x0
- .v4_bx         0x00000000        0x0 linker stubs
-
-.iplt           0x00002c58        0x0
- .iplt          0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-
-.rel.dyn        0x00002c58        0x0
- .rel.iplt      0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
- .rel.got       0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-
-.data           0x00002c58       0x38
- *(.data)
- .data          0x00002c58        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crti.o
- .data          0x00002c58        0x4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-                0x00002c58                __dso_handle
- .data          0x00002c5c        0x0 src/basik.c.11.o
- .data          0x00002c5c        0x0 src/clock.c.11.o
- .data          0x00002c5c        0x0 src/display.c.11.o
- .data          0x00002c5c        0x0 src/game.c.11.o
- .data          0x00002c5c        0x0 src/robomaze.c.11.o
- .data          0x00002c5c        0x0 aplite/appinfo.auto.c.11.o
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
- .data          0x00002c5c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtn.o
- *(.data.*)
- .data.selector
-                0x00002c5c        0x1 src/display.c.11.o
-                0x00002c5c                selector
- *fill*         0x00002c5d        0x3 
- .data.rel.local.state
-                0x00002c60        0x4 src/game.c.11.o
- .data.rel.local.oldstate
-                0x00002c64        0x4 src/game.c.11.o
- .data.rel.ro.local.fn
-                0x00002c68       0x28 src/game.c.11.o
-
-.igot.plt       0x00002c90        0x0
- .igot.plt      0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-
-.got            0x00002c90       0x34
- .got           0x00002c90       0x34 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-
-.got.plt        0x00002cc4        0xc
- .got.plt       0x00002cc4        0xc /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-                0x00002cc4                _GLOBAL_OFFSET_TABLE_
-
-.bss            0x00002cd0      0x933
- *(.bss)
- *(.bss.*)
- .bss.expo      0x00002cd0        0x1 src/basik.c.11.o
- *fill*         0x00002cd1        0x7 
- .bss.xx        0x00002cd8        0x8 src/basik.c.11.o
- .bss.value     0x00002ce0        0x8 src/basik.c.11.o
-                0x00002ce0                value
- .bss.error     0x00002ce8        0x1 src/basik.c.11.o
-                0x00002ce8                error
- .bss.hold      0x00002ce9        0x1 src/basik.c.11.o
- *fill*         0x00002cea        0x2 
- .bss.reg       0x00002cec       0x2c src/clock.c.11.o
- .bss.clickback
-                0x00002d18        0x1 src/clock.c.11.o
- *fill*         0x00002d19        0x1 
- .bss.sw_butt   0x00002d1a        0x2 src/clock.c.11.o
- .bss.dp        0x00002d1c        0x1 src/clock.c.11.o
- .bss.button_sec
-                0x00002d1d        0x1 src/clock.c.11.o
- .bss.mode      0x00002d1e        0x1 src/clock.c.11.o
-                0x00002d1e                mode
- *fill*         0x00002d1f        0x1 
- .bss.lap       0x00002d20       0x2c src/clock.c.11.o
- .bss.vidmode   0x00002d4c        0x1 src/display.c.11.o
-                0x00002d4c                vidmode
- .bss.pause     0x00002d4d        0x1 src/game.c.11.o
-                0x00002d4d                pause
- .bss.ting      0x00002d4e       0x28 src/game.c.11.o
- .bss.chaf      0x00002d76       0x20 src/game.c.11.o
- .bss.success   0x00002d96        0x1 src/game.c.11.o
- *fill*         0x00002d97        0x1 
- .bss.countdown
-                0x00002d98        0x4 src/game.c.11.o
- .bss.compact   0x00002d9c       0x3e src/game.c.11.o
- *fill*         0x00002dda        0x2 
- .bss.layer     0x00002ddc        0x4 src/robomaze.c.11.o
- .bss.char_gfx  0x00002de0      0x10c src/robomaze.c.11.o
- .bss.last      0x00002eec        0x1 src/robomaze.c.11.o
- *fill*         0x00002eed        0x3 
- .bss.seconds   0x00002ef0        0x4 src/robomaze.c.11.o
-                0x00002ef0                seconds
- .bss.ticks     0x00002ef4        0x4 src/robomaze.c.11.o
- .bss.map       0x00002ef8        0x4 src/robomaze.c.11.o
- .bss.maze_gfx  0x00002efc       0x7c src/robomaze.c.11.o
- .bss.s_main_window
-                0x00002f78        0x4 src/robomaze.c.11.o
- COMMON         0x00002f7c       0x11 src/game.c.11.o
-                0x00002f7c                direction
-                0x00002f80                score
-                0x00002f84                level
-                0x00002f88                hiscore
-                0x00002f8c                gAB
- COMMON         0x00002f8d      0x676 src/robomaze.c.11.o
-                0x00002f8d                maze
-                0x000033c2                con
-
-DISCARD
- libc.a(*)
- libm.a(*)
- libgcc.a(*)
- *(.eh_frame)
-OUTPUT(/home/jacko/pebble-dev/examples/watchapps/RoboMaze/build/aplite/pebble-app.elf elf32-littlearm)
-
-.ARM.attributes
-                0x00000000       0x27
- .ARM.attributes
-                0x00000000       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crti.o
- .ARM.attributes
-                0x00000019       0x29 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
- .ARM.attributes
-                0x00000042       0x33 src/basik.c.11.o
- .ARM.attributes
-                0x00000075       0x33 src/clock.c.11.o
- .ARM.attributes
-                0x000000a8       0x33 src/display.c.11.o
- .ARM.attributes
-                0x000000db       0x33 src/game.c.11.o
- .ARM.attributes
-                0x0000010e       0x33 src/robomaze.c.11.o
- .ARM.attributes
-                0x00000141       0x33 aplite/appinfo.auto.c.11.o
- .ARM.attributes
-                0x00000174       0x21 /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite/lib/libpebble.a(tmpDuxwpQpebble.o)
- .ARM.attributes
-                0x00000195       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .ARM.attributes
-                0x000001ae       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .ARM.attributes
-                0x000001c7       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .ARM.attributes
-                0x000001e0       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
- .ARM.attributes
-                0x000001f9       0x29 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
- .ARM.attributes
-                0x00000222       0x19 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtn.o
-
-.comment        0x00000000       0x4e
- .comment       0x00000000       0x4e /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-                                 0x4f (size before relaxing)
- .comment       0x00000000       0x4f src/basik.c.11.o
- .comment       0x00000000       0x4f src/clock.c.11.o
- .comment       0x00000000       0x4f src/display.c.11.o
- .comment       0x00000000       0x4f src/game.c.11.o
- .comment       0x00000000       0x4f src/robomaze.c.11.o
- .comment       0x00000000       0x4f aplite/appinfo.auto.c.11.o
- .comment       0x00000000       0x4f /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
-
-.debug_info     0x00000000     0x3fdb
- .debug_info    0x00000000      0x3cd src/basik.c.11.o
- .debug_info    0x000003cd      0xdcf src/clock.c.11.o
- .debug_info    0x0000119c      0x1a2 src/display.c.11.o
- .debug_info    0x0000133e     0x1215 src/game.c.11.o
- .debug_info    0x00002553     0x14ab src/robomaze.c.11.o
- .debug_info    0x000039fe      0x30d aplite/appinfo.auto.c.11.o
- .debug_info    0x00003d0b       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_info    0x00003dbf       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_info    0x00003e73       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_info    0x00003f27       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-
-.debug_abbrev   0x00000000      0xf84
- .debug_abbrev  0x00000000      0x1e9 src/basik.c.11.o
- .debug_abbrev  0x000001e9      0x3bf src/clock.c.11.o
- .debug_abbrev  0x000005a8       0xf8 src/display.c.11.o
- .debug_abbrev  0x000006a0      0x3ed src/game.c.11.o
- .debug_abbrev  0x00000a8d      0x409 src/robomaze.c.11.o
- .debug_abbrev  0x00000e96       0x9e aplite/appinfo.auto.c.11.o
- .debug_abbrev  0x00000f34       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_abbrev  0x00000f48       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_abbrev  0x00000f5c       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_abbrev  0x00000f70       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-
-.debug_loc      0x00000000     0x1aa9
- .debug_loc     0x00000000      0x151 src/basik.c.11.o
- .debug_loc     0x00000151      0x939 src/clock.c.11.o
- .debug_loc     0x00000a8a      0x1ba src/display.c.11.o
- .debug_loc     0x00000c44      0x7ee src/game.c.11.o
- .debug_loc     0x00001432      0x677 src/robomaze.c.11.o
-
-.debug_aranges  0x00000000      0x2c0
- .debug_aranges
-                0x00000000       0x40 src/basik.c.11.o
- .debug_aranges
-                0x00000040       0x80 src/clock.c.11.o
- .debug_aranges
-                0x000000c0       0x28 src/display.c.11.o
- .debug_aranges
-                0x000000e8       0xc8 src/game.c.11.o
- .debug_aranges
-                0x000001b0       0x78 src/robomaze.c.11.o
- .debug_aranges
-                0x00000228       0x18 aplite/appinfo.auto.c.11.o
- .debug_aranges
-                0x00000240       0x20 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_aranges
-                0x00000260       0x20 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_aranges
-                0x00000280       0x20 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_aranges
-                0x000002a0       0x20 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-
-.debug_ranges   0x00000000      0xa30
- .debug_ranges  0x00000000       0x30 src/basik.c.11.o
- .debug_ranges  0x00000030      0x110 src/clock.c.11.o
- .debug_ranges  0x00000140       0x18 src/display.c.11.o
- .debug_ranges  0x00000158      0x5d0 src/game.c.11.o
- .debug_ranges  0x00000728      0x308 src/robomaze.c.11.o
-
-.debug_line     0x00000000     0x1828
- .debug_line    0x00000000      0x1ef src/basik.c.11.o
- .debug_line    0x000001ef      0x46d src/clock.c.11.o
- .debug_line    0x0000065c       0x8c src/display.c.11.o
- .debug_line    0x000006e8      0x60a src/game.c.11.o
- .debug_line    0x00000cf2      0x44d src/robomaze.c.11.o
- .debug_line    0x0000113f      0x127 aplite/appinfo.auto.c.11.o
- .debug_line    0x00001266      0x20a /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_line    0x00001470      0x226 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_line    0x00001696      0x10c /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_line    0x000017a2       0x86 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
-
-.debug_str      0x00000000      0xc11
- .debug_str     0x00000000      0x1e4 src/basik.c.11.o
-                                0x231 (size before relaxing)
- .debug_str     0x000001e4      0x1b2 src/clock.c.11.o
-                                0x384 (size before relaxing)
- .debug_str     0x00000396       0x32 src/display.c.11.o
-                                0x117 (size before relaxing)
- .debug_str     0x000003c8      0x169 src/game.c.11.o
-                                0x3a6 (size before relaxing)
- .debug_str     0x00000531      0x582 src/robomaze.c.11.o
-                                0x844 (size before relaxing)
- .debug_str     0x00000ab3      0x15e aplite/appinfo.auto.c.11.o
-                                0x2bf (size before relaxing)
-
-.debug_frame    0x00000000      0x684
- .debug_frame   0x00000000       0x7c src/basik.c.11.o
- .debug_frame   0x0000007c      0x1b0 src/clock.c.11.o
- .debug_frame   0x0000022c       0x3c src/display.c.11.o
- .debug_frame   0x00000268      0x2c4 src/game.c.11.o
- .debug_frame   0x0000052c      0x158 src/robomaze.c.11.o
-c4                __subdf3
                 0x000000c8                __adddf3
                 0x000000c8                __aeabi_dadd
                 0x00000340                __aeabi_ui2d
@@ -1336,314 +1188,316 @@ c4                __subdf3
  .text.click_clock
                 0x000014f4      0x108 src/clock.c.9.o
                 0x000014f4                click_clock
- .text.changed  0x000015fc       0x84 src/display.c.9.o
- .text.get_at   0x00001680       0x54 src/display.c.9.o
-                0x00001680                get_at
- .text.delay    0x000016d4       0x50 src/game.c.9.o
+ .text.changed  0x000015fc       0x8c src/display.c.9.o
+ .text.get_at   0x00001688       0xac src/display.c.9.o
+                0x00001688                get_at
+ .text.delay    0x00001734       0x50 src/game.c.9.o
  .text.evaluate
-                0x00001724       0x48 src/game.c.9.o
+                0x00001784       0x48 src/game.c.9.o
  .text.activechaf
-                0x0000176c       0xa4 src/game.c.9.o
+                0x000017cc       0xa4 src/game.c.9.o
  .text.processmaze
-                0x00001810       0x7c src/game.c.9.o
+                0x00001870       0x7c src/game.c.9.o
  .text.drawmaze
-                0x0000188c       0x7c src/game.c.9.o
- .text.xpand    0x00001908       0x54 src/game.c.9.o
+                0x000018ec       0x7c src/game.c.9.o
+ .text.xpand    0x00001968       0x54 src/game.c.9.o
  .text.loadwall
-                0x0000195c       0x58 src/game.c.9.o
+                0x000019bc       0x58 src/game.c.9.o
  .text.loadchaf
-                0x000019b4       0x40 src/game.c.9.o
+                0x00001a14       0x40 src/game.c.9.o
  .text.makechar
-                0x000019f4       0x98 src/game.c.9.o
- .text.reset    0x00001a8c       0x64 src/game.c.9.o
- .text.account  0x00001af0       0x30 src/game.c.9.o
+                0x00001a54       0x98 src/game.c.9.o
+ .text.reset    0x00001aec       0x64 src/game.c.9.o
+ .text.account  0x00001b50       0x30 src/game.c.9.o
  .text.destroywall
-                0x00001b20       0xc4 src/game.c.9.o
+                0x00001b80       0xc4 src/game.c.9.o
  .text.makemaze
-                0x00001be4       0x4c src/game.c.9.o
+                0x00001c44       0x4c src/game.c.9.o
  .text.xydxy.isra.0
-                0x00001c30       0x16 src/game.c.9.o
- *fill*         0x00001c46        0x2 
+                0x00001c90       0x16 src/game.c.9.o
+ *fill*         0x00001ca6        0x2 
  .text.drawchars
-                0x00001c48       0x90 src/game.c.9.o
- .text.ready    0x00001cd8       0x40 src/game.c.9.o
- .text.move     0x00001d18       0xec src/game.c.9.o
- .text.tick     0x00001e04       0x10 src/game.c.9.o
-                0x00001e04                tick
- .text.click    0x00001e14       0x40 src/game.c.9.o
-                0x00001e14                click
- .text.load     0x00001e54      0x150 src/game.c.9.o
-                0x00001e54                load
- .text.save     0x00001fa4      0x16c src/game.c.9.o
-                0x00001fa4                save
- .text.respond  0x00002110      0x108 src/game.c.9.o
+                0x00001ca8       0x90 src/game.c.9.o
+ .text.ready    0x00001d38       0x40 src/game.c.9.o
+ .text.move     0x00001d78       0xec src/game.c.9.o
+ .text.tick     0x00001e64       0x10 src/game.c.9.o
+                0x00001e64                tick
+ .text.click    0x00001e74       0x40 src/game.c.9.o
+                0x00001e74                click
+ .text.load     0x00001eb4      0x150 src/game.c.9.o
+                0x00001eb4                load
+ .text.save     0x00002004      0x16c src/game.c.9.o
+                0x00002004                save
+ .text.respond  0x00002170      0x108 src/game.c.9.o
  .text.main_window_unload
-                0x00002218       0x5c src/robomaze.c.9.o
+                0x00002278       0x5c src/robomaze.c.9.o
  .text.main_window_load
-                0x00002274      0x274 src/robomaze.c.9.o
+                0x000022d4      0x274 src/robomaze.c.9.o
  .text.config_provider
-                0x000024e8       0x5c src/robomaze.c.9.o
- .text.get_map  0x00002544       0x40 src/robomaze.c.9.o
-                0x00002544                get_map
- .text.put_map  0x00002584       0x58 src/robomaze.c.9.o
-                0x00002584                put_map
+                0x00002548       0x5c src/robomaze.c.9.o
+ .text.get_map  0x000025a4       0x40 src/robomaze.c.9.o
+                0x000025a4                get_map
+ .text.put_map  0x000025e4       0x58 src/robomaze.c.9.o
+                0x000025e4                put_map
  .text.layer_draw
-                0x000025dc      0x248 src/robomaze.c.9.o
+                0x0000263c      0x248 src/robomaze.c.9.o
  .text.mark_dirty
-                0x00002824       0x54 src/robomaze.c.9.o
-                0x00002824                mark_dirty
+                0x00002884       0x54 src/robomaze.c.9.o
+                0x00002884                mark_dirty
  .text.handle_second_tick
-                0x00002878       0x58 src/robomaze.c.9.o
- .text.clicks   0x000028d0       0x60 src/robomaze.c.9.o
+                0x000028d8       0x58 src/robomaze.c.9.o
+ .text.clicks   0x00002930       0x60 src/robomaze.c.9.o
  .text.long_click_handler
-                0x00002930        0x6 src/robomaze.c.9.o
+                0x00002990        0x6 src/robomaze.c.9.o
  .text.single_click_handler
-                0x00002936        0x6 src/robomaze.c.9.o
+                0x00002996        0x6 src/robomaze.c.9.o
  .text.startup.main
-                0x0000293c       0x68 src/robomaze.c.9.o
-                0x0000293c                main
+                0x0000299c       0x68 src/robomaze.c.9.o
+                0x0000299c                main
  .text.app_event_loop
-                0x000029a4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029a4                app_event_loop
- .text.click_recognizer_get_button_id
-                0x000029b0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029b0                click_recognizer_get_button_id
- .text.clock_is_24h_style
-                0x000029bc        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029bc                clock_is_24h_style
- .text.gbitmap_create_as_sub_bitmap
-                0x000029c8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029c8                gbitmap_create_as_sub_bitmap
- .text.gbitmap_create_with_resource
-                0x000029d4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029d4                gbitmap_create_with_resource
- .text.gbitmap_destroy
-                0x000029e0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029e0                gbitmap_destroy
- .text.graphics_draw_bitmap_in_rect
-                0x000029ec        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029ec                graphics_draw_bitmap_in_rect
- .text.graphics_fill_rect
-                0x000029f8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x000029f8                graphics_fill_rect
- .text.layer_add_child
                 0x00002a04        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a04                layer_add_child
- .text.layer_create
+                0x00002a04                app_event_loop
+ .text.click_recognizer_get_button_id
                 0x00002a10        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a10                layer_create
- .text.layer_destroy
+                0x00002a10                click_recognizer_get_button_id
+ .text.clock_is_24h_style
                 0x00002a1c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a1c                layer_destroy
- .text.layer_get_bounds
+                0x00002a1c                clock_is_24h_style
+ .text.gbitmap_create_as_sub_bitmap
                 0x00002a28        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a28                layer_get_bounds
- .text.layer_mark_dirty
+                0x00002a28                gbitmap_create_as_sub_bitmap
+ .text.gbitmap_create_with_resource
                 0x00002a34        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a34                layer_mark_dirty
- .text.layer_set_bounds
+                0x00002a34                gbitmap_create_with_resource
+ .text.gbitmap_destroy
                 0x00002a40        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a40                layer_set_bounds
- .text.layer_set_update_proc
+                0x00002a40                gbitmap_destroy
+ .text.graphics_draw_bitmap_in_rect
                 0x00002a4c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a4c                layer_set_update_proc
- .text.memset   0x00002a58        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a58                memset
- .text.persist_exists
+                0x00002a4c                graphics_draw_bitmap_in_rect
+ .text.graphics_fill_rect
+                0x00002a58        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002a58                graphics_fill_rect
+ .text.layer_add_child
                 0x00002a64        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a64                persist_exists
- .text.persist_read_bool
+                0x00002a64                layer_add_child
+ .text.layer_create
                 0x00002a70        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a70                persist_read_bool
- .text.persist_read_int
+                0x00002a70                layer_create
+ .text.layer_destroy
                 0x00002a7c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a7c                persist_read_int
- .text.persist_write_bool
+                0x00002a7c                layer_destroy
+ .text.layer_get_bounds
                 0x00002a88        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a88                persist_write_bool
- .text.persist_write_int
+                0x00002a88                layer_get_bounds
+ .text.layer_mark_dirty
                 0x00002a94        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002a94                persist_write_int
- .text.rand     0x00002aa0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002aa0                rand
- .text.srand    0x00002aac        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002aac                srand
- .text.tick_timer_service_subscribe
-                0x00002ab8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002ab8                tick_timer_service_subscribe
- .text.window_create
+                0x00002a94                layer_mark_dirty
+ .text.layer_set_bounds
+                0x00002aa0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002aa0                layer_set_bounds
+ .text.layer_set_update_proc
+                0x00002aac        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002aac                layer_set_update_proc
+ .text.memset   0x00002ab8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002ab8                memset
+ .text.persist_exists
                 0x00002ac4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002ac4                window_create
- .text.window_destroy
+                0x00002ac4                persist_exists
+ .text.persist_read_bool
                 0x00002ad0        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002ad0                window_destroy
- .text.window_get_root_layer
+                0x00002ad0                persist_read_bool
+ .text.persist_read_int
                 0x00002adc        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002adc                window_get_root_layer
- .text.window_set_click_config_provider
+                0x00002adc                persist_read_int
+ .text.persist_write_bool
                 0x00002ae8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002ae8                window_set_click_config_provider
- .text.window_set_window_handlers
+                0x00002ae8                persist_write_bool
+ .text.persist_write_int
                 0x00002af4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002af4                window_set_window_handlers
- .text.window_stack_push
-                0x00002b00        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b00                window_stack_push
- .text.window_long_click_subscribe
-                0x00002b0c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b0c                window_long_click_subscribe
- .text.window_single_click_subscribe
+                0x00002af4                persist_write_int
+ .text.rand     0x00002b00        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b00                rand
+ .text.srand    0x00002b0c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b0c                srand
+ .text.tick_timer_service_subscribe
                 0x00002b18        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b18                window_single_click_subscribe
- .text.persist_read_data
+                0x00002b18                tick_timer_service_subscribe
+ .text.window_create
                 0x00002b24        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b24                persist_read_data
- .text.persist_write_data
+                0x00002b24                window_create
+ .text.window_destroy
                 0x00002b30        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b30                persist_write_data
- .text.graphics_context_set_fill_color
+                0x00002b30                window_destroy
+ .text.window_get_root_layer
                 0x00002b3c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b3c                graphics_context_set_fill_color
- .text.localtime
+                0x00002b3c                window_get_root_layer
+ .text.window_set_click_config_provider
                 0x00002b48        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b48                localtime
- .text.time     0x00002b54        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
-                0x00002b54                time
+                0x00002b48                window_set_click_config_provider
+ .text.window_set_window_handlers
+                0x00002b54        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b54                window_set_window_handlers
+ .text.window_stack_push
+                0x00002b60        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b60                window_stack_push
+ .text.window_long_click_subscribe
+                0x00002b6c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b6c                window_long_click_subscribe
+ .text.window_single_click_subscribe
+                0x00002b78        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b78                window_single_click_subscribe
+ .text.persist_read_data
+                0x00002b84        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b84                persist_read_data
+ .text.persist_write_data
+                0x00002b90        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b90                persist_write_data
+ .text.graphics_context_set_fill_color
+                0x00002b9c        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002b9c                graphics_context_set_fill_color
+ .text.localtime
+                0x00002ba8        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002ba8                localtime
+ .text.time     0x00002bb4        0xc /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+                0x00002bb4                time
  *(.rodata)
- .rodata        0x00002b60       0x18 src/robomaze.c.9.o
+ .rodata        0x00002bc0       0x18 src/robomaze.c.9.o
  *(.rodata*)
  .rodata.delays
-                0x00002b78        0x7 src/clock.c.9.o
- .rodata.days   0x00002b7f       0x39 src/clock.c.9.o
- .rodata.pics   0x00002bb8       0x42 src/clock.c.9.o
- .rodata.keys   0x00002bfa        0x7 src/clock.c.9.o
+                0x00002bd8        0x7 src/clock.c.9.o
+ .rodata.days   0x00002bdf       0x39 src/clock.c.9.o
+ .rodata.pics   0x00002c18       0x42 src/clock.c.9.o
+ .rodata.keys   0x00002c5a        0x7 src/clock.c.9.o
  .rodata.specials
-                0x00002c01       0x10 src/display.c.9.o
- .rodata.defis  0x00002c11        0x8 src/game.c.9.o
+                0x00002c61        0x8 src/display.c.9.o
+ .rodata.doubles
+                0x00002c69       0x28 src/display.c.9.o
+ .rodata.defis  0x00002c91        0x8 src/game.c.9.o
  .rodata.offset
-                0x00002c19        0x4 src/game.c.9.o
- .rodata.dir    0x00002c1d        0x5 src/game.c.9.o
+                0x00002c99        0x4 src/game.c.9.o
+ .rodata.dir    0x00002c9d        0x5 src/game.c.9.o
  .rodata.orders
-                0x00002c22       0x10 src/game.c.9.o
- .rodata.dxy    0x00002c32        0x4 src/game.c.9.o
+                0x00002ca2       0x10 src/game.c.9.o
+ .rodata.dxy    0x00002cb2        0x4 src/game.c.9.o
  .rodata.defchar
-                0x00002c36       0x14 src/game.c.9.o
+                0x00002cb6       0x14 src/game.c.9.o
 
-.glue_7         0x00002c4c        0x0
+.glue_7         0x00002ccc        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00002c4c        0x0
+.glue_7t        0x00002ccc        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00002c4c        0x0
+.vfp11_veneer   0x00002ccc        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00002c4c        0x0
+.v4_bx          0x00002ccc        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00002c4c        0x0
+.iplt           0x00002ccc        0x0
  .iplt          0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
 
-.rel.dyn        0x00002c4c        0x0
+.rel.dyn        0x00002ccc        0x0
  .rel.iplt      0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
  .rel.got       0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
 
-.data           0x00002c4c       0x38
+.data           0x00002ccc       0x38
  *(.data)
- .data          0x00002c4c        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crti.o
- .data          0x00002c4c        0x4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-                0x00002c4c                __dso_handle
- .data          0x00002c50        0x0 src/basik.c.9.o
- .data          0x00002c50        0x0 src/clock.c.9.o
- .data          0x00002c50        0x0 src/display.c.9.o
- .data          0x00002c50        0x0 src/game.c.9.o
- .data          0x00002c50        0x0 src/robomaze.c.9.o
- .data          0x00002c50        0x0 basalt/appinfo.auto.c.9.o
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
- .data          0x00002c50        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtn.o
+ .data          0x00002ccc        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crti.o
+ .data          0x00002ccc        0x4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
+                0x00002ccc                __dso_handle
+ .data          0x00002cd0        0x0 src/basik.c.9.o
+ .data          0x00002cd0        0x0 src/clock.c.9.o
+ .data          0x00002cd0        0x0 src/display.c.9.o
+ .data          0x00002cd0        0x0 src/game.c.9.o
+ .data          0x00002cd0        0x0 src/robomaze.c.9.o
+ .data          0x00002cd0        0x0 basalt/appinfo.auto.c.9.o
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/Pebble/basalt/lib/libpebble.a(tmp2hEX61pebble.o)
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
+ .data          0x00002cd0        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtn.o
  *(.data.*)
  .data.selector
-                0x00002c50        0x1 src/display.c.9.o
-                0x00002c50                selector
- *fill*         0x00002c51        0x3 
+                0x00002cd0        0x1 src/display.c.9.o
+                0x00002cd0                selector
+ *fill*         0x00002cd1        0x3 
  .data.rel.local.state
-                0x00002c54        0x4 src/game.c.9.o
+                0x00002cd4        0x4 src/game.c.9.o
  .data.rel.local.oldstate
-                0x00002c58        0x4 src/game.c.9.o
+                0x00002cd8        0x4 src/game.c.9.o
  .data.rel.ro.local.fn
-                0x00002c5c       0x28 src/game.c.9.o
+                0x00002cdc       0x28 src/game.c.9.o
 
-.igot.plt       0x00002c84        0x0
+.igot.plt       0x00002d04        0x0
  .igot.plt      0x00000000        0x0 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
 
-.got            0x00002c84       0x34
- .got           0x00002c84       0x34 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
+.got            0x00002d04       0x34
+ .got           0x00002d04       0x34 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
 
-.got.plt        0x00002cb8        0xc
- .got.plt       0x00002cb8        0xc /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
-                0x00002cb8                _GLOBAL_OFFSET_TABLE_
+.got.plt        0x00002d38        0xc
+ .got.plt       0x00002d38        0xc /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtbegin.o
+                0x00002d38                _GLOBAL_OFFSET_TABLE_
 
-.bss            0x00002cc8      0x93b
+.bss            0x00002d48      0x93b
  *(.bss)
  *(.bss.*)
- .bss.expo      0x00002cc8        0x1 src/basik.c.9.o
- *fill*         0x00002cc9        0x7 
- .bss.xx        0x00002cd0        0x8 src/basik.c.9.o
- .bss.value     0x00002cd8        0x8 src/basik.c.9.o
-                0x00002cd8                value
- .bss.error     0x00002ce0        0x1 src/basik.c.9.o
-                0x00002ce0                error
- .bss.hold      0x00002ce1        0x1 src/basik.c.9.o
- *fill*         0x00002ce2        0x2 
- .bss.reg       0x00002ce4       0x30 src/clock.c.9.o
+ .bss.expo      0x00002d48        0x1 src/basik.c.9.o
+ *fill*         0x00002d49        0x7 
+ .bss.xx        0x00002d50        0x8 src/basik.c.9.o
+ .bss.value     0x00002d58        0x8 src/basik.c.9.o
+                0x00002d58                value
+ .bss.error     0x00002d60        0x1 src/basik.c.9.o
+                0x00002d60                error
+ .bss.hold      0x00002d61        0x1 src/basik.c.9.o
+ *fill*         0x00002d62        0x2 
+ .bss.reg       0x00002d64       0x30 src/clock.c.9.o
  .bss.clickback
-                0x00002d14        0x1 src/clock.c.9.o
- *fill*         0x00002d15        0x1 
- .bss.sw_butt   0x00002d16        0x2 src/clock.c.9.o
- .bss.dp        0x00002d18        0x1 src/clock.c.9.o
+                0x00002d94        0x1 src/clock.c.9.o
+ *fill*         0x00002d95        0x1 
+ .bss.sw_butt   0x00002d96        0x2 src/clock.c.9.o
+ .bss.dp        0x00002d98        0x1 src/clock.c.9.o
  .bss.button_sec
-                0x00002d19        0x1 src/clock.c.9.o
- .bss.mode      0x00002d1a        0x1 src/clock.c.9.o
-                0x00002d1a                mode
- *fill*         0x00002d1b        0x1 
- .bss.lap       0x00002d1c       0x30 src/clock.c.9.o
- .bss.vidmode   0x00002d4c        0x1 src/display.c.9.o
-                0x00002d4c                vidmode
- .bss.pause     0x00002d4d        0x1 src/game.c.9.o
-                0x00002d4d                pause
- .bss.ting      0x00002d4e       0x28 src/game.c.9.o
- .bss.chaf      0x00002d76       0x20 src/game.c.9.o
- .bss.success   0x00002d96        0x1 src/game.c.9.o
- *fill*         0x00002d97        0x1 
+                0x00002d99        0x1 src/clock.c.9.o
+ .bss.mode      0x00002d9a        0x1 src/clock.c.9.o
+                0x00002d9a                mode
+ *fill*         0x00002d9b        0x1 
+ .bss.lap       0x00002d9c       0x30 src/clock.c.9.o
+ .bss.vidmode   0x00002dcc        0x1 src/display.c.9.o
+                0x00002dcc                vidmode
+ .bss.pause     0x00002dcd        0x1 src/game.c.9.o
+                0x00002dcd                pause
+ .bss.ting      0x00002dce       0x28 src/game.c.9.o
+ .bss.chaf      0x00002df6       0x20 src/game.c.9.o
+ .bss.success   0x00002e16        0x1 src/game.c.9.o
+ *fill*         0x00002e17        0x1 
  .bss.countdown
-                0x00002d98        0x4 src/game.c.9.o
- .bss.compact   0x00002d9c       0x3e src/game.c.9.o
- *fill*         0x00002dda        0x2 
- .bss.layer     0x00002ddc        0x4 src/robomaze.c.9.o
- .bss.char_gfx  0x00002de0      0x10c src/robomaze.c.9.o
- .bss.last      0x00002eec        0x1 src/robomaze.c.9.o
- *fill*         0x00002eed        0x3 
- .bss.seconds   0x00002ef0        0x4 src/robomaze.c.9.o
-                0x00002ef0                seconds
- .bss.ticks     0x00002ef4        0x4 src/robomaze.c.9.o
- .bss.map       0x00002ef8        0x4 src/robomaze.c.9.o
- .bss.maze_gfx  0x00002efc       0x7c src/robomaze.c.9.o
+                0x00002e18        0x4 src/game.c.9.o
+ .bss.compact   0x00002e1c       0x3e src/game.c.9.o
+ *fill*         0x00002e5a        0x2 
+ .bss.layer     0x00002e5c        0x4 src/robomaze.c.9.o
+ .bss.char_gfx  0x00002e60      0x10c src/robomaze.c.9.o
+ .bss.last      0x00002f6c        0x1 src/robomaze.c.9.o
+ *fill*         0x00002f6d        0x3 
+ .bss.seconds   0x00002f70        0x4 src/robomaze.c.9.o
+                0x00002f70                seconds
+ .bss.ticks     0x00002f74        0x4 src/robomaze.c.9.o
+ .bss.map       0x00002f78        0x4 src/robomaze.c.9.o
+ .bss.maze_gfx  0x00002f7c       0x7c src/robomaze.c.9.o
  .bss.s_main_window
-                0x00002f78        0x4 src/robomaze.c.9.o
- COMMON         0x00002f7c       0x11 src/game.c.9.o
-                0x00002f7c                direction
-                0x00002f80                score
-                0x00002f84                level
-                0x00002f88                hiscore
-                0x00002f8c                gAB
- COMMON         0x00002f8d      0x676 src/robomaze.c.9.o
-                0x00002f8d                maze
-                0x000033c2                con
+                0x00002ff8        0x4 src/robomaze.c.9.o
+ COMMON         0x00002ffc       0x11 src/game.c.9.o
+                0x00002ffc                direction
+                0x00003000                score
+                0x00003004                level
+                0x00003008                hiscore
+                0x0000300c                gAB
+ COMMON         0x0000300d      0x676 src/robomaze.c.9.o
+                0x0000300d                maze
+                0x00003442                con
 
 DISCARD
  libc.a(*)
@@ -1696,36 +1550,36 @@ OUTPUT(/home/jacko/pebble-dev/examples/watchapps/RoboMaze/build/basalt/pebble-ap
  .comment       0x00000000       0x4f basalt/appinfo.auto.c.9.o
  .comment       0x00000000       0x4f /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/crtend.o
 
-.debug_info     0x00000000     0x3f9f
+.debug_info     0x00000000     0x3fd8
  .debug_info    0x00000000      0x3cd src/basik.c.9.o
  .debug_info    0x000003cd      0xded src/clock.c.9.o
- .debug_info    0x000011ba      0x1a2 src/display.c.9.o
- .debug_info    0x0000135c     0x1215 src/game.c.9.o
- .debug_info    0x00002571     0x1451 src/robomaze.c.9.o
- .debug_info    0x000039c2      0x30d basalt/appinfo.auto.c.9.o
- .debug_info    0x00003ccf       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_info    0x00003d83       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_info    0x00003e37       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_info    0x00003eeb       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
+ .debug_info    0x000011ba      0x1db src/display.c.9.o
+ .debug_info    0x00001395     0x1215 src/game.c.9.o
+ .debug_info    0x000025aa     0x1451 src/robomaze.c.9.o
+ .debug_info    0x000039fb      0x30d basalt/appinfo.auto.c.9.o
+ .debug_info    0x00003d08       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
+ .debug_info    0x00003dbc       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
+ .debug_info    0x00003e70       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
+ .debug_info    0x00003f24       0xb4 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_abbrev   0x00000000      0xf4a
+.debug_abbrev   0x00000000      0xf52
  .debug_abbrev  0x00000000      0x1e9 src/basik.c.9.o
  .debug_abbrev  0x000001e9      0x3aa src/clock.c.9.o
- .debug_abbrev  0x00000593       0xf8 src/display.c.9.o
- .debug_abbrev  0x0000068b      0x3ed src/game.c.9.o
- .debug_abbrev  0x00000a78      0x3e4 src/robomaze.c.9.o
- .debug_abbrev  0x00000e5c       0x9e basalt/appinfo.auto.c.9.o
- .debug_abbrev  0x00000efa       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_abbrev  0x00000f0e       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_abbrev  0x00000f22       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_abbrev  0x00000f36       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
+ .debug_abbrev  0x00000593      0x100 src/display.c.9.o
+ .debug_abbrev  0x00000693      0x3ed src/game.c.9.o
+ .debug_abbrev  0x00000a80      0x3e4 src/robomaze.c.9.o
+ .debug_abbrev  0x00000e64       0x9e basalt/appinfo.auto.c.9.o
+ .debug_abbrev  0x00000f02       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
+ .debug_abbrev  0x00000f16       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
+ .debug_abbrev  0x00000f2a       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
+ .debug_abbrev  0x00000f3e       0x14 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_loc      0x00000000     0x1aa9
+.debug_loc      0x00000000     0x1b49
  .debug_loc     0x00000000      0x151 src/basik.c.9.o
  .debug_loc     0x00000151      0x939 src/clock.c.9.o
- .debug_loc     0x00000a8a      0x1ba src/display.c.9.o
- .debug_loc     0x00000c44      0x7ee src/game.c.9.o
- .debug_loc     0x00001432      0x677 src/robomaze.c.9.o
+ .debug_loc     0x00000a8a      0x25a src/display.c.9.o
+ .debug_loc     0x00000ce4      0x7ee src/game.c.9.o
+ .debug_loc     0x000014d2      0x677 src/robomaze.c.9.o
 
 .debug_aranges  0x00000000      0x2c0
  .debug_aranges
@@ -1749,37 +1603,37 @@ OUTPUT(/home/jacko/pebble-dev/examples/watchapps/RoboMaze/build/basalt/pebble-ap
  .debug_aranges
                 0x000002a0       0x20 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_ranges   0x00000000      0xa30
+.debug_ranges   0x00000000      0xa48
  .debug_ranges  0x00000000       0x30 src/basik.c.9.o
  .debug_ranges  0x00000030      0x110 src/clock.c.9.o
- .debug_ranges  0x00000140       0x18 src/display.c.9.o
- .debug_ranges  0x00000158      0x5d0 src/game.c.9.o
- .debug_ranges  0x00000728      0x308 src/robomaze.c.9.o
+ .debug_ranges  0x00000140       0x30 src/display.c.9.o
+ .debug_ranges  0x00000170      0x5d0 src/game.c.9.o
+ .debug_ranges  0x00000740      0x308 src/robomaze.c.9.o
 
-.debug_line     0x00000000     0x1810
+.debug_line     0x00000000     0x181c
  .debug_line    0x00000000      0x1ef src/basik.c.9.o
  .debug_line    0x000001ef      0x463 src/clock.c.9.o
- .debug_line    0x00000652       0x8c src/display.c.9.o
- .debug_line    0x000006de      0x60a src/game.c.9.o
- .debug_line    0x00000ce8      0x43f src/robomaze.c.9.o
- .debug_line    0x00001127      0x127 basalt/appinfo.auto.c.9.o
- .debug_line    0x0000124e      0x20a /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
- .debug_line    0x00001458      0x226 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
- .debug_line    0x0000167e      0x10c /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
- .debug_line    0x0000178a       0x86 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
+ .debug_line    0x00000652       0x98 src/display.c.9.o
+ .debug_line    0x000006ea      0x60a src/game.c.9.o
+ .debug_line    0x00000cf4      0x43f src/robomaze.c.9.o
+ .debug_line    0x00001133      0x127 basalt/appinfo.auto.c.9.o
+ .debug_line    0x0000125a      0x20a /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_addsubdf3.o)
+ .debug_line    0x00001464      0x226 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_muldivdf3.o)
+ .debug_line    0x0000168a      0x10c /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_cmpdf2.o)
+ .debug_line    0x00001796       0x86 /home/jacko/pebble-dev/PebbleSDK/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.3/thumb2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_str      0x00000000      0xbb3
+.debug_str      0x00000000      0xbbb
  .debug_str     0x00000000      0x1e4 src/basik.c.9.o
                                 0x231 (size before relaxing)
  .debug_str     0x000001e4      0x1b0 src/clock.c.9.o
                                 0x382 (size before relaxing)
- .debug_str     0x00000394       0x32 src/display.c.9.o
-                                0x117 (size before relaxing)
- .debug_str     0x000003c6      0x169 src/game.c.9.o
+ .debug_str     0x00000394       0x3a src/display.c.9.o
+                                0x11f (size before relaxing)
+ .debug_str     0x000003ce      0x169 src/game.c.9.o
                                 0x3a6 (size before relaxing)
- .debug_str     0x0000052f      0x520 src/robomaze.c.9.o
+ .debug_str     0x00000537      0x520 src/robomaze.c.9.o
                                 0x7d3 (size before relaxing)
- .debug_str     0x00000a4f      0x164 basalt/appinfo.auto.c.9.o
+ .debug_str     0x00000a57      0x164 basalt/appinfo.auto.c.9.o
                                 0x2bf (size before relaxing)
 
 .debug_frame    0x00000000      0x684
