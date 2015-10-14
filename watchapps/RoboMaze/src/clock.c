@@ -139,25 +139,30 @@ static void sw_tick() {
   }
 }
 
-static void printint(int x, int pos) {
+static void printint(int x, int pos, bool zeros) {
   bool neg = false;
   if(x < 0) {
     x = -x;
     neg = true;
   }
-  for(int i = pos; i >= 0; i--) {
+  for(int i = pos; i >= 0; i--) {//leave space for negative sign
     draw(x%10, i);
     x /= 10;
     if(x == 0) {
-      if(i != 0 && neg) draw(32, --i);//negate
-      break;//blanks nulls
+      if(zeros && dp - 1 <= pos) {
+	//draw(0, i);
+	continue;
+      } else if(i > 0 && neg) {
+	draw(32, --i);//negate
+	break;
+      }
     }
   }
 }
 
-static void sci(bool neg);
+static void sci(bool neg, double x);
 
-static void printreal(double x, bool ex, int off) {
+static void printreal(double x, bool ex) {
   bool neg = false;
   if(x < 0) {
     x = -x;
@@ -173,49 +178,27 @@ static void printreal(double x, bool ex, int off) {
     draw(15, 7);
     return;
   }
-  int mask = ((ex)?100000:100000000);
-  int dp;
-  int z;
-  mask = ((!neg)?mask:(mask/10));
-  if(x >= mask) {//sci
-    sci(neg);
+  double mask = ((ex)?100000.0:100000000.0);//use exponent
+  mask = ((!neg)?mask:(mask/10.0));//leave space for negative sign
+  if(x >= mask || x <= 1.0/mask) {//sci notation as too big
+    sci(neg, x);
     return;
   }
-  int y = (int32_t)x;
-  for(dp = ((ex)?5:8); dp >= 0; dp--) {
-    z = y % ((!neg)?mask:(mask/10));
-    mask /= 10;
-    if(y == z) {//integer range
-      continue;//find dp
-    } else break;
+  dp = 0;//set zero placed deciaml
+  //either defered as sci exponent, zero or error printed so far!!
+  int32_t out;
+  for(int i = 0; i < 8; i++) {
+    if((double)(out = (int32_t)x) == x) break;
+    if(x < mask) {
+	x *= 10.0;
+	dp++;//scale decimal
+    } 
   }
-  printint(neg?-y:y, (++dp) + off);//integer part drawn
-  draw_dp(0b10000, dp + off);
-  //obtain fractional part
-  x -= y;//ok
-  z = 0;//back count
-  int w = 0;//zero count
-  if(y == 0) w++;
-  for(mask = dp + off; mask <= ((ex)?4:7); mask++) {
-    if(x == 0.0) z++;
-    x *= 10;
-    y = (int32_t)x;
-    if(y == 0) w++;
-    draw(y, mask);
-    x -= (double)y;
-  }
-  if(z > 0) {
-    clear();
-    if(w > ((ex)?4:7)) {//sci
-      sci(neg);
-    } else {
-      printreal(value, ex, z);
-    }
-  }
+  draw_dp(0b10000, (ex?5:8) - dp);
+  printint(neg?-out:out, ex?4:7, true);//integer part drawn
 }
 
-static void sci(bool neg) {
-  double x = value;
+static void sci(bool neg, double x) {
   int ex = 0;
   while(x > 10) {
     x /= 10;
@@ -226,8 +209,8 @@ static void sci(bool neg) {
     ex--;
   }
   if(neg) x = -x;
-  printreal(x, true, 0);
-  printint(ex, 7);
+  printreal(x, true);
+  printint(ex, 7, true);
 }
 
 void show_lvl(int mode_to) {
@@ -272,17 +255,17 @@ void tick_clock(struct tm *tick_time, bool stop) {
       tock(&reg, true, true);
     }
     break;
-  case 3: printreal(value, false, 0);
+  case 3: printreal(value, false);
     break;
   case 4: draw_dp(1<<(direction%5), 8);//score
-    printint(score, 7);
+    printint(score, 7, false);
     break;
   case 5: draw_dp(1<<(direction%5), 8);//level
-    printint(level, 7);
+    printint(level, 7, false);
     draw(28, 0);//L
     break;
   case 6: draw_dp(1<<(direction%5), 8);//hiscore
-    printint(hiscore, 7);
+    printint(hiscore, 7, false);
     draw(18, 0);//H
     break;
   default: break;
