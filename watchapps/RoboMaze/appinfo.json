@@ -3,8 +3,8 @@
   "shortName": "RoboMaze",
   "longName": "RoboMaze",
   "companyName": "K Ring Technologies",
-  "versionCode": 13,
-  "versionLabel": "2.6",
+  "versionCode": 14,
+  "versionLabel": "2.7",
   "watchapp": {
     "watchface": false
   },

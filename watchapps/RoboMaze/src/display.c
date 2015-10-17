@@ -9,7 +9,7 @@
 
 // 32 by 24 display
 
-unsigned char vidmode = 0;
+bool vidmode = false;
 unsigned char selector = 100;
 
 extern int seconds;
@@ -69,4 +69,8 @@ int get_at(int x, int y) {
 	if(x > 27 && selector >= 6 && selector < 36 + 6) return changed(selector, y/4, x);
 	return 59;//blank space
   };
+}
+
+void click_display(ButtonId recognizer, bool single) {
+
 }
