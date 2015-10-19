@@ -8,7 +8,14 @@
   "watchapp": {
     "watchface": false
   },
-  "appKeys": {},
+  "appKeys": {
+    "NM": 5,
+    "ALT": 4,
+    "DLAT": 3,
+    "DLONG": 2,
+    "LAT": 1,
+    "LONG": 0
+  },
   "resources": {
     "media": [
       {
@@ -28,5 +35,6 @@
     "aplite",
     "basalt"
   ],
-  "sdkVersion": "3"
+  "sdkVersion": "3",
+  "capabilities": [ "configurable", "location" ]
 }

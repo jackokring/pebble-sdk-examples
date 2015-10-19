@@ -1,0 +1,292 @@
+#include "pebble.h"
+
+//TODO:
+//check edge cases
+//Text flash on BT disconnect
+//Mux date with clock (on minute?)
+//jump step on restart? (via worker low flash overheads)
+//keygen
+//?
+
+static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
+	double acc = 0;
+	double mul = x;
+	double harm = 1;
+	int start = 1;
+	if(sq) x = x * x;
+	x = (alt? -x : x);
+	do {
+		acc += mul * (!over? 1.0F : harm);
+		start += sq + 1;
+		harm = 1/(double)start;
+		mul *= x * (!fact? 1.0F : harm * (!sq? 1.0F : 1/(start - 1.0)));
+        } while(start < 200);//term limit
+	return acc;
+}
+
+//OSAF FN (flags and function produced)
+//0000
+//0001 expm1
+//0010
+//0011 expm1(ix)
+//0100
+//0101 sinh
+//0110
+//0111 sin
+//1000
+//1001 qfn
+//1010
+//1011 
+//1100 log with right input transform (is atanh)
+//1101
+//1110 atan
+//1111
+
+float logA(float x, bool atan) { //base e
+	return atan?eq(x, true, true, true, false):eq((x-1.0)/(x+1.0), true, true, false, false) * 2.0;
+}
+
+static Window *s_main_window;
+static TextLayer *s_log_layer, *s_time_layer, *s_0_layer, *s_rg_layer, *s_2_layer, *s_atan_layer;
+static Layer *s_line_layer;
+
+static void line_layer_update_callback(Layer *layer, GContext* ctx) {
+  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_fill_rect(ctx, layer_get_bounds(layer), 0, GCornerNone);
+}
+
+static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
+    static char s_time_text[] = "00:00";
+    char *time_format;
+    if (clock_is_24h_style()) {
+      time_format = "%R";
+    } else {
+      time_format = "%I:%M";
+    }
+    strftime(s_time_text, sizeof(s_time_text), time_format, tick_time);
+    // Handle lack of non-padded hour format string for twelve hour clock.
+    if (!clock_is_24h_style() && (s_time_text[0] == '0')) {
+      memmove(s_time_text, &s_time_text[1], sizeof(s_time_text) - 1);
+    }
+    text_layer_set_text(s_time_layer, s_time_text);
+}
+
+static int round_it(double s) {
+  int i = (int)s;
+  s -= i;
+  int v = (int)(s*10000)%10000;//converted
+  return v;
+}
+
+static char s_long_text[] = " GPS Connect ";//13 per line
+static char s_lat_text[] = " GPS Connect ";//13 per line
+static char s_long_text2[] = " GPS Connect ";//13 per line
+static char s_lat_text2[] = " GPS Connect ";//13 per line
+static char vals[][2] = {"+", "-"};
+
+#define PI 3.141592658
+
+static bool vibrated = false;
+static int connected = 10;//assume 10 second lax time
+
+static void vibrate() {
+    vibes_double_pulse();
+}
+
+static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
+    // Need to be static because they're used by the system later.
+    if(units_changed & MINUTE_UNIT) handle_minute_tick(tick_time, units_changed);
+    static char s_log_text[] = "1234567890123";//13 per line
+    static char s_atan_text[] = "1234567890123";//13 per line
+    static char s_rg_text[] = "1234567890123";//13 per line
+    static char s_2_text[] = "1234567890123";//13 per line
+    double s = ((double)tick_time->tm_sec);//get input
+    s += (double)(tick_time->tm_min) * 60;
+    s %= 360.0;//6 mins
+    s /= 360.0;// 0 to <1 === MAIN INPUT ===
+
+    double log10 = 1/logA(10, false);
+    double p = s * 10;//base 10
+    if(p < 1) p += 10;//prevent errors by wrap
+    p = logA(p, false) * log10;//scale to base 10
+    double q = 1/(s * 100) * log10;//gradient / 100
+    int v = round_it(p);
+    int w = round_it(q);
+    snprintf(s_log_text, sizeof(s_log_text), "%04d L G %04d", v, w);
+    text_layer_set_text(s_log_layer, s_log_text);//log
+    
+    double a = 1/logA(1.0, true);//reuse 45 degree is 1
+    q = 1/((s * s + 1) * 10.0) * a;//gradient / 10
+    p = logA(s, true) * a;//atan
+    v = round_it(p);
+    w = round_it(q);
+    snprintf(s_atan_text, sizeof(s_atan_text), "%04d A G %04d", v, w);
+    text_layer_set_text(s_atan_layer, s_atan_text);//atan
+
+    q = s / (10.0 * log10);//gradient / 10 exp grad
+    p = (1 + s * s) / (10.0 * a);//tan grad
+    v = round_it(p);
+    w = round_it(q);
+    snprintf(s_rg_text, sizeof(s_rg_text), "%04d TRE %04d", v, w);
+    text_layer_set_text(s_rg_layer, s_rg_text);//reverse gradient
+
+    int bat = 0;
+    v = round_it(s);
+    w = battery_state_service_peek().charge_percent;
+    if(w == 100) w = 99;//2 digit
+    if (!battery_state_service_peek().is_charging) {
+        bat = 1;
+    } 
+    snprintf(s_2_text, sizeof(s_2_text), "%04d X B %s%02d%%", v, vals[bat], w);
+    text_layer_set_text(s_2_layer, s_2_text);// BAT%
+
+    char def_text[] = " GPS Connect ";//constant elimination
+    if (!bluetooth_connection_service_peek()) {
+	if(--connected <= 0) {
+		connected = 1;
+		if(!vibrated) vibrate();//notify user once
+		vibrated = true;
+	}
+	if(vibrated) snprintf(def_text, sizeof(def_text), "%s", " Phone Lost! ");
+  	snprintf(s_long_text, sizeof(s_long_text), "%s", def_text);
+        snprintf(s_lat_text, sizeof(s_lat_text), "%s", def_text);
+	snprintf(s_long_text2, sizeof(s_long_text2), "%s", def_text);
+        snprintf(s_lat_text2, sizeof(s_lat_text2), "%s", def_text);
+    } else {
+	if(++connected > 360) {
+		connected = 360;
+		vibrated = false;//6 min up, assume stable again
+	}
+    }
+
+    char * longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text:s_long_text;
+    if((tick_time->tm_sec & 8)==0) {
+    	longlat = ((tick_time->tm_sec & 4)==0)?s_lat_text2:s_long_text2;
+    }
+
+    text_layer_set_text(s_0_layer, longlat);//gps co-ordinates? alternating N/E
+    text_layer_set_text(s_2_layer, s_2_text);//in and bat
+}
+
+#define DLAT 3
+#define DLONG 2
+#define LAT 1
+#define LONG 0
+
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  //not necessary, assume disconnect
+}
+
+static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
+}
+
+static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
+}
+
+static void received_callback(DictionaryIterator *iterator, void *context) {
+  // Get the first pair
+  Tuple *t = dict_read_first(iterator);
+
+  // Process all pairs present
+  while(t != NULL) {
+    // Process this pair's key
+    switch (t->key) {
+      case LAT:
+	memcpy(s_lat_text, (char *)t->value->cstring, sizeof(s_lat_text));
+        break;
+      case LONG:
+        memcpy(s_long_text, (char *)t->value->cstring, sizeof(s_long_text));
+        break;
+      case DLAT:
+	memcpy(s_lat_text2, (char *)t->value->cstring, sizeof(s_lat_text2));
+        break;
+      case DLONG:
+        memcpy(s_long_text2, (char *)t->value->cstring, sizeof(s_long_text2));
+        break;
+    }
+
+    // Get next pair, if any
+    t = dict_read_next(iterator);
+  }
+}
+
+static Layer *window_layer;
+
+static void layer(TextLayer **ptr, int offset) {
+  *ptr = text_layer_create(GRect(4, offset * 24, 144 - 8, 100));
+  text_layer_set_text_color(*ptr, GColorWhite);
+  text_layer_set_background_color(*ptr, GColorClear);
+  text_layer_set_font(*ptr, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
+  text_layer_set_text_alignment(*ptr, GTextAlignmentCenter);
+  layer_add_child(window_layer, text_layer_get_layer(*ptr));
+}
+
+static void main_window_load(Window *window) {
+  window_layer = window_get_root_layer(window);
+
+  layer(&s_0_layer, 0);
+  layer(&s_rg_layer, 1);
+  layer(&s_2_layer, 2);
+  layer(&s_atan_layer, 3);
+
+  layer(&s_log_layer, 4);
+
+  s_time_layer = text_layer_create(GRect(8, 115, 144 - 16, 76));
+  text_layer_set_text_color(s_time_layer, GColorWhite);
+  text_layer_set_background_color(s_time_layer, GColorClear);
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_ROBOTO_BOLD_SUBSET_49));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+
+  GRect line_frame = GRect(8, 120, 144 - 16, 2);
+  s_line_layer = layer_create(line_frame);
+  layer_set_update_proc(s_line_layer, line_layer_update_callback);
+  layer_add_child(window_layer, s_line_layer);
+}
+
+static void main_window_unload(Window *window) {
+  text_layer_destroy(s_log_layer);
+  text_layer_destroy(s_time_layer);
+
+  layer_destroy(s_line_layer);
+}
+
+static void init() {
+  s_main_window = window_create();
+  window_set_background_color(s_main_window, GColorBlack);
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload,
+  });
+  window_stack_push(s_main_window, true);
+
+  tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
+  //tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);//NO!!
+
+  app_message_register_inbox_received(received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+
+  app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
+  
+  // Prevent starting blank
+  time_t now = time(NULL);
+  struct tm *t = localtime(&now);
+  handle_minute_tick(t, MINUTE_UNIT);
+  handle_second_tick(t, SECOND_UNIT);
+}
+
+static void deinit() {
+  window_destroy(s_main_window);
+
+  tick_timer_service_unsubscribe();
+}
+
+int main() {
+  init();
+  app_event_loop();
+  deinit();
+}
