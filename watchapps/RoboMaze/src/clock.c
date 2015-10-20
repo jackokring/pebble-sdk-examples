@@ -23,7 +23,7 @@ extern void click(ButtonId b, bool single);
 extern bool gAB;
 extern bool error;
 
-static unsigned char dp = 0;//dp col
+unsigned char dp = 0;//dp col
 unsigned char mode = 0;//clock,date,stopwatch,value,score
 
 static const int16_t pics[] = {
@@ -145,19 +145,17 @@ static void printint(int x, int pos, bool zeros) {
     x = -x;
     neg = true;
   }
-  for(int i = pos; i >= 0; i--) {//leave space for negative sign
+  for(int i = pos; i >= neg?1:0; i--) {//leave space for negative sign
     draw(x%10, i);
     x /= 10;
     if(x == 0) {
-      if(zeros && dp - 1 <= pos) {
-	//draw(0, i);
-	continue;
-      } else if(i > 0 && neg) {
-	draw(32, --i);//negate
-	break;
+      if(zeros) {
+        if(pos < dp - 1) break;//zero fill
       }
-    }
+      else break;//exit
+    }    
   }
+  if(neg) draw(32, --i);//negate
 }
 
 static void sci(bool neg, double x);
@@ -165,18 +163,18 @@ static void sci(bool neg, double x);
 static void printreal(double x, bool ex) {
   bool neg = false;
   if(x < 0) {
-    x = -x;
     neg = true;
+    x = -x;
   }
-  if(value == 0.0 || (!neg && x < 0.0001e-99) || (neg && x > -0.001e-99)) {
+  if(x == 0.0 || (!neg && x < 0.0001e-99) || (neg && x < 0.001e-99)) {
     draw_dp(0b10000, 8);
     draw(0, 7);
-    return;
+    return;//Zero rounding
   }
-  if(value > 9.9999e+99 || value < -9.999e+99 || value != value) {//NaN test too 
+  if((!neg && x > 9.9999e+99) || (neg && x > 9.999e+99) || x != x) {//NaN test too 
     error = true;
     draw(15, 7);
-    return;
+    return;//Overflow
   }
   double mask = ((ex)?100000.0:100000000.0);//use exponent
   mask = ((!neg)?mask:(mask/10.0));//leave space for negative sign
@@ -184,18 +182,30 @@ static void printreal(double x, bool ex) {
     sci(neg, x);
     return;
   }
-  dp = 0;//set zero placed deciaml
+  dp = (ex?5:8);//set zero placed deciaml
   //either defered as sci exponent, zero or error printed so far!!
-  int32_t out;
-  for(int i = 0; i < 8; i++) {
-    if((double)(out = (int32_t)x) == x) break;
-    if(x < mask) {
-	x *= 10.0;
-	dp++;//scale decimal
-    } 
+  bool zeros = (x < 1);
+  int check;
+  if(zeros) {
+    //scale until upto dp = 1
+    while(dp > (neg?2:1)) {
+      check = (int)x;
+      if((double)check == x) break;//exact
+      --dp;
+      x *= 10.0;
+    }
+  } else {
+    //print as many decimals to fill space if possible
+    mask /= 10.0;
+    while(x < mask) {
+      check = (int)x;
+      if((double)check == x) break;//exact
+      --dp;
+      x *= 10.0;
+    }
   }
-  draw_dp(0b10000, (ex?5:8) - dp);
-  printint(neg?-out:out, ex?4:7, true);//integer part drawn
+  draw_dp(0b10000, dp);
+  printint(neg?-check:check, ex?4:7, zeros);//integer part drawn
 }
 
 static void sci(bool neg, double x) {
@@ -210,7 +220,7 @@ static void sci(bool neg, double x) {
   }
   if(neg) x = -x;
   printreal(x, true);
-  printint(ex, 7, true);
+  printint(ex, 7, false);//no zeros
 }
 
 void show_lvl(int mode_to) {
