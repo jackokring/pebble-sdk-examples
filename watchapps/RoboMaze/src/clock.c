@@ -145,7 +145,8 @@ static void printint(int x, int pos, bool zeros) {
     x = -x;
     neg = true;
   }
-  for(int i = pos; i >= neg?1:0; i--) {//leave space for negative sign
+  int i;
+  for(i = pos; i >= neg?1:0; i--) {//leave space for negative sign
     draw(x%10, i);
     x /= 10;
     if(x == 0) {
@@ -185,7 +186,7 @@ static void printreal(double x, bool ex) {
   dp = (ex?5:8);//set zero placed deciaml
   //either defered as sci exponent, zero or error printed so far!!
   bool zeros = (x < 1);
-  int check;
+  int check = 0;
   if(zeros) {
     //scale until upto dp = 1
     while(dp > (neg?2:1)) {

@@ -10,7 +10,9 @@
 // 32 by 24 display
 
 bool vidmode = false;
-unsigned char selector = 127;
+int selector = 127;
+unsigned char buffer[8];
+static int cur = 0;
 
 extern bool pause;
 
@@ -45,9 +47,17 @@ static unsigned char doubles[40] = {
 };
 
 void entry() {
-  selector = 127;
+  selector = 127;//superflewass!!
+  for(int i = 0; i < 8; ++i) {
+    buffer[i] = 60;
+  }
+  cur = 0;
   vidmode = true;
   pause = true;//automate indication
+}
+
+int valid() {
+  return vidmode?0:cur;
 }
 
 static int changed(int ch, int y, int x) {
@@ -72,13 +82,33 @@ int get_at(int x, int y) {
 		if(y > 19) off = 4;
 		return doubles[(y - off) * 2 + x%2];
 	} 
-	if(x > 27 && selector >= 6 && selector < 36 + 6) return changed(selector, y/4, x);
+	if(x > 27 && selector >= 6 && selector < 10 + 6) return changed(selector, y/4, x);
 	return 59;//blank space
   };
 }
 
 static void convert() {
-  //TODO
+  int sel = selector - 6;
+  if(sel >= 36) {
+    if(sel - 36 < 10) sel -= 36;//number
+    else sel -= 10;//symbol
+  }
+  if(sel == 64) {//BACK
+    buffer[cur--] = (unsigned char)60;
+    if(cur < 0) cur = 0;//delete back
+    return;
+  }
+  if(sel == 65) {//ENTR
+    vidmode = false;
+    return;
+  }
+  buffer[cur++] = sel;
+  if(sel >= 66) {//duals
+    --cur;
+    buffer[cur++] = doubles[(sel - 66) * 2];//first
+    if(cur < 8) buffer[cur++] = doubles[(sel - 66) * 2 + 1];//second
+  } 
+  if(cur >= 8) cur = 7;
   selector = 127;
 }
 
@@ -92,8 +122,8 @@ void click_display(ButtonId b, bool single) {
   if(!single) {
     x += 1;
   }
-  if(selector == 127) selector = x;//row
   if(selector < 6) selector = 6 + selector * 6 + x;//column
-  if(selector < 6 + 10) selector = 36 + 6 + (selector - 6) * x;//higher selector
-  if(selector >= 36 + 6 + 6 * 10) convert();
+  else if(selector < 6 + 10) selector = 36 + 6 + (selector - 6) + 10 * x;//higher selector
+  if(selector == 127) selector = x;//row
+  if(selector >= 10 + 6) convert();
 }
