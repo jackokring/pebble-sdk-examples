@@ -24,7 +24,7 @@ extern void load_basik();
 extern void save_basik();
 extern void tick_basik();
 extern void click_basik(ButtonId b, bool single);
-extern void click_display(ButtonId recognizer, bool single);
+extern void click_display(ButtonId b, bool single);
 
 extern void load_clock();
 extern void save_clock();

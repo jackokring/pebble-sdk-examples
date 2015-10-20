@@ -10,9 +10,9 @@
 // 32 by 24 display
 
 bool vidmode = false;
-unsigned char selector = 100;
+unsigned char selector = 127;
 
-extern int seconds;
+extern bool pause;
 
 static unsigned char specials[8] = { /* BACK */ 11, 10, 12, 21, /* ENTR */ 14, 24, 30, 28 };
 
@@ -44,6 +44,12 @@ static unsigned char doubles[40] = {
 	30, 25  //TO
 };
 
+void entry() {
+  selector = 127;
+  vidmode = true;
+  pause = true;//automate indication
+}
+
 static int changed(int ch, int y, int x) {
   if(ch > 9 || y % 4 == 0) return ch;
   if(selector >= 6 && x > 27 && y > 3) {//last two specials rows
@@ -71,6 +77,23 @@ int get_at(int x, int y) {
   };
 }
 
-void click_display(ButtonId recognizer, bool single) {
+static void convert() {
+  //TODO
+  selector = 127;
+}
 
+void click_display(ButtonId b, bool single) {
+  int x = 0;
+  if(b == BUTTON_ID_DOWN) {
+    x = 4;
+  } else if(b == BUTTON_ID_SELECT) {
+    x = 2;
+  }
+  if(!single) {
+    x += 1;
+  }
+  if(selector == 127) selector = x;//row
+  if(selector < 6) selector = 6 + selector * 6 + x;//column
+  if(selector < 6 + 10) selector = 36 + 6 + (selector - 6) * x;//higher selector
+  if(selector >= 36 + 6 + 6 * 10) convert();
 }
