@@ -15,7 +15,7 @@ extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern void show_lvl();
 
-static void reset();
+void reset();
 static void account();
 static void makemaze();
 static void makechar();
@@ -82,7 +82,7 @@ static void do_delay(int sec, void (*newstate)()) {
   state = delay;
 }
 
-static void reset() {
+void reset() {
   score = 0;
   direction = 2;
   level = 0;
@@ -204,7 +204,7 @@ static void drawchars() {
   }
 }
 
-static void ready() {
+void ready() {
   show_lvl(5);//show level
   drawchars();
   do_delay(6, move);

@@ -29,7 +29,7 @@ extern void click_display(ButtonId b, bool single);
 extern void load_clock();
 extern void save_clock();
 extern void tick_clock(struct tm *tick_time, bool stop);
-extern bool click_clock(ButtonId b, bool single);
+extern void click_clock(ButtonId b, bool single);
 
 extern bool pause;
 extern unsigned char mode;
@@ -147,12 +147,10 @@ static void clicks(ClickRecognizerRef recognizer, bool single) {
       return;
     } 
   }
-  if(!click_clock(b, single)) {
-    if(pause) {
-	if(vidmode) click_display(b, single);
-	else click_basik(b, single);
-    } else click(b, single);
-  }
+  if(pause) {
+    if(vidmode) click_display(b, single);
+    else click_basik(b, single);
+  } else click_clock(b, single);
   mark_dirty();
 }
 

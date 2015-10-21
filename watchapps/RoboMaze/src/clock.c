@@ -22,6 +22,7 @@ extern void click_value(ButtonId b, bool single);
 extern void click(ButtonId b, bool single);
 extern bool gAB;
 extern bool error;
+extern void reset();
 
 unsigned char dp = 0;//dp col
 unsigned char mode = 0;//clock,date,stopwatch,value,score
@@ -326,9 +327,8 @@ void load_clock() {
 
 static bool clickback = false;
 
-bool click_clock(ButtonId b, bool single) {//never gets select button
+void click_clock(ButtonId b, bool single) {//never gets select button
   button_sec = 0;//restore
-  bool tmp = keys[mode];
   if(b == BUTTON_ID_BACK) {
     if(!clickback) {
       mode++;
@@ -357,6 +357,8 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
         case BUTTON_ID_DOWN://start/stop
           sw_butt ^= 1;
           break;
+        case BUTTON_ID_SELECT: sw_butt = 4;//reset
+          break;
         default: break;
         }
       }
@@ -368,9 +370,9 @@ bool click_clock(ButtonId b, bool single) {//never gets select button
       }
     } else {
       mode = 4;//show score
-      if(b == BUTTON_ID_UP) gAB = false; else gAB = true;
-      tmp = true;//handled
+      if(b == BUTTON_ID_UP) gAB = false;
+      if(b == BUTTON_ID_DOWN) gAB = true;
+      if(b == BUTTON_ID_SELECT) reset();//long select
     }
   }
-  return tmp;//handled?
 }
