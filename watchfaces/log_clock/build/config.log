@@ -1,6 +1,6 @@
-# project  configured on Tue Aug 18 10:11:43 2015 by
+# project  configured on Wed Oct 21 21:52:35 2015 by
 # waf 1.7.11 (abi 98, python 20709f0 on linux2)
-# using /home/jacko/pebble-dev/PebbleSDK/Pebble/waf configure build
+# using /home/jacko/pebble-dev/PebbleSDK/Pebble/waf configure
 #
 ----------------------------------------
 Setting top to
@@ -17,8 +17,8 @@ arm-none-eabi-gcc
 find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
 ----------------------------------------
 Checking for program ar
-arm-none-eabi-ar
-find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
+arm-none-eabi-gcc-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-gcc-ar'
 ----------------------------------------
 Found Pebble SDK for aplite in:
 /home/jacko/pebble-dev/PebbleSDK/Pebble/aplite
@@ -28,5 +28,5 @@ arm-none-eabi-gcc
 find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
 ----------------------------------------
 Checking for program ar
-arm-none-eabi-ar
-find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
+arm-none-eabi-gcc-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-gcc-ar'
