@@ -39,6 +39,7 @@ static void blankc(int with) {
 
 bool pause = false;
 bool gAB;
+bool slong;
 int32_t score;
 int32_t hiscore;
 uint32_t level;
@@ -255,6 +256,12 @@ void tick() {
 }
 
 void click(ButtonId b, bool single) {
+  if(!single) {
+    if(b == BUTTON_ID_UP) direction = 0;
+    if(b == BUTTON_ID_DOWN) direction = 4;
+    if(b == BUTTON_ID_SELECT) direction = 2;
+    return;
+  }
   if(b == BUTTON_ID_UP) direction--;
   if(b == BUTTON_ID_DOWN) direction++;
   if(direction > 4) direction = 4;
