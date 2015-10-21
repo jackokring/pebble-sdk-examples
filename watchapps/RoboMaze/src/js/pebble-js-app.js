@@ -88,5 +88,5 @@ Pebble.addEventListener('webviewclosed',
 
 Pebble.addEventListener('showConfiguration', function(e) {
   // Show config page
-  Pebble.openURL('https://dl.dropboxusercontent.com/u/1615413/boxite/pebble/robomaze.html');//you MUST provide a (different) www server
+  Pebble.openURL('https://jackokring.github.io/pebble-sdk-examples/robomaze.html');//you MUST provide a (different) www server
 });
