@@ -1,0 +1,83 @@
+<html>
+<head>
+<script>
+var configuration = {};
+var platform;
+
+  if(Pebble.getActiveWatchInfo) {
+    watchinfo = Pebble.getActiveWatchInfo();
+  platform = watchinfo.platform;
+  } else {
+    platform = "aplite";
+  }
+
+function exit() {
+  location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(configuration));
+}
+</script>
+</head>
+<body>
+<p align="center" style="margin-bottom: 0cm">
+<button onclick="exit()">Exit Information</button>
+</p>
+<p align="center" style="margin-bottom: 0cm">Values
+are scaled. 
+</p>
+<table cellpadding="2" cellspacing="2" width="100%">
+	<tr>
+		<td colspan="3" style="border: none; padding: 0cm">
+			<p align="center">GPS (Connection Status)</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Tangent Gradient (/10)</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">T R E</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Exponential Gradient (/10)</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm">
+			<p align="center">The Input X (Reverse Output)</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">X B</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">The Battery % (+ is charging)</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Arc Tangent (45 deg = 1)</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">A G</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Arc Tangent Gradient (/10)</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Log10</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">L G</p>
+		</td>
+		<td style="border: none; padding: 0cm">
+			<p align="center">Log Gradient (/100)</p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="border: none; padding: 0cm">
+			<p align="center">Time</p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

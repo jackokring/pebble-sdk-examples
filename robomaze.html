@@ -1,0 +1,38 @@
+<html>
+<head>
+<script>
+var configuration = {};
+var platform;
+
+  if(Pebble.getActiveWatchInfo) {
+    watchinfo = Pebble.getActiveWatchInfo();
+  platform = watchinfo.platform;
+  } else {
+    platform = "aplite";
+  }
+
+function exit() {
+  location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(configuration));
+}
+</script>
+</head>
+<body>
+<p align="center"><button onclick="exit()">Exit Information</button></p>
+<h3>Modes</h3>
+<b>Clock</b> This mode shows the time. Pressing <b>BACK</b> changes mode.
+<b>Date</b> This mode shows the date. It returns to time after a few seconds.
+<b>Stopwatch</b> This is a second accurate counter. <b>UP</b> is lap and reset, while <b>DOWN</b>
+is start and stop. The stopwatch will stop running sometime after one year, and will loop every 960 hours.
+This keeps it day synchronized over long time scales. It still counts when the watch loses power.
+Uninstallation clears the persistant memory, and so resets the stopwatch.
+<b>Calculator</b> The <b>UP</b> and <b>DOWN</b> buttons increase or decrese the unit digit, and a long press does
+a multiply or divide by ten. Long pressing <b>SELECT</b> sets up exponents, with long presses for the tens digit
+of the exponent. A short press of <b>SELECT</b>, sets up function entry.[in dev].
+<b>Game</b> The <b>UP</b> and <b>DOWN</b> buttons, when not in stopwatch or calculator mode, select game A/B.
+When in game mode, the <b>UP</b> and <b>DOWN</b> buttons, select the anticlockwise and clockwise player motion
+preference, as indicated by the dot next to the score. <b>H</b> and <b>L</b> are displayed when the hiscore and
+level are displayed. Pressing <b>BACK</b> in game mode goes back to time, and plays the game passively in the
+background. [in dev].
+The <b>SELECT</b> button enters the console mode. The console has a different context based on the mode.[in dev].
+</body>
+</html>
