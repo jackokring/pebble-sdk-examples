@@ -41,15 +41,24 @@ double shanks(double * list, int idx) {
 	return (list[idx+1]*list[idx-1] - list[idx]*list[idx])/(list[idx+1] + list[idx-1] - two*list[idx]);
 }
 
+static void copy(double * dest, double * src) {
+	for(int i = 0; i < sizeof(double)*9; ++i) dest[i] = src[i];
+}
+
 double accel(double * list) {//calculate a nested shanks estimate of convergence
 	double tmp[9];
-	for(int i = 1; i < 8; ++i) {
-		tmp[i] = shanks(list, i);
+	copy(tmp, list);
+	for(int j = 0; j < 4; ++j) {
+		for(int i = 1 + j; i < 8 - j; ++i) {
+			tmp[i] = shanks(list, i);
+		}
+		copy(list, tmp);
 	}
-	//tmp[0] = list[0];
-	tmp[8] = list[8];
-	for(int i = 7; i > 4; --i) {
-		list[i] = shanks(tmp, i);
+	for(int j = 0; j < 2; ++j) {
+		for(int i = 7 - j; i > 4 + j; --i) {
+			tmp[i] = shanks(list, i);
+		}
+		copy(list, tmp);
 	}
 	return /* list[7]= */ shanks(list, 7);
 }
