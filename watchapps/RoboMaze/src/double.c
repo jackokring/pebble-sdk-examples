@@ -5,10 +5,29 @@
 
 double zero = 0.0;
 double one = 1.0;
+double two = 2.0;
 double ten = 10.0;
 double tenten = 10000000000.0;
 double tenth = 0.1;
 double tententh = 0.0000000001;
+
+/* use initial estimate and y'=y*(3-x*y*y)/2 with iterations */
+double irt(double x) {
+	u32 i;
+        double x2;
+        const double threehalfs = 1.5F;
+	x2 = x * 0.5F;
+        i  = * ( long * ) &x;                       // evil doubleing point bit level hacking
+        i  = 0x5f3759df - ( i >> 1 );
+        x  = * ( double * ) &i;
+	for(i = 0; i < 4; i++)
+        	x  *= ( threehalfs - ( x2 * square(x) ) );   //iteration
+        return x;
+}
+
+double sqrt(double x) {
+
+}
 
 double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
 	return x / (one + sqrt(one + sgn * x * x) ));
@@ -16,6 +35,23 @@ double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
 
 double halfa(double x) {
 	return half(x, one);
+}
+
+double shanks(double * list, int idx) {
+	return (list[idx+1]*list[idx-1] - list[idx]*list[idx])/(list[idx+1] + list[idx-1] - two*list[idx]);
+}
+
+double accel(double * list) {//calculate a nested shanks estimate of convergence
+	double tmp[9];
+	for(int i = 1; i < 8; ++i) {
+		tmp[i] = shanks(list, i);
+	}
+	//tmp[0] = list[0];
+	tmp[8] = list[8];
+	for(int i = 7; i > 4; --i) {
+		list[i] = shanks(tmp, i);
+	}
+	return /* list[7]= */ shanks(list, 7);
 }
 
 //OSAF FN (flags and function produced)
@@ -37,42 +73,39 @@ double halfa(double x) {
 //1111
 
 double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
-	double acc = 0;
-	double lacc;
 	double mul = x;
-	double harm = 1;
-	int start = 1;
+	double harm = one;
+	double a[9];
+	double acc = zero;
 	if(sq) x *= x;
 	x = (alt ? -x : x);
-	do {
-		lacc = acc;
-		acc += mul * (!over ? one : harm);
-		start += sq + 1;
-		harm = one/((double)start);
-		mul *= x * (!fact ? one : harm * (!sq ? one : one/((double)start - 1)));
-        } while(lacc != acc && start < 200);//term limit
-	return acc;
+	for(int start = 0; start < 9; ++start) {
+		a[start] = (acc += mul * (!over ? one : harm));
+		harm = one/((sq?two:one)*(double)start);
+		mul *= x * (!fact ? one : harm * (!sq ? one : one/((two*(double)start) - 1)));
+        }
+	return accel(a);
 }
 
 double log(double x) { //base e
 	x = irt(irt(irt(x)));//symetry and double triple roots
-	return -eq((x-one) * inv(x+one), 1, 1, 0, 0) * 16.0;
+	return -eq((x-one) * inv(x+one), true, true, false, false) * 16.0;
 }
 
 double atan(double x) {
-	return eq(halfa(halfa(x)), 1, 1, 1, 0) * 4.0F;
+	return eq(halfa(halfa(x)), true, true, true, false) * 4.0F;
 }
 
 double circ(double x) {
-	return sqrt(1.0F - square(x));
+	return sqrt(one - square(x));
 }
 
 double exp(double x) {
-	return eq(x, 0, 0, 0, 1) + 1.0F;
+	return eq(x, false, false, fasle, true) + one;
 }
 
 double qfn(double x) {
-	return eq(x, 1, 0, 0, 1);
+	return eq(x, true, false, false, true);
 }
 
 double invw(double x) {
@@ -90,23 +123,23 @@ double lin(double x) {
 //extra eight functions
 //on root
 double halfs(double x) {
-	return half(x, -1.0F);
+	return half(x, -one);
 }
 
 double halfc(double x) {
-	return circ(x) * inv(x + 1);
+	return circ(x) * inv(x + one);
 }
 //on logs
 double asin(double x) {
-	return 2.0F * atan(halfs(x));
+	return two * atan(halfs(x));
 }
 
 double acos(double x) {
-	return 2.0F * atan(halfc(x));
+	return two * atan(halfc(x));
 }
 //on exps
 double sin(double x) {
-	return eq(x, 0, 1, 1, 1);
+	return eq(x, false, true, true, true);
 }
 
 double cos(double x) {
