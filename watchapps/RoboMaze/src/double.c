@@ -26,18 +26,22 @@ double irt(double x) {
 }
 
 double sqrt(double x) {
-
+	return x / irt(x);
 }
 
-double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
-	return x / (one + sqrt(one + sgn * x * x) ));
+double circ(double x, double scale) {
+	return sqrt(one + scale * square(x));
+}
+
+static double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
+	return x / (one + circ(x, sgn) ));
 }
 
 double halfa(double x) {
 	return half(x, one);
 }
 
-double shanks(double * list, int idx) {
+static double shanks(double * list, int idx) {
 	return (list[idx+1]*list[idx-1] - list[idx]*list[idx])/(list[idx+1] + list[idx-1] - two*list[idx]);
 }
 
@@ -81,7 +85,7 @@ double accel(double * list) {//calculate a nested shanks estimate of convergence
 //1110 atan
 //1111
 
-double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
+static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
 	double mul = x;
 	double harm = one;
 	double a[9];
@@ -98,31 +102,19 @@ double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponent
 
 double log(double x) { //base e
 	x = irt(irt(irt(x)));//symetry and double triple roots
-	return -eq((x-one) * inv(x+one), true, true, false, false) * 16.0;
+	return -eq((x-one) / (x+one), true, true, false, false) * 16.0;
 }
 
 double atan(double x) {
-	return eq(halfa(halfa(x)), true, true, true, false) * 4.0F;
-}
-
-double circ(double x) {
-	return sqrt(one - square(x));
+	return eq(halfa(halfa(x)), true, true, true, false) * 4.0;
 }
 
 double exp(double x) {
-	return eq(x, false, false, fasle, true) + one;
-}
-
-double qfn(double x) {
-	return eq(x, true, false, false, true);
-}
-
-double invw(double x) {
-	return x * exp(x);
+	return eq(x, false, false, false, true) + one;
 }
 
 double ein(double x) {
-	return qfn(x) + log(x);
+	return eq(x, true, false, false, true) + log(x);
 }
 
 double lin(double x) {
@@ -136,7 +128,7 @@ double halfs(double x) {
 }
 
 double halfc(double x) {
-	return circ(x) * inv(x + one);
+	return circ(x, -one) / (x + one);
 }
 //on logs
 double asin(double x) {
@@ -156,11 +148,11 @@ double cos(double x) {
 }
 //on xtra
 double tan(double x) {
-	return sin(x) * inv(cos(x));
+	return sin(x) / cos(x);
 }
 
 double entropy(double x) {
-	return x * log(inv(x)) * 1.44269504089F;//base 2
+	return -x * log(x) * 1.44269504089;//base 2
 }
 
 
