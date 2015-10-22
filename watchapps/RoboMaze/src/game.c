@@ -8,9 +8,11 @@
 #include "pebble.h"
 #include "store.h"
 
+#ifdef BULK_BUILD
+
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
-extern int seconds;
+extern int8_t seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern void show_lvl();
@@ -325,3 +327,5 @@ void save() {
   persist_write_bool(GAME_AB, gAB);
   persist_write_data(CHAF, chaf, sizeof(chaf));
 }
+
+#endif

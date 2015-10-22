@@ -7,6 +7,8 @@
 #include "pebble.h"
 #include "store.h"
 
+#ifdef BULK_BUILD
+
 // 32 by 24 display
 
 bool vidmode = false;
@@ -135,3 +137,5 @@ void click_display(ButtonId b, bool single) {
   if(selector == 127) selector = x;//row
   if(selector >= 10 + 6) convert();
 }
+
+#endif

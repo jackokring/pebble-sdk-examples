@@ -8,6 +8,8 @@
 #include "store.h"
 #include "double.h"
 
+#ifdef BULK_BUILD
+
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
 extern int8_t seconds;
@@ -15,7 +17,7 @@ extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern int32_t score;
 extern int32_t hiscore;
-extern int32_t level;
+extern uint32_t level;
 extern int8_t direction;
 extern double value;
 extern void click_basik(ButtonId b, bool single);
@@ -369,3 +371,5 @@ void click_clock(ButtonId b, bool single) {
     }
   }
 }
+
+#endif

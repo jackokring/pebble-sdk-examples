@@ -2,6 +2,11 @@
 // MAIN DEFINES AND INCLUDES
 //=================================================================================
 
+//COMMENT OUT FOLLOWING LINE TO GLOBAL OPTIMIZE
+#define BULK_BUILD
+
+#ifndef ONCE
+
 // Put your common numbers here.
 
 #define NUM_MENU_SECTIONS 2
@@ -34,3 +39,5 @@ typedef struct {
   uint8_t is;//a flag to decide type
   uint8_t mode;//actual movement mode
 } mover;
+
+#endif

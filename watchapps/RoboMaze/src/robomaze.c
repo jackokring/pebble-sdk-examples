@@ -7,6 +7,8 @@
 #include "pebble.h"
 #include "store.h"
 
+#ifdef BULK_BUILD
+
 static Window *s_main_window;
 static GBitmap *map;
 
@@ -36,7 +38,7 @@ extern unsigned char mode;
 extern bool vidmode;
 extern int get_at(int x, int y);
 
-int seconds = 0;//EXTERN!!
+int8_t seconds = 0;//EXTERN!!
 
 static Layer *layer;
 
@@ -245,3 +247,5 @@ int main(void) {
   app_event_loop();
   deinit();
 }
+
+#endif
