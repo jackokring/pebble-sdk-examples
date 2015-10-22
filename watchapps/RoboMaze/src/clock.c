@@ -1,11 +1,12 @@
 //===============================================================================
-// THE CLOCK FEATURES FUNCTIONALITY
+// THE CLOCK EATURES UNCTIONALITY
 //===============================================================================
 
 // You should not edit this.
 
 #include "pebble.h"
 #include "store.h"
+#include "double.h"
 
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
@@ -48,7 +49,7 @@ static const int16_t pics[] = {
   0b111101101001001,//W 6
   0b011101101101011,//D 7
   0b101101111101101,//H 8
-  0b001001111001111,//F 9
+  0b001001111001111,// 9
   0b101101011101011,//R 0
   0b111010010010111,//I 1
   0b011100010001110,//S 2
@@ -165,11 +166,11 @@ static void sci(bool neg, double x);
 
 static void printreal(double x, bool ex) {
   bool neg = false;
-  if(x < 0) {
+  if(x < zero) {
     neg = true;
     x = -x;
   }
-  if(x == 0.0 || (!neg && x < 0.0001e-99) || (neg && x < 0.001e-99)) {
+  if(x == zero|| (!neg && x < 0.0001e-99) || (neg && x < 0.001e-99)) {
     draw_dp(0b10000, 8);
     draw(0, 7);
     return;//Zero rounding
@@ -180,32 +181,20 @@ static void printreal(double x, bool ex) {
     return;//Overflow
   }
   double mask = ((ex)?100000.0:100000000.0);//use exponent
-  mask = ((!neg)?mask:(mask/10.0));//leave space for negative sign
-  if(x >= mask || x <= 1.0/mask) {//sci notation as too big
+  mask = ((!neg)?mask:(mask * tenth));//leave space for negative sign
+  if(x >= mask || x <= one/mask) {//sci notation as too big
     sci(neg, x);
     return;
   }
   dp = (ex?5:8);//set zero placed deciaml
   //either defered as sci exponent, zero or error printed so far!!
-  bool zeros = (x < 1);
+  bool zeros = (x < one);
   int check = 0;
-  if(zeros) {
-    //scale until upto dp = 1
-    while(dp > (neg?2:1)) {
-      check = (int)x;
-      if((double)check == x) break;//exact
-      --dp;
-      x *= 10.0;
-    }
-  } else {
-    //print as many decimals to fill space if possible
-    mask /= 10.0;
-    while(x < mask) {
-      check = (int)x;
-      if((double)check == x) break;//exact
-      --dp;
-      x *= 10.0;
-    }
+  while((zeros)?(dp > (neg?2:1)):(x < mask)) {
+    check = (int)x;
+    if((double)check == x) break;//exact
+    --dp;
+    x *= 10;
   }
   draw_dp(0b10000, dp);
   printint(neg?-check:check, ex?4:7, zeros);//integer part drawn
@@ -213,12 +202,12 @@ static void printreal(double x, bool ex) {
 
 static void sci(bool neg, double x) {
   int ex = 0;
-  while(x > 10) {
-    x /= 10;
+  while(x > ten) {
+    x /= ten;
     ex++;
   }
-  while(x < 1) {
-    x *= 10;
+  while(x < one) {
+    x *= ten;
     ex--;
   }
   if(neg) x = -x;

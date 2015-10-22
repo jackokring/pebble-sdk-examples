@@ -14,7 +14,7 @@ int selector = 127;
 unsigned char buffer[8];
 static int cur = 0;
 
-extern int seconds;
+extern int8_t seconds;
 
 extern bool pause;
 

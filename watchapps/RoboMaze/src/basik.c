@@ -6,6 +6,7 @@
 
 #include "pebble.h"
 #include "store.h"
+#include "double.h"
 
 extern unsigned char maze[];//maze size -- EXTERN!!
 extern unsigned char con[];//console size -- EXTERN!!
@@ -15,24 +16,20 @@ extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern bool pause;
 extern unsigned char mode;
 
-double value = 0;//output value
+double value;//output value
 bool error = false;
 static bool hold = false;
 
-static double one = 1.0;
-static double ten = 10.0;
-static double tenten = 10000000000.0;
-static double tenth = 0.1;
-static double tententh = 0.0000000001;
 static bool expo = false;
 
 typedef struct {
-  double x;
+  float x;
 } loader;
 
 static loader xx;
 
 void load_basik() {
+  value = zero;
   if(persist_exists(BAS_VAL)) {
   	persist_read_data(BAS_VAL, &xx, sizeof(xx));
 	value = xx.x;
@@ -58,12 +55,12 @@ void click_basik(ButtonId b, bool single) {
 
 static void ac() {
   hold = false;
-  value = 0.0;
+  value = zero;
   expo = false;
 }
 
 void click_value(ButtonId b, bool single) {
-  if(hold && error && !single) {
+  if(hold && error) {
 	ac();
   }
   if(error) {
@@ -72,8 +69,8 @@ void click_value(ButtonId b, bool single) {
   }
   if(hold && !error) {
 	hold = false;
-	value = 0.0;
-	expo = false;
+  	value = zero;
+  	expo = false;
   }
   if(b == BUTTON_ID_SELECT) {
 	expo = !expo;
