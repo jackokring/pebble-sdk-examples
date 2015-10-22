@@ -11,30 +11,19 @@ double tenten = 10000000000.0;
 double tenth = 0.1;
 double tententh = 0.0000000001;
 
-/* use initial estimate and y'=y*(3-x*y*y)/2 with iterations */
-double irt(double x) {
-	u32 i;
-        double x2;
-        const double threehalfs = 1.5F;
-	x2 = x * 0.5F;
-        i  = * ( long * ) &x;                       // evil doubleing point bit level hacking
-        i  = 0x5f3759df - ( i >> 1 );
-        x  = * ( double * ) &i;
-	for(i = 0; i < 4; i++)
-        	x  *= ( threehalfs - ( x2 * square(x) ) );   //iteration
-        return x;
-}
+double log(double x);
+double exp(double x);
 
 double sqrt(double x) {
-	return x / irt(x);
+	return exp(log(x) / two);
 }
 
 double circ(double x, double scale) {
-	return sqrt(one + scale * square(x));
+	return sqrt(one + scale * x * x);
 }
 
 static double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
-	return x / (one + circ(x, sgn) ));
+	return x / (one + circ(x, sgn));
 }
 
 double halfa(double x) {
@@ -46,7 +35,7 @@ static double shanks(double * list, int idx) {
 }
 
 static void copy(double * dest, double * src) {
-	for(int i = 0; i < sizeof(double)*9; ++i) dest[i] = src[i];
+	for(uint32_t i = 0; i < sizeof(double) * 9; ++i) dest[i] = src[i];
 }
 
 double accel(double * list) {//calculate a nested shanks estimate of convergence
@@ -101,8 +90,7 @@ static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e e
 }
 
 double log(double x) { //base e
-	x = irt(irt(irt(x)));//symetry and double triple roots
-	return -eq((x-one) / (x+one), true, true, false, false) * 16.0;
+	return -eq((x-one) / (x+one), true, true, false, false) * two;
 }
 
 double atan(double x) {

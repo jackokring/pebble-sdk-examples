@@ -11,8 +11,7 @@ extern double tenten;
 extern double tenth;
 extern double tententh; 
 
-// Simple basic trig and circular processing (18 functions) - RADIANS!!!!
-double irt(double x);//inverse root
+// Simple basic trig and circular processing (17 functions) - RADIANS!!!!
 double sqrt(double x);//square root
 double halfa(double x);//tan half angle formula
 double accel(double * list);//shanks acceleration on an array of dimension[9]
