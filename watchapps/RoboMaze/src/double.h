@@ -1,6 +1,6 @@
-extern float zero;
-extern float one;
-extern float ten;
-extern float tenten;
-extern float tenth;
-extern float tententh;
+extern double zero;
+extern double one;
+extern double ten;
+extern double tenten;
+extern double tenth;
+extern double tententh;
