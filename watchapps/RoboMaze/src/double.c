@@ -77,7 +77,7 @@ double accel(double * list) {//calculate a nested shanks estimate of convergence
 //0110
 //0111 sin
 //1000
-//1001 qfn
+//1001 qfn (which must add log and a const for Ei)
 //1010
 //1011 
 //1100 log with right input transform (is atanh)
