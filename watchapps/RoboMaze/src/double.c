@@ -18,12 +18,24 @@ double sqrt(double x) {
 	return exp(log(x) / two);
 }
 
-double circ(double x, double scale) {
-	return sqrt(one + scale * x * x);
+static double tt;
+
+static double circl(double x, double sgn) {
+	return sqrt(one + sgn * x * x);
+}
+
+double circ(double x) {
+	return circl(x, tt);
+}
+
+double twist(double x) {
+	double z = tt;
+	tt = x;
+	return z;
 }
 
 static double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
-	return x / (one + circ(x, sgn));
+	return x / (one + circl(x, sgn));
 }
 
 double halfa(double x) {
@@ -116,7 +128,7 @@ double halfs(double x) {
 }
 
 double halfc(double x) {
-	return circ(x, -one) / (x + one);
+	return circl(x, -one) / (x + one);
 }
 //on logs
 double asin(double x) {
