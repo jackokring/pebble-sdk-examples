@@ -16,8 +16,6 @@ int selector = 127;
 unsigned char buffer[8];
 static int cur = 0;
 
-extern int8_t seconds;
-
 extern bool pause;
 
 static unsigned char specials[8] = { /* BACK */ 11, 10, 12, 21, /* ENTR */ 14, 24, 30, 28 };
@@ -77,8 +75,7 @@ int get_at(int x, int y) {
   if(x < 24) {
 	if(y > 21 && x >= 7 && x <= 8 + 8) {
 		if(y == 23 && x >= 8 && x < 8 + 8) {
-			if(x - 8 == cur) return 60 + seconds % 4;//flash 
-			else return buffer[x - 8];//the input string
+			return buffer[x - 8];//the input string
 		}
 		else return 59;
 	} else return changed(x/4 + (y/4)*6, y, x);//main alpha display

@@ -15,7 +15,9 @@ static GBitmap *map;
 unsigned char con[(((32*24) * 3) >> 2) + 1];//console size -- EXTERN!!
 unsigned char maze[(((35*41) * 3) >> 2) + 1];//maze size -- EXTERN!!
 static GBitmap *(maze_gfx[31]);//blank = 31
-static GBitmap *(char_gfx[67]);
+static GBitmap *(char_gfx[60]);
+static GBitmap *logo;
+static bool slogo = false;
 
 extern void load();
 extern void save();
@@ -77,26 +79,42 @@ static int reduce_map(int x, int y) {
   return tmp;
 }
 
+void showlogo() {
+  slogo = true;
+}
+
 static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update routine
   GRect bounds = layer_get_bounds(layer);
 
   // Draw a black filled rectangle with sharp corners
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_fill_rect(ctx, bounds, 0, GCornerNone);
+  if(slogo) {
+    slogo = false;
+    graphics_draw_bitmap_in_rect(ctx, logo, GRect(6 + 16 * 4 - 14, 10 + 12 * 5 - 20, 28, 41));
+    return;
+  }
 
   // Draw Console
   if(pause)
     for(int i = 0; i < 32; i++)
       for(int j = 0; j < 24; j++) {
         int x = (vidmode)?get_at(i, j):get_map(con, i, j, 32);
-        if(x > 63) continue;//don't draw
-        else graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
+        if(x >= 60) {//cursors
+          int z = seconds + i + j;
+          if(x == 60) x = z % 10;//number
+          if(x == 61) x = z % 26 + 10;//letter
+          if(x == 62) x = z % 23 + 36;//punc
+          x -= (seconds & 1 == 0)?5:6;//generic
+        }
+        graphics_draw_bitmap_in_rect(ctx, char_gfx[x], GRect(i * 4 + 6, j * 6 + 10, 3, 5));//draw map
   } else
 
   // Draw map
   for(int i = 0; i < 35; i++)
     for(int j = 0; j < 41; j++) {
       int x = get_map(maze, i, j, 35);
+      int d = 0;
       if(x >= 32) {
 	//flashing
         x -= 32;
@@ -106,14 +124,11 @@ static void layer_draw(Layer *layer, GContext *ctx) {//the main gfx layer update
       if(x < 16) {
         x = reduce_map(i, j);
         put_map(maze, i, j, 35, x);//write back
-        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x&31], GRect(i * 4, j * 4, 4, 4));//draw map
-        continue;
       }
       if(x >= 16 && x <= 20) {
-        graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4 - 1, j * 4 - 1, 6, 6));//draw map
-        continue;
+        d = 1;
       }
-      graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4, j * 4, 4, 4));//draw map
+      graphics_draw_bitmap_in_rect(ctx, maze_gfx[x], GRect(i * 4 - d, j * 4 - d, 4, 4));//draw map
   }
 }
 
@@ -182,6 +197,7 @@ static void main_window_load(Window *window) {
   window_set_fullscreen(window, true);
 #endif
   map = gbitmap_create_with_resource(RESOURCE_ID_MAP);
+  logo = gbitmap_create_as_sub_bitmap(map, GRect( 36, 0, 28, 41 ));//logo
   for(int i = 0; i < 16; i++) {
     maze_gfx[i] = gbitmap_create_as_sub_bitmap(map, GRect( (i%4)*4, (i/4)*4, 4, 4 ));//fill maze_gfx
   }
@@ -189,11 +205,9 @@ static void main_window_load(Window *window) {
     maze_gfx[i+16] = gbitmap_create_as_sub_bitmap(map, GRect( (i%2)*6 + 16, (i/2)*6, 6, 6 ));//bot
     maze_gfx[i+20] = gbitmap_create_as_sub_bitmap(map, GRect( i*4 + 16, 12, 4, 4 ));//missile
     maze_gfx[i+24] = gbitmap_create_as_sub_bitmap(map, GRect( 32, i*4, 4, 4 ));//bomerang
-    char_gfx[i+60] = gbitmap_create_as_sub_bitmap(map, GRect( (12 + i)*3, 16 + (59/12)*5, 3, 5 ));
   }
   for(int i = 0; i < 3; i++) {
     maze_gfx[i+28] = gbitmap_create_as_sub_bitmap(map, GRect( 16 + 12, i*4, 4, 4 ));//aux fill, square, dot
-    char_gfx[i+64] = gbitmap_create_as_sub_bitmap(map, GRect( 12*3 , i*12, 12, 12 ));//icons
   }
   //maze_gfx[31] = NULL;//black space draw with GRect.
   for(int i = 0; i < 60; i++) {
@@ -218,7 +232,7 @@ static void main_window_unload(Window *window) {
   for(int i = 0; i < 16 + 15; i++) {
     gbitmap_destroy(maze_gfx[i]);//maze_gfx
   }
-  for(int i = 0; i < 48; i++) {
+  for(int i = 0; i < 64; i++) {
     gbitmap_destroy(char_gfx[i]);//char_gfx
   }
   gbitmap_destroy(map);

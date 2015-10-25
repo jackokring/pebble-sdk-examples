@@ -16,6 +16,7 @@ extern int8_t seconds;
 extern unsigned char get_map(unsigned char * ptr, int x, int y, int mod);
 extern void put_map(unsigned char * ptr, int x, int y, int mod, int val);
 extern void show_lvl();
+extern void showlogo();
 
 void reset();
 static void account();
@@ -86,6 +87,7 @@ static void do_delay(int sec, void (*newstate)()) {
 }
 
 void reset() {
+  showlogo();
   score = 0;
   direction = 2;
   level = 0;
