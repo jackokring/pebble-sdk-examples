@@ -103,7 +103,11 @@ static struct tm lap, reg;
 
 void save_clock() {
   time_t now = time(NULL);
+#ifdef PBL_SDK_2
   struct tm *t = localtime(&now);
+#else
+  struct tm *t = gmtime(&now);
+#endif
   persist_write_data(SW_STORE, &reg, sizeof(reg));
   persist_write_data(SW_LAP, &lap, sizeof(lap));
   persist_write_data(SW_STOP, t, sizeof(reg));
@@ -284,7 +288,11 @@ static void reset_sw() {
 
 void load_clock() {
   time_t now = time(NULL);
+#ifdef PBL_SDK_2
   struct tm *t = localtime(&now);
+#else
+  struct tm *t = gmtime(&now);
+#endif
   tick_clock(t, true);
   if(persist_exists(SW_BUTT)) {
     sw_butt = persist_read_int(SW_BUTT);
