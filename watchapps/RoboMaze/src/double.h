@@ -10,6 +10,7 @@ typedef struct {
 // The constants (actually variables)
 extern dub zero;
 extern dub one;
+extern dub mone;
 extern dub two;
 extern dub ten;
 extern dub tenten;
@@ -26,8 +27,10 @@ extern dub sub(dub a, dub b);//subtract
 extern bool pos(dub a);//positive or negative
 extern dub irt(dub a);//inverse root
 extern int trunc(dub a);//truncate to an integer
+extern dub onem(dub a);//one minus
 
 // Simplifications
+extern dub square(dub a);//the square
 extern dub neg(dub a);//additive inverse
 extern dub inv(dub a);//multiplicative inverse
 extern dub div(dub a, dub b);//divide

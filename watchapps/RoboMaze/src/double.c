@@ -5,6 +5,7 @@
 
 dub zero = 0.0;
 dub one = 1.0;
+dub mone = -1.0;
 dub two = 2.0;
 dub ten = 10.0;
 dub tenten = 10000000000.0;
@@ -20,28 +21,31 @@ dub sub(dub a, dub b);//subtract
 bool pos(dub a);//positive or negative
 dub irt(dub a);//inverse root
 int trunc(dub a);//truncate to an integer
+dub onem(dub a);//one minus
 
 // Simplifications
-extern dub neg(dub a);//additive inverse
-extern dub inv(dub a);//multiplicative inverse
-extern dub div(dub a, dub b);//divide
-extern dub add(dub a, dub b);//add
-extern dub pow(dub a, int x);//integer power
+dub square(dub a);
+dub neg(dub a);//additive inverse
+dub inv(dub a);//multiplicative inverse
+dub div(dub a, dub b);//divide
+dub add(dub a, dub b);//add
+dub pow(dub a, int x);//integer power
+
 
 dub sqrt(dub x) {
-	return exp(log(x) / two);
+	return exp(div(log(x), two));
 }
 
 dub circ(dub x, dub sgn) {
-	return sqrt(one - sgn * x * x);
+	return sqrt(onem(mul(sgn, square(x))));
 }
 
 static dub half(dub x, dub sgn) {		/* x/(1+sqrt(1+x*x)) */
-	return x / (one + circ(x, sgn));
+	return div(x, add(one, circ(x, sgn)));
 }
 
 dub halft(dub x) {
-	return half(x, -one);
+	return half(x, mone);
 }
 
 static dub shanks(dub * list, int idx) {
@@ -106,12 +110,12 @@ static dub eq(dub x, bool over, bool sq, bool alt, bool fact) { //base e exponen
 dub log(dub x) { //base e
 	bool neg = false;
 	if(x > 1.0) {
-		x = one / x;
+		x = inv(x);
 		neg = true;
 	}
 	x = irt(irt(irt(irt(x))));//in range close enough to 1
-	x = eq((x-one) / (x+one), true, true, false, false) * 32.0;
-	return neg?-x:x;
+	x = mul(eq(div(add(x, mone), add(x, one)), true, true, false, false), 32.0);
+	return neg?negate(x):x;
 }
 
 dub atan(dub x) {
@@ -120,11 +124,11 @@ dub atan(dub x) {
 
 dub exp(dub x) {
 	//use man exp with integer power raise or 1/x raise for neg ex
-	return eq(x, false, false, false, true) + one;
+	return add(eq(x, false, false, false, true), one);
 }
 
 dub ein(dub x) {
-	return eq(x, true, false, false, true) + log(x);
+	return add(eq(x, true, false, false, true), log(x));
 }
 
 dub lin(dub x) {
@@ -136,15 +140,15 @@ dub halfs(dub x) {
 }
 
 dub halfc(dub x) {
-	return circ(x, one) / (x + one);
+	return div(circ(x, one), add(x, one));
 }
 
 dub asin(dub x) {
-	return two * atan(halfs(x));
+	return mul(two, atan(halfs(x)));
 }
 
 dub acos(dub x) {
-	return two * atan(halfc(x));
+	return mul(two, atan(halfc(x)));
 }
 
 dub sin(dub x) {
@@ -153,15 +157,15 @@ dub sin(dub x) {
 }
 
 dub cos(dub x) {
-	return sin(x + 1.57079632679F);
+	return sin(add(x, PI2));
 }
 
 dub tan(dub x) {
-	return sin(x) / cos(x);
+	return div(sin(x), cos(x));
 }
 
 dub entropy(dub x) {
-	return -x * log(x) * 1.44269504089;//base 2
+	return div(negate(mul(x, log(x))), log(two));//base 2
 }
 
 #endif
