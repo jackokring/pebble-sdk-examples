@@ -20,7 +20,7 @@ extern dub PI2;//pi over 2
 
 // Basis functions
 extern dub init();//fill constants
-extern dub dlit(int32_t m, int16_t e);//build literal
+extern dub dlit(int m, int e);//build literal
 extern dub mul(dub a, dub b);//multiply
 extern dub sub(dub a, dub b);//subtract
 extern bool pos(dub a);//positive or negative
@@ -31,6 +31,7 @@ extern dub neg(dub a);//additive inverse
 extern dub inv(dub a);//multiplicative inverse
 extern dub div(dub a, dub b);//divide
 extern dub add(dub a, dub b);//add
+extern dub pow(dub a, int x);//integer power (+ve only)
 
 // Simple basic trig and circular processing (18 functions) - RADIANS!!!!
 extern dub sqrt(dub x);//square root
