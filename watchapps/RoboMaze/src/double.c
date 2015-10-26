@@ -3,43 +3,57 @@
 
 #ifdef BULK_BUILD
 
-double zero = 0.0;
-double one = 1.0;
-double two = 2.0;
-double ten = 10.0;
-double tenten = 10000000000.0;
-double tenth = 0.1;
-double tententh = 0.0000000001;
+dub zero = 0.0;
+dub one = 1.0;
+dub two = 2.0;
+dub ten = 10.0;
+dub tenten = 10000000000.0;
+dub tenth = 0.1;
+dub tententh = 0.0000000001;
+dub logE10;//for digit conversion
+dub PI2;//pi over 2
 
-double log(double x);
-double exp(double x);
+dub init();//fill constants
+dub dlit(int m, int e);//build literal (e=0 converts to dub)
+dub mul(dub a, dub b);//multiply
+dub sub(dub a, dub b);//subtract
+bool pos(dub a);//positive or negative
+dub irt(dub a);//inverse root
+int trunc(dub a);//truncate to an integer
 
-double sqrt(double x) {
+// Simplifications
+extern dub neg(dub a);//additive inverse
+extern dub inv(dub a);//multiplicative inverse
+extern dub div(dub a, dub b);//divide
+extern dub add(dub a, dub b);//add
+extern dub pow(dub a, int x);//integer power
+
+dub sqrt(dub x) {
 	return exp(log(x) / two);
 }
 
-double circ(double x, double sgn) {
+dub circ(dub x, dub sgn) {
 	return sqrt(one - sgn * x * x);
 }
 
-static double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
+static dub half(dub x, dub sgn) {		/* x/(1+sqrt(1+x*x)) */
 	return x / (one + circ(x, sgn));
 }
 
-double halft(double x) {
+dub halft(dub x) {
 	return half(x, -one);
 }
 
-static double shanks(double * list, int idx) {
+static dub shanks(dub * list, int idx) {
 	return (list[idx+1]*list[idx-1] - list[idx]*list[idx])/(list[idx+1] + list[idx-1] - two*list[idx]);
 }
 
-static void copy(double * dest, double * src) {
-	for(uint32_t i = 0; i < sizeof(double) * 9; ++i) dest[i] = src[i];
+static void copy(dub * dest, dub * src) {
+	for(uint32_t i = 0; i < sizeof(dub) * 9; ++i) dest[i] = src[i];
 }
 
-double accel(double * list) {//calculate a nested shanks estimate of convergence
-	double tmp[9];
+dub accel(dub * list) {//calculate a nested shanks estimate of convergence
+	dub tmp[9];
 	copy(tmp, list);
 	for(int j = 0; j < 4; ++j) {
 		for(int i = 1 + j; i < 8 - j; ++i) {
@@ -74,22 +88,22 @@ double accel(double * list) {//calculate a nested shanks estimate of convergence
 //1110 atan
 //1111
 
-static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
-	double mul = x;
-	double harm = one;
-	double a[9];
-	double acc = zero;
+static dub eq(dub x, bool over, bool sq, bool alt, bool fact) { //base e exponential and Q+
+	dub mul = x;
+	dub harm = one;
+	dub a[9];
+	dub acc = zero;
 	if(sq) x *= x;
 	x = (alt ? -x : x);
 	for(int start = 0; start < 9; ++start) {
 		a[start] = (acc += mul * (!over ? one : harm));
-		harm = one/((sq?two:one)*(double)start);
-		mul *= x * (!fact ? one : harm * (!sq ? one : one/((two*(double)start) - 1)));
+		harm = one/((sq?two:one)*(dub)start);
+		mul *= x * (!fact ? one : harm * (!sq ? one : one/((two*(dub)start) - 1)));
         }
 	return accel(a);
 }
 
-double log(double x) { //base e
+dub log(dub x) { //base e
 	bool neg = false;
 	if(x > 1.0) {
 		x = one / x;
@@ -100,53 +114,53 @@ double log(double x) { //base e
 	return neg?-x:x;
 }
 
-double atan(double x) {
+dub atan(dub x) {
 	return eq(x, true, true, true, false);
 }
 
-double exp(double x) {
+dub exp(dub x) {
 	//use man exp with integer power raise or 1/x raise for neg ex
 	return eq(x, false, false, false, true) + one;
 }
 
-double ein(double x) {
+dub ein(dub x) {
 	return eq(x, true, false, false, true) + log(x);
 }
 
-double lin(double x) {
+dub lin(dub x) {
 	return ein(log(x));
 }
 
-double halfs(double x) {
+dub halfs(dub x) {
 	return half(x, one);
 }
 
-double halfc(double x) {
+dub halfc(dub x) {
 	return circ(x, one) / (x + one);
 }
 
-double asin(double x) {
+dub asin(dub x) {
 	return two * atan(halfs(x));
 }
 
-double acos(double x) {
+dub acos(dub x) {
 	return two * atan(halfc(x));
 }
 
-double sin(double x) {
+dub sin(dub x) {
 	//use modulo pi/2
 	return eq(x, false, true, true, true);
 }
 
-double cos(double x) {
+dub cos(dub x) {
 	return sin(x + 1.57079632679F);
 }
 
-double tan(double x) {
+dub tan(dub x) {
 	return sin(x) / cos(x);
 }
 
-double entropy(double x) {
+dub entropy(dub x) {
 	return -x * log(x) * 1.44269504089;//base 2
 }
 
