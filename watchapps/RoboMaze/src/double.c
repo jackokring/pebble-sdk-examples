@@ -18,28 +18,16 @@ double sqrt(double x) {
 	return exp(log(x) / two);
 }
 
-static double tt;
-
-static double circl(double x, double sgn) {
-	return sqrt(one + sgn * x * x);
-}
-
-double circ(double x) {
-	return circl(x, tt);
-}
-
-double twist(double x) {
-	double z = tt;
-	tt = x;
-	return z;
+double circ(double x, double sgn) {
+	return sqrt(one - sgn * x * x);
 }
 
 static double half(double x, double sgn) {		/* x/(1+sqrt(1+x*x)) */
-	return x / (one + circl(x, sgn));
+	return x / (one + circ(x, sgn));
 }
 
-double halfa(double x) {
-	return half(x, one);
+double halft(double x) {
+	return half(x, -one);
 }
 
 static double shanks(double * list, int idx) {
@@ -102,14 +90,22 @@ static double eq(double x, bool over, bool sq, bool alt, bool fact) { //base e e
 }
 
 double log(double x) { //base e
-	return -eq((x-one) / (x+one), true, true, false, false) * two;
+	bool neg = false;
+	if(x > 1.0) {
+		x = one / x;
+		neg = true;
+	}
+	x = irt(irt(irt(irt(x))));//in range close enough to 1
+	x = eq((x-one) / (x+one), true, true, false, false) * 32.0;
+	return neg?-x:x;
 }
 
 double atan(double x) {
-	return eq(halfa(halfa(x)), true, true, true, false) * 4.0;
+	return eq(x, true, true, true, false);
 }
 
 double exp(double x) {
+	//use man exp with integer power raise or 1/x raise for neg ex
 	return eq(x, false, false, false, true) + one;
 }
 
@@ -121,16 +117,14 @@ double lin(double x) {
 	return ein(log(x));
 }
 
-//extra eight functions
-//on root
 double halfs(double x) {
-	return half(x, -one);
+	return half(x, one);
 }
 
 double halfc(double x) {
-	return circl(x, -one) / (x + one);
+	return circ(x, one) / (x + one);
 }
-//on logs
+
 double asin(double x) {
 	return two * atan(halfs(x));
 }
@@ -138,15 +132,16 @@ double asin(double x) {
 double acos(double x) {
 	return two * atan(halfc(x));
 }
-//on exps
+
 double sin(double x) {
+	//use modulo pi/2
 	return eq(x, false, true, true, true);
 }
 
 double cos(double x) {
 	return sin(x + 1.57079632679F);
 }
-//on xtra
+
 double tan(double x) {
 	return sin(x) / cos(x);
 }
@@ -154,7 +149,5 @@ double tan(double x) {
 double entropy(double x) {
 	return -x * log(x) * 1.44269504089;//base 2
 }
-
-
 
 #endif
