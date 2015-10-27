@@ -3,19 +3,31 @@
 
 #ifdef BULK_BUILD
 
-dub zero = 0.0;
-dub one = 1.0;
-dub mone = -1.0;
-dub two = 2.0;
-dub ten = 10.0;
-dub tenten = 10000000000.0;
-dub tenth = 0.1;
-dub tententh = 0.0000000001;
-dub logE10;//for digit conversion
-dub PI2;//pi over 2
+dub zero = { 0, 0 };
+dub one = { 1, 0 };
+dub mone = { -1, 0 };
+dub two = { 2, 0 };
+dub ten = { 10, 0 };
 
-dub init();//fill constants
-dub dlit(int m, int e);//build literal (e=0 converts to dub)
+//more calculation involved
+dub tenten = { 10000000000/4, 2 };
+dub tenth = { 0b11001100110011001100110011, -29 };
+dub tententh = { 0b110110111110011011111110110011, -63 };
+dub logE10 = { 0b100100110101110110001101110111, -28 };//for digit conversion
+dub PI2 = { 0b110010010000111111011010101, -26 };//pi over 2
+
+void dlit(dub * d, int m, int e) {//build literal (e=0 converts to dub)
+	d -> man = m;
+	d -> exp = e;
+}
+
+/* dub init() {//fill constants
+	dlit(&zero, 0, 0);
+	dlit(&one, 1, 0);
+	dlit(&mone, -1, 0);
+	dlit(&two, 2, 0);
+} */
+
 dub mul(dub a, dub b);//multiply
 dub sub(dub a, dub b);//subtract
 bool pos(dub a);//positive or negative

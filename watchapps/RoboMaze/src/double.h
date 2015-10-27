@@ -20,8 +20,7 @@ extern dub logE10;//for digit conversion
 extern dub PI2;//pi over 2
 
 // Basis functions
-extern dub init();//fill constants
-extern dub dlit(int m, int e);//build literal (e=0 converts to dub)
+extern void dlit(dub * d, int m, int e);//build literal (e=0 converts to dub)
 extern dub mul(dub a, dub b);//multiply
 extern dub sub(dub a, dub b);//subtract
 extern bool pos(dub a);//positive or negative
