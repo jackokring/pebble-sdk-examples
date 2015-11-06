@@ -16,7 +16,14 @@ int selector = 127;
 unsigned char buffer[8];
 static int cur = 0;
 
-extern bool pause;
+extern bool pause[60] = "0123456789" + //
+			"ABCDEFGHIJ" + //
+			"KLMNOPQRST" + //
+			"UVWXYZ-+/*" + //
+			"%^[]=<>._," + //
+			";:!?#$'\"@ "; //
+
+static char sixty
 
 static unsigned char specials[8] = { /* BACK */ 11, 10, 12, 21, /* ENTR */ 14, 24, 30, 28 };
 
